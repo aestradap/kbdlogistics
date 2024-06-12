@@ -25,7 +25,7 @@ export const Home = () => {
               <p className="opacity-75">
                 Some representative placeholder content for the first slide of the carousel.
               </p>
-              <p><a className="btn btn-lg btn-primary" href="#">
+              <p><a className="btn btn-lg btn-home-primary" href="#">
                 Sign up today
               </a></p>
             </div>
@@ -40,7 +40,7 @@ export const Home = () => {
             <div className="carousel-caption">
               <h1>Another example headline.</h1>
               <p>Some representative placeholder content for the second slide of the carousel.</p>
-              <p><a className="btn btn-lg btn-primary" href="#">Learn more</a></p>
+              <p><a className="btn btn-lg btn-home-primary" href="#">Learn more</a></p>
             </div>
           </div>
         </div>
@@ -53,7 +53,8 @@ export const Home = () => {
             <div className="carousel-caption text-end">
               <h1>One more for good measure.</h1>
               <p>Some representative placeholder content for the third slide of this carousel.</p>
-              <p><a className="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+              {/*<p><a className="btn btn-lg btn-primary" href="#">Browse gallery</a></p>*/}
+              <p><a className="btn btn-lg btn-home-primary" href="#">Browse gallery</a></p>
             </div>
           </div>
         </div>
@@ -83,7 +84,7 @@ export const Home = () => {
             <title>Placeholder</title>
             <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
           </svg>
-          <h2 className="fw-normal">Heading</h2>
+          <h2 className="fw-normal">Ground</h2>
           <p>Some representative placeholder content for the three columns of text below the carousel. This is the first
             column.</p>
           <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
@@ -96,7 +97,7 @@ export const Home = () => {
             <title>Placeholder</title>
             <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
           </svg>
-          <h2 className="fw-normal">Heading</h2>
+          <h2 className="fw-normal">Air</h2>
           <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second
             column.</p>
           <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
@@ -110,7 +111,7 @@ export const Home = () => {
             <title>Placeholder</title>
             <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
           </svg>
-          <h2 className="fw-normal">Heading</h2>
+          <h2 className="fw-normal">Ocean</h2>
           <p>And lastly this, the third column of representative placeholder content.</p>
           <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
         </div>
@@ -124,8 +125,9 @@ export const Home = () => {
           <div className="col-md-7">
             <h2 className="featurette-heading fw-normal lh-1">First featurette heading. <span
               className="text-body-secondary">It’ll blow your mind.</span></h2>
-            <p className="lead">Some great placeholder content for the first featurette here. Imagine some exciting
-              prose here.</p>
+            <p className="lead">
+              Our ground freight services are not only swift but also efficient and consistently dependable. With routes spanning across all states in the United States, we ensure your products are delivered safely and securely. Your trust is our top priority, and we guarantee that everything you ship arrives in your hands without fail.
+            </p>
           </div>
           <div className="col-md-5">
             <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
