@@ -132,6 +132,12 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
+.hr-home {
+    background-color: #00A651 ;
+    height: 3px !important;
+
+}
+
 .btn-home-primary {
     color: #fff;
     background-color: #00A651;

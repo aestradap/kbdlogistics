@@ -21,12 +21,12 @@ export const Home = () => {
           </svg>
           <div className="container">
             <div className="carousel-caption text-start">
-              <h1>Example headline.</h1>
+              <h1>Supply Chain Solutions.</h1>
               <p className="opacity-75">
-                Some representative placeholder content for the first slide of the carousel.
+                We deliver essential supply chain solutions to the world's leading companies.
               </p>
               <p><a className="btn btn-lg btn-home-primary" href="#">
-                Sign up today
+                Request a quote
               </a></p>
             </div>
           </div>
@@ -38,9 +38,9 @@ export const Home = () => {
           </svg>
           <div className="container">
             <div className="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p>Some representative placeholder content for the second slide of the carousel.</p>
-              <p><a className="btn btn-lg btn-home-primary" href="#">Learn more</a></p>
+              <h1>Reaching Across The World.</h1>
+              <p>Whatever you need, we've got it handled..</p>
+              <p><a className="btn btn-lg btn-home-primary" href="#">Explore our solutions</a></p>
             </div>
           </div>
         </div>
@@ -51,10 +51,10 @@ export const Home = () => {
           </svg>
           <div className="container">
             <div className="carousel-caption text-end">
-              <h1>One more for good measure.</h1>
-              <p>Some representative placeholder content for the third slide of this carousel.</p>
+              <h1>The client always comes first.</h1>
+              <p>We offer real-time shipment tracking information, competitive pricing, and guaranteed delivery security.</p>
               {/*<p><a className="btn btn-lg btn-primary" href="#">Browse gallery</a></p>*/}
-              <p><a className="btn btn-lg btn-home-primary" href="#">Browse gallery</a></p>
+              <p><a className="btn btn-lg btn-home-primary" href="#">Connect whit us</a></p>
             </div>
           </div>
         </div>
@@ -81,26 +81,24 @@ export const Home = () => {
         <div className="col-lg-4">
           <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
                role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
+            <title>Ground</title>
             <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
           </svg>
           <h2 className="fw-normal">Ground</h2>
-          <p>Some representative placeholder content for the three columns of text below the carousel. This is the first
-            column.</p>
-          <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
+          <p>Our ground freight services are not only fast but also efficient and consistently reliable.</p>
+          <p><a className="btn btn-home-primary" href="#">View details &raquo;</a></p>
         </div>
 
         {/*.col-lg-4 */}
         <div className="col-lg-4">
           <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
                role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
+            <title>Air</title>
             <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
           </svg>
           <h2 className="fw-normal">Air</h2>
-          <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second
-            column.</p>
-          <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
+          <p>Air freight is one of the fastest and most reliable ways of transportation.</p>
+          <p><a className="btn btn-home-primary" href="#">View details &raquo;</a></p>
         </div>
 
         {/*.col-lg-4 */}
@@ -108,18 +106,18 @@ export const Home = () => {
         <div className="col-lg-4">
           <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
                role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
+            <title>Ocean</title>
             <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
           </svg>
           <h2 className="fw-normal">Ocean</h2>
-          <p>And lastly this, the third column of representative placeholder content.</p>
-          <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
+          <p>We entrust our cargo to the world's most elite ocean freight liners.</p>
+          <p><a className="btn btn-home-primary" href="#">View details &raquo;</a></p>
         </div>
       </div>
 
       {/*START THE FEATURETTES */}
 
-      <hr className="featurette-divider"/>
+      <hr className="featurette-divider hr-home"/>
 
         <div className="row featurette">
           <div className="col-md-7">
@@ -139,7 +137,7 @@ export const Home = () => {
           </div>
         </div>
 
-        <hr className="featurette-divider" />
+        <hr className="featurette-divider hr-home" />
 
         <div className="row featurette">
           <div className="col-md-7 order-md-2">
@@ -168,7 +166,7 @@ export const Home = () => {
           </div>
         </div>
 
-        <hr className="featurette-divider" />
+        <hr className="featurette-divider hr-home" />
 
         <div className="row featurette">
           <div className="col-md-7">
@@ -195,7 +193,7 @@ export const Home = () => {
             </svg>
           </div>
         </div>
-        <hr className="featurette-divider" />
+        <hr className="featurette-divider hr-home" />
     </div>
   </>
 }
