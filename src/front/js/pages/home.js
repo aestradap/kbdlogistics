@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import onlyTruck from "../../img/onlytruck.png";
+import onlyBoat from "../../img/onlyboat-white.png";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -79,11 +81,15 @@ export const Home = () => {
       {/*Three columns of text below the carousel*/}
       <div className="row">
         <div className="col-lg-4">
-          <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-               role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Ground</title>
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          </svg>
+          {/*<svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"*/}
+          {/*     role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">*/}
+          {/*  <title>Ground</title>*/}
+          {/*  <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />*/}
+          {/*</svg>*/}
+          <a href="#">
+            <img src={onlyTruck} alt="Logo"
+                 className="d-inline-block align-text-top" />
+          </a>
           <h2 className="fw-normal">Ground</h2>
           <p>Our ground freight services are not only fast but also efficient and consistently reliable.</p>
           <p><a className="btn btn-home-primary" href="#">View details &raquo;</a></p>
@@ -91,11 +97,15 @@ export const Home = () => {
 
         {/*.col-lg-4 */}
         <div className="col-lg-4">
-          <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-               role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Air</title>
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          </svg>
+          {/*<svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"*/}
+          {/*     role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">*/}
+          {/*  <title>Air</title>*/}
+          {/*  <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />*/}
+          {/*</svg>*/}
+          <a href="#">
+            <img src={onlyBoat} alt="Logo"
+                 className="d-inline-block align-text-top" />
+          </a>
           <h2 className="fw-normal">Air</h2>
           <p>Air freight is one of the fastest and most reliable ways of transportation.</p>
           <p><a className="btn btn-home-primary" href="#">View details &raquo;</a></p>

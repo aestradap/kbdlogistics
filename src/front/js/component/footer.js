@@ -1,12 +1,26 @@
 import React, { Component } from "react";
+import artboartLogo from "../../img/Artboard-footer.png";
 
 export const Footer = () => (
-	<footer className="container">
-		<p className="float-end"><a href="#">Back to top</a></p>
-		<p>&copy; 2017–2024 Company, Inc. &middot; <a href="#">Privacy</a>
-			&middot;
-			<a href="#">Terms</a>
-		</p>
+	<footer className="footer text-center bg-dark">
+		<div className="row m-0">
+			<div className="col"/>
+			<div className="col-6">
+				<a className="navbar-brand" href="#">
+					<img src={artboartLogo} alt="Logo"
+							 className="d-inline-block align-text-top" />
+				</a>
+			</div>
+			<div className="col">
+				<p className="float-end p-4"><a style={{color:"#00A651"}}href="#">Back to top</a></p>
+			</div>
+		</div>
+		<div className="row m-0">
+			<p style={{color:"#ffffff"}}>&copy; 2024 K&DB Logistics, Inc. &middot; <a style={{color:"#00A651"}} href="#">Privacy</a>
+				&middot;
+				<a style={{color:"#00A651"}} href="#">Terms</a>
+			</p>
+		</div>
 	</footer>
 );
 
