@@ -2,7 +2,9 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import onlyTruck from "../../img/onlytruck.png";
+import onlyPlane from "../../img/onlyplane-white.png";
 import onlyBoat from "../../img/onlyboat-white.png";
+
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -103,7 +105,7 @@ export const Home = () => {
           {/*  <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />*/}
           {/*</svg>*/}
           <a href="#">
-            <img src={onlyBoat} alt="Logo"
+            <img src={onlyPlane} alt="Logo"
                  className="d-inline-block align-text-top" />
           </a>
           <h2 className="fw-normal">Air</h2>
@@ -114,11 +116,15 @@ export const Home = () => {
         {/*.col-lg-4 */}
 
         <div className="col-lg-4">
-          <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-               role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Ocean</title>
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          </svg>
+          {/*<svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"*/}
+          {/*     role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">*/}
+          {/*  <title>Ocean</title>*/}
+          {/*  <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />*/}
+          {/*</svg>*/}
+          <a href="#">
+            <img src={onlyBoat} alt="Logo"
+                 className="d-inline-block align-text-top" />
+          </a>
           <h2 className="fw-normal">Ocean</h2>
           <p>We entrust our cargo to the world's most elite ocean freight liners.</p>
           <p><a className="btn btn-home-primary" href="#">View details &raquo;</a></p>
