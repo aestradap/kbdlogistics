@@ -77,9 +77,7 @@ export const Home = () => {
   {/*Marketing messaging and featurettes*/}
 
 
-
     <div className="container marketing">
-
       {/*Three columns of text below the carousel*/}
       <div className="row">
         <div className="col-lg-4">
@@ -98,12 +96,8 @@ export const Home = () => {
         </div>
 
         {/*.col-lg-4 */}
+
         <div className="col-lg-4">
-          {/*<svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"*/}
-          {/*     role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">*/}
-          {/*  <title>Air</title>*/}
-          {/*  <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />*/}
-          {/*</svg>*/}
           <a href="#">
             <img src={onlyPlane} alt="Logo"
                  className="d-inline-block align-text-top" />
@@ -116,11 +110,6 @@ export const Home = () => {
         {/*.col-lg-4 */}
 
         <div className="col-lg-4">
-          {/*<svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"*/}
-          {/*     role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">*/}
-          {/*  <title>Ocean</title>*/}
-          {/*  <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />*/}
-          {/*</svg>*/}
           <a href="#">
             <img src={onlyBoat} alt="Logo"
                  className="d-inline-block align-text-top" />

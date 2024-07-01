@@ -6,7 +6,7 @@ export const Navbar = () => {
     <header data-bs-theme="dark">
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div className="container-fluid">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/">
                 <img src={artboartLogo} alt="Logo" width="100" height="60"
                      className="d-inline-block align-text-top" />
             </a>
@@ -25,7 +25,7 @@ export const Navbar = () => {
               </li>
 
               <li className="nav-item d-flex align-items-center">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/quote">
                   Request a quote
                 </a>
               </li>
