@@ -170,3 +170,58 @@ body {
     display: block !important;
 }
 
+@media (max-width: 300px) {
+    /* Para pantallas pequeñas (sm) y superiores */
+    .react-tel-input .form-control {
+        height: 38px !important;
+        width: 140px !important;
+    }
+}
+
+@media (min-width: 575px) {
+    /* Para pantallas pequeñas (sm) y superiores */
+    .react-tel-input .form-control {
+        height: 38px !important;
+        width: 156px !important;
+    }
+}
+
+@media (min-width: 765px) {
+    /* Para pantallas pequeñas (sm) y superiores */
+    .react-tel-input .form-control {
+        height: 38px !important;
+        width: 216px !important;
+    }
+}
+
+@media (min-width: 990px) {
+    /* Para pantallas pequeñas (sm) y superiores */
+    .react-tel-input .form-control {
+        height: 38px !important;
+        width: 295px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    /* Para pantallas medianas (md) y superiores */
+    .react-tel-input .form-control {
+        height: 38px !important;
+        width: 340px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    /* Para pantallas extra grandes (xl) y superiores */
+    .react-tel-input .form-control {
+        height: 38px !important;
+        width: 400px !important;
+    }
+}
+.btn-quote-progress{
+    border-color: white;
+    color: white;
+    background-color: #00A651;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 7px
+}

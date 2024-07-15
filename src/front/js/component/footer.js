@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import artboartLogo from "../../img/Artboard-footer.png";
+import artboartLogo from "../../img/Artboard-footer2.png";
 
 export const Footer = () => (
-	<footer className="footer text-center bg-dark fixed-bottom">
+	<footer className="footer text-center mt-auto bg-dark fixed-bottom">
 		<div className="row m-0">
 			<div className="col"/>
 			<div className="col-6">
@@ -20,7 +20,7 @@ export const Footer = () => (
 			</div>
 		</div>
 		<div className="row m-0">
-			<p style={{color:"#ffffff"}}>&copy; 2024 K&DB Logistics, Inc. &middot; <a style={{color:"#00A651"}} href="#">Privacy</a>
+			<p style={{color:"#ffffff"}}>&copy; 2024 KD&B Logistics, Inc. &middot; <a style={{color:"#00A651"}} href="#">Privacy</a>
 				&middot;
 				<a style={{color:"#00A651"}} href="#">
 					Terms
