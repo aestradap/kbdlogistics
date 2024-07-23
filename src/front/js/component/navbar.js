@@ -20,7 +20,7 @@ export const Navbar = () => {
             <ul className="navbar-nav me-auto mb-2 mb-md-0">
               <li className="nav-item">
                 <h2 className="nav-link active mb-0" style={{color:"#ffffff"}} aria-current="page" href="#">
-                  <b>KD&B</b> LOGISTICS
+                  <b>K&BD</b> LOGISTICS INC
                 </h2>
               </li>
 

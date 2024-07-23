@@ -170,14 +170,10 @@ body {
     display: block !important;
 }
 
-@media (max-width: 300px) {
-    /* Para pantallas pequeñas (sm) y superiores */
-    .react-tel-input .form-control {
-        height: 38px !important;
-        width: 140px !important;
-    }
-}
 
+.react-tel-input .form-control {
+    width: 100% !important;
+}
 @media (min-width: 575px) {
     /* Para pantallas pequeñas (sm) y superiores */
     .react-tel-input .form-control {
@@ -190,7 +186,7 @@ body {
     /* Para pantallas pequeñas (sm) y superiores */
     .react-tel-input .form-control {
         height: 38px !important;
-        width: 216px !important;
+        width: 156px !important;
     }
 }
 
@@ -198,7 +194,7 @@ body {
     /* Para pantallas pequeñas (sm) y superiores */
     .react-tel-input .form-control {
         height: 38px !important;
-        width: 295px !important;
+        width: 216px !important;
     }
 }
 
@@ -206,7 +202,7 @@ body {
     /* Para pantallas medianas (md) y superiores */
     .react-tel-input .form-control {
         height: 38px !important;
-        width: 340px !important;
+        width: 261px !important;
     }
 }
 
@@ -214,7 +210,7 @@ body {
     /* Para pantallas extra grandes (xl) y superiores */
     .react-tel-input .form-control {
         height: 38px !important;
-        width: 400px !important;
+        width: 306px !important;
     }
 }
 .btn-quote-progress{
@@ -224,4 +220,10 @@ body {
     width: 2rem;
     height: 2rem;
     margin-top: 7px
+}
+.nav-link.active  {
+    color: #00A651 !important;
+}
+.fw-normal {
+    font-weight: 500 !important;
 }

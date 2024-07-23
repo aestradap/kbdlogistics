@@ -1,0 +1,27 @@
+/* Ajuste de tamaño de texto y margen para diferentes tamaños de pantalla */
+@media (max-width: 576px) {
+    h4 {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    h4 {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 769px) {
+    h4 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Ajuste de posición de los botones de pasos */
+.position-relative .btn-quote-progress {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

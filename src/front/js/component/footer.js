@@ -20,7 +20,7 @@ export const Footer = () => (
 			</div>
 		</div>
 		<div className="row m-0">
-			<p style={{color:"#ffffff"}}>&copy; 2024 KD&B Logistics, Inc. &middot; <a style={{color:"#00A651"}} href="#">Privacy</a>
+			<p style={{color:"#ffffff"}}>&copy; 2024 K&BD LOGISTICS INC. &middot; <a style={{color:"#00A651"}} href="#">Privacy</a>
 				&middot;
 				<a style={{color:"#00A651"}} href="#">
 					Terms

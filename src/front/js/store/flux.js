@@ -3,9 +3,22 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       message: null,
       quote: {
-        type: "",
         name: "",
-        phone:""
+        phone: "",
+        service: "ground",
+        movement: "Door-to-Door",
+        origin: "",
+        originNumber: "",
+        originStreet: "",
+        originZip: "",
+        originCity:'',
+        originState:'',
+        originCountry:'',
+        destiny: "",
+        destinyNumber:'',
+        destinyStreet:'',
+        destinyZip:'',
+        destinyCity:''
       },
       demo: [
         {
