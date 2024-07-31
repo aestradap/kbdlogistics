@@ -144,6 +144,13 @@ body {
     border-color: #00A651;
 
 }
+.btn-previous:hover{
+    color:#212529;
+ }
+.form-check-input:checked {
+    background-color: #00A651;
+    border-color: #00A651;
+}
 
 .btn-bd-primary {
     --bd-violet-bg: #712cf9;

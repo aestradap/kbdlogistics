@@ -170,23 +170,36 @@ export const FormQuote = () => {
 
         <div className="d-flex justify-content-between mt-5">
           {step > 1 && (
-            <Button variant="secondary" onClick={handlePrevious}>
-              Previous
-            </Button>
+            <p><a className="btn btn-secondary btn-previous" type="submit"
+                  onClick={handlePrevious}>
+              previous
+            </a></p>
+            // <button type="button" className="btn btn-secondary"
+            //         onClick={handlePrevious}>
+            //   previousss
+            // </button>
           )}
           {step < 4 ? (
-            <Button variant="primary" type="submit" onClick={handleNext}>
-              Next
-            </Button>
+              <p><a className="btn btn-home-primary" type="submit"
+                    onClick={handleNext}>
+                Next
+              </a></p>
+            // <Button variant="primary" type="submit" onClick={handleNext}>
+            //   Next
+            // </Button>
           ) : (
-            <Button variant="primary"
-                    type="submit"
-                    onClick={() => {
-                      handleNext();
-                    }}
-            >
+            <p><a className="btn btn-home-primary" type="submit"
+                  onClick={handleNext}>
               Submit
-            </Button>
+            </a></p>
+            // <Button variant="primary"
+            //         type="submit"
+            //         onClick={() => {
+            //           handleNext();
+            //         }}
+            // >
+            //   Submit
+            // </Button>
           )}
         </div>
       </form>

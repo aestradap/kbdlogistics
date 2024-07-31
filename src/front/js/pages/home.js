@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import onlyTruck from "../../img/onlytruck.png";
@@ -8,14 +8,78 @@ import onlyBoat from "../../img/onlyboat-white.png";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
+  const [show, setShow] = useState(false);
+  const modalCookies = useRef();
+
+  const showModal = () => {
+    const modalEle = modalCookies.current
+    const bsModal = new bootstrap.Modal(modalEle, {
+      backdrop: 'static',
+      keyboard: false
+    })
+    bsModal.show();
+  }
+
+  const hideModal = () => {
+    const modalEle = modalCookies.current
+    const bsModal = bootstrap.Modal.getInstance(modalEle)
+    bsModal.hide()
+  }
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      showModal();
+    }, 1000);
+  }, []);
+
 
   return <>
+
+    <div  show={show} class="modal fade"
+          id="exampleModal" tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+          data-bs-backdrop='static'
+          ref={modalCookies}
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 className="nav-link active mb-0" style={{color:"#ffffff"}} aria-current="page" href="#">
+              <b>K&BD</b> LOGISTICS INC
+            </h4>
+          </div>
+          <div class="modal-body">
+            <label className="form-label" style={{color:'#00A651'}}>
+              This website is currently under development.
+              Feel free to interact and learn more as the solution is finished.
+              Please note that the main functionalities will not be released
+              until after the testing phase is completed.
+              And of course be kind and <b>accept cookies</b>.
+            </label>
+          </div>
+          <div class="modal-footer">
+
+            <p><a className="btn btn-lg btn-home-primary"
+                  onClick={hideModal}
+            >
+              Accept Cookies
+            </a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="myCarousel" className="carousel slide mb-6" data-bs-ride="carousel">
       <div className="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" className="active" aria-current="true"
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0"
+                className="active" aria-current="true"
                 aria-label="Slide 1" />
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" />
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" />
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                aria-label="Slide 2" />
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
+                aria-label="Slide 3" />
       </div>
       <div className="carousel-inner">
         <div className="carousel-item active">
@@ -29,7 +93,7 @@ export const Home = () => {
               <p className="opacity-75">
                 We deliver essential supply chain solutions to the world's leading companies.
               </p>
-              <p><a className="btn btn-lg btn-home-primary" href="#">
+              <p><a className="btn btn-lg btn-home-primary" href="/quote">
                 Request a quote
               </a></p>
             </div>

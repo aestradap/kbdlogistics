@@ -11,14 +11,24 @@ const getState = ({ getStore, getActions, setStore }) => {
         originNumber: "",
         originStreet: "",
         originZip: "",
-        originCity:'',
-        originState:'',
-        originCountry:'',
+        originCity: "",
+        originState: "",
+        originCountry: "",
         destiny: "",
-        destinyNumber:'',
-        destinyStreet:'',
-        destinyZip:'',
-        destinyCity:''
+        destinyNumber: "",
+        destinyStreet: "",
+        destinyZip: "",
+        destinyCity: "",
+        dimensionLong: "",
+        dimensionHigh: "",
+        dimensionWide: "",
+        dimensionWeight: "",
+        equipmentType: "",
+        equipmentSize: "",
+        equipment: "",
+        trailerSize: "",
+        amount: "1",
+        ltlManyDifDimeCargo: []
       },
       demo: [
         {
@@ -37,6 +47,16 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       exampleFunction: () => {
         getActions().changeColor(0, "green");
+      },
+
+      setLtlManyDifDimeCargo: (cargoDimensions) => {
+        const store = getStore();
+        setStore({
+          quote: {
+            ...store.quote,
+            ltlManyDifDimeCargo: cargoDimensions
+          }
+        });
       },
 
       getMessage: async () => {

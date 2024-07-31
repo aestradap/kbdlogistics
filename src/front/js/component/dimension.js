@@ -2,47 +2,80 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 
 
-export const Dimension = ({ error, formData,handlerInput }) => {
+export const Dimension = ({ error, formData, handlerInput, many, item }) => {
 
   const { store, actions } = useContext(Context);
 
   return <>
     <div className="row">
       <div className="col">
-        <label htmlFor="exampleInputName" className="form-label">Long</label>
+        {!many ?
+          <label htmlFor="exampleInputName" className="form-label">
+            Long
+          </label> : <></>
+        }
         <input style={{ border: error ? "2px solid red" : "" }}
                type="text" className="form-control"
-               id="validationDefault01"
-               name="long"
-               value={formData.name}
+               name="dimensionLong"
+               value={item ? item.long : formData.dimensionLong}
+               onChange={handlerInput}
+        />
+        {error ? (
+          <div style={{ color: "red" }} className="form-text">
+            This is a required field
+          </div>
+        ) : !many ? (
+          <div className="form-text">Define cargo dimensions.</div>
+        ) : <> </>
+        }
+      </div>
+      <div className="col">
+        {!many ?
+          <label className="form-label">
+            High
+          </label> : <></>
+        }
+        <input style={{ border: error ? "2px solid red" : "" }}
+               type="text" className="form-control"
+               name="dimensionHigh"
+               value={item ? item.high : formData.dimensionHigh}
                onChange={handlerInput}
         />
       </div>
       <div className="col">
-        <label htmlFor="exampleInputName" className="form-label">High</label>
+        {!many ?
+          <label className="form-label">
+            Wide
+          </label> : <></>
+        }
         <input style={{ border: error ? "2px solid red" : "" }}
                type="text" className="form-control"
-               id="validationDefault01"
-               name="high"
-               value={formData.name}
+               name="dimensionWide"
+               value={item ? item.wide : formData.dimensionWide}
                onChange={handlerInput}
         />
       </div>
       <div className="col">
-        <label htmlFor="exampleInputName" className="form-label">Wide</label>
-        <input style={{ border: error ? "2px solid red" : "" }}
-               type="text" className="form-control"
-               id="validationDefault01"
-               name="wide"
-               value={formData.name}
-               onChange={handlerInput}
+        {!many ?
+          <label className="form-label">
+            Weight
+          </label> : <></>
+        }
+        <input type="text" className="form-control"
+               style={{ border: error ? "2px solid red" : "" }}
+               aria-describedby="weight"
+               name='dimensionWeight'
+               value={item ? item.weight : formData.weight}
         />
+        {error ? (
+          <div style={{ color: "red" }} className="form-text">
+            This is a required field
+          </div>
+        ) : !many ? (
+          <div className="form-text">What is the weight of the cargo?</div>
+        ) : <> </>
+        }
       </div>
-      {error ? (
-        <div id="nameHelp" style={{ color: "red" }} className="form-text">This is a required field</div>
-      ) : (
-        <div id="nameHelp" className="form-text">Define cargo dimensions.</div>
-      )}
     </div>
   </>;
 
