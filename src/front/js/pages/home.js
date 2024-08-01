@@ -4,6 +4,13 @@ import "../../styles/home.css";
 import onlyTruck from "../../img/onlytruck.png";
 import onlyPlane from "../../img/onlyplane-white.png";
 import onlyBoat from "../../img/onlyboat-white.png";
+import greenTruck from "../../img/green-truck2-2048010029.jpg";
+import containersBoat from "../../img/containers-boat-2421992563.jpg";
+import cargoPlane from "../../img/cargo-plane-2377868775.jpg";
+import { BackgroundVideo } from "../component/BackgroundVideo";
+import boatVideo from "../../img/container-boat-video.mp4";
+import truckVideo from "../../img/container-truck-video.mp4";
+import portVideo from "../../img/container-port-video.mp4";
 
 
 export const Home = () => {
@@ -12,19 +19,19 @@ export const Home = () => {
   const modalCookies = useRef();
 
   const showModal = () => {
-    const modalEle = modalCookies.current
+    const modalEle = modalCookies.current;
     const bsModal = new bootstrap.Modal(modalEle, {
-      backdrop: 'static',
+      backdrop: "static",
       keyboard: false
-    })
+    });
     bsModal.show();
-  }
+  };
 
   const hideModal = () => {
-    const modalEle = modalCookies.current
-    const bsModal = bootstrap.Modal.getInstance(modalEle)
-    bsModal.hide()
-  }
+    const modalEle = modalCookies.current;
+    const bsModal = bootstrap.Modal.getInstance(modalEle);
+    bsModal.hide();
+  };
 
 
   useEffect(() => {
@@ -36,22 +43,22 @@ export const Home = () => {
 
   return <>
 
-    <div  show={show} class="modal fade"
-          id="exampleModal" tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-          data-bs-backdrop='static'
-          ref={modalCookies}
+    <div show={show} class="modal fade"
+         id="exampleModal" tabindex="-1"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true"
+         data-bs-backdrop="static"
+         ref={modalCookies}
     >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 className="nav-link active mb-0" style={{color:"#ffffff"}} aria-current="page" href="#">
+            <h4 className="nav-link active mb-0" style={{ color: "#ffffff" }} aria-current="page" href="#">
               <b>K&BD</b> LOGISTICS INC
             </h4>
           </div>
           <div class="modal-body">
-            <label className="form-label" style={{color:'#00A651'}}>
+            <label className="form-label" style={{ color: "#00A651" }}>
               This website is currently under development.
               Feel free to interact and learn more as the solution is finished.
               Please note that the main functionalities will not be released
@@ -83,10 +90,7 @@ export const Home = () => {
       </div>
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-               aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          </svg>
+          <BackgroundVideo video={boatVideo} />
           <div className="container">
             <div className="carousel-caption text-start">
               <h1>Supply Chain Solutions.</h1>
@@ -100,10 +104,7 @@ export const Home = () => {
           </div>
         </div>
         <div className="carousel-item">
-          <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-               aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          </svg>
+          <BackgroundVideo video={portVideo} />
           <div className="container">
             <div className="carousel-caption">
               <h1>Reaching Across The World.</h1>
@@ -113,14 +114,12 @@ export const Home = () => {
           </div>
         </div>
         <div className="carousel-item">
-          <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-               aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          </svg>
+          <BackgroundVideo video={truckVideo} />
           <div className="container">
             <div className="carousel-caption text-end">
               <h1>The client always comes first.</h1>
-              <p>We offer real-time shipment tracking information, competitive pricing, and guaranteed delivery security.</p>
+              <p>We offer real-time shipment tracking information, competitive pricing, and guaranteed delivery
+                security.</p>
               {/*<p><a className="btn btn-lg btn-primary" href="#">Browse gallery</a></p>*/}
               <p><a className="btn btn-lg btn-home-primary" href="#">Connect whit us</a></p>
             </div>
@@ -138,18 +137,13 @@ export const Home = () => {
     </div>
 
 
-  {/*Marketing messaging and featurettes*/}
+    {/*Marketing messaging and featurettes*/}
 
 
     <div className="container marketing">
       {/*Three columns of text below the carousel*/}
       <div className="row">
         <div className="col-lg-4">
-          {/*<svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"*/}
-          {/*     role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">*/}
-          {/*  <title>Ground</title>*/}
-          {/*  <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />*/}
-          {/*</svg>*/}
           <a href="#">
             <img src={onlyTruck} alt="Logo"
                  className="d-inline-block align-text-top" />
@@ -186,86 +180,78 @@ export const Home = () => {
 
       {/*START THE FEATURETTES */}
 
-      <hr className="featurette-divider hr-home"/>
+      <hr className="featurette-divider hr-home" />
 
-        <div className="row featurette">
-          <div className="col-md-7">
-            <h2 className="featurette-heading fw-normal lh-1">First featurette heading. <span
-              className="text-body-secondary">It’ll blow your mind.</span></h2>
-            <p className="lead">
-              Our ground freight services are not only swift but also efficient and consistently dependable. With routes spanning across all states in the United States, we ensure your products are delivered safely and securely. Your trust is our top priority, and we guarantee that everything you ship arrives in your hands without fail.
-            </p>
-          </div>
-          <div className="col-md-5">
-            <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                 height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-              <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-              <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-            </svg>
-          </div>
+      <div className="row featurette">
+        <div className="col-md-7">
+          <h2 className="featurette-heading fw-normal lh-1">
+            The shortest routes to your location.</h2>
+          <p className="lead">
+            Our ground freight services are not only swift but also efficient
+            and consistently dependable. With routes spanning all states in the
+            United States, we ensure your products are delivered safely and
+            securely. Your trust is our top priority, and we guarantee that
+            everything you ship arrives in your hands without fail.
+          </p>
         </div>
-
-        <hr className="featurette-divider hr-home" />
-
-        <div className="row featurette">
-          <div className="col-md-7 order-md-2">
-            <h2 className="featurette-heading fw-normal lh-1">
-              Oh yeah, it’s that good.
-              <span className="text-body-secondary">
-                  See for yourself.
-                </span>
-            </h2>
-            <p className="lead">
-              Another featurette? Of course. More placeholder content here to give you an idea of
-              how this layout would work with some actual real-world content in place.
-            </p>
-          </div>
-          <div className="col-md-5 order-md-1">
-            <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                 width="500" height="500"
-                 xmlns="http://www.w3.org/2000/svg" role="img"
-                 aria-label="Placeholder: 500x500"
-                 preserveAspectRatio="xMidYMid slice"
-                 focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-              <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-            </svg>
-          </div>
+        <div className="col-md-5"
+             style={{
+               backgroundImage: `url(${greenTruck})`,
+               backgroundSize: "cover",
+               backgroundPosition: "center"
+             }}>
         </div>
+      </div>
 
-        <hr className="featurette-divider hr-home" />
+      <hr className="featurette-divider hr-home" />
 
-        <div className="row featurette">
-          <div className="col-md-7">
-            <h2 className="featurette-heading fw-normal lh-1">
-              And lastly, this one.
-              <span className="text-body-secondary">
-                Checkmate.
-              </span>
-            </h2>
-            <p className="lead">And yes, this is the last block of representative placeholder content. Again, not
-              really intended to be actually read, simply here to give you a better view of what this would look
-              like with some actual content. Your content.\
-            </p>
-          </div>
-          <div className="col-md-5">
-            <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                 width="500" height="500"
-                 xmlns="http://www.w3.org/2000/svg"
-                 role="img" aria-label="Placeholder: 500x500"
-                 preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-              <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-            </svg>
-          </div>
+      <div className="row featurette">
+        <div className="col-md-7 order-md-2">
+          <h2 className="featurette-heading fw-normal lh-1">
+            Air Freight, Simplified.
+          </h2>
+          <p className="lead">
+            It is a fact that air freight is one of the fastest and most
+            reliable modes of transportation. We are focused on creating
+            reliable transport lines with the best companies in the world.
+            Our air freight service is among the fastest and safest in the
+            world. If you are looking for reliability and efficiency, you
+            are looking for K&BD LOGISTICS.
+          </p>
         </div>
-        <hr className="featurette-divider hr-home" />
+        <div className="col-md-5 order-md-1"
+             style={{
+               backgroundImage: `url(${cargoPlane})`,
+               backgroundSize: "cover",
+               backgroundPosition: "center"
+             }}>
+        </div>
+      </div>
+
+      <hr className="featurette-divider hr-home" />
+
+      <div className="row featurette">
+        <div className="col-md-7">
+          <h2 className="featurette-heading fw-normal lh-1">
+            Easy Ocean Freight Solutions.
+          </h2>
+          <p className="lead">Our ocean freight is handled by the most capable
+            carriers. We maintain and cultivate the best relationships to
+            ensure meticulously cared-for transportation, guaranteeing you
+            will always receive your goods exactly as you expect them.
+          </p>
+        </div>
+        <div className="col-md-5" style={{
+          backgroundImage: `url(${containersBoat})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}>
+        </div>
+      </div>
+      <hr className="featurette-divider hr-home" />
     </div>
-  </>
-}
+  </>;
+};
 
 // return (
 //   <div className="text-center mt-5">

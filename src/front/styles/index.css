@@ -14,6 +14,7 @@ body {
 /* Carousel base class */
 .carousel {
     margin-bottom: 4rem;
+    margin-top: 2rem;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -24,9 +25,44 @@ body {
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-    height: 32rem;
+    height: 38rem;
 }
 
+/* BackgroundVideo.css */
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajusta la opacidad según sea necesario */
+    z-index: 2;
+}
+.overlay {
+    position: relative;
+    z-index: 1;
+    /* Añade estilos para el contenido sobre el video aquí */
+}
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
@@ -142,8 +178,13 @@ body {
     color: #fff;
     background-color: #00A651;
     border-color: #00A651;
-
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
+.btn-home-primary:hover {
+    background-color: #008744;
+    border-color: #008744;
+}
+
 .btn-previous:hover{
     color:#212529;
  }
@@ -233,4 +274,52 @@ body {
 }
 .fw-normal {
     font-weight: 500 !important;
+}
+
+/* CONTACT FORM
+-------------------------------------------------- */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
