@@ -9,6 +9,7 @@ export const Ground = ({
                        }) => {
 
   const { store, actions } = useContext(Context);
+  const { amount } = store.quote;
   const [groundCategory, setGroundCategory] = useState("LTL");
   const [differentDimensions, setDifferentDimensions] = useState(false);
   const dimensions = {
@@ -17,27 +18,52 @@ export const Ground = ({
     wide: "",
     weight: ""
   };
+  const many = store.quote.ltlManyDifDimeCargo.length > 1 ? true : false;
+
 
   const handleAmount = (event) => {
     if (differentDimensions) {
       handleManyCargoes(event.target.value, differentDimensions);
       handleInputChange(event);
-    } else handleInputChange(event);
+      actions.setAmount(event.target.value);
+    } else {
+      handleInputChange(event);
+      actions.setAmount(event.target.value);
+    }
   };
 
   const handleManyCargoes = (amount, manyDimensions) => {
     const cargoDimensions = [];
-    if (manyDimensions) {
+    if (amount == 1) {
+      setDifferentDimensions(false);
+    } else if (amount == 1 && !differentDimensions) {
+      setDifferentDimensions(false);
+    }
+    if (manyDimensions && amount > 1) {
 
       for (let i = 1; i <= amount; i++) {
         cargoDimensions.push(dimensions);
       }
     } else {
-      cargoDimensions.slice(0, 1);
+      for (let i = 1; i <= amount; i++) {
+        cargoDimensions.push(dimensions);
+      }
+      cargoDimensions.slice(0, 2);
     }
     actions.setLtlManyDifDimeCargo(cargoDimensions);
     console.log(cargoDimensions);
-    console.log(formData.LtlManyDifDimeCargo);
+    console.log(store.quote.ltlManyDifDimeCargo);
+  };
+
+  const handleDimensions = (amount) => {
+    if (amount == 1 && !differentDimensions) {
+      actions.setAmount(2);
+      handleManyCargoes(2, false);
+      setDifferentDimensions(!differentDimensions);
+    } else {
+      setDifferentDimensions(!differentDimensions);
+      handleManyCargoes(amount, !differentDimensions);
+    }
   };
 
   return <>
@@ -100,11 +126,11 @@ export const Ground = ({
       {groundCategory === "LTL" ? <>
           <div className="col-sm-4 mb-3 mt-5">
             <label className="form-label">Amount</label>
-            <input style={{ border: error ? "2px solid red" : "" }}
+            <input style={{ border: error && "2px solid red" }}
                    type="number" className="form-control"
                    name="amount"
                    min="1"
-                   value={formData.amount}
+                   value={amount}
                    onChange={event => {
                      handleAmount(event);
                    }}
@@ -118,8 +144,7 @@ export const Ground = ({
                      name="differentDimensions"
                      id="flexCheckDefault"
                      onChange={(event) => {
-                       handleManyCargoes(formData.amount,!differentDimensions);
-                       setDifferentDimensions(!differentDimensions);
+                       handleDimensions(amount);
                      }}
 
               />
@@ -129,27 +154,29 @@ export const Ground = ({
             </div>
           </div>
           <div className="col mb-3 mt-5">
-            {differentDimensions && formData.ltlManyDifDimeCargo.length ?
-              <ul className="list-group list-group-flush list-group-numbered">
-                {formData.ltlManyDifDimeCargo.map((item, i) => {
-                  return (
+            <div className="scrollspy-example bg-body-tertiary p-3 rounded-2"
+                 style={{ maxHeight: '300px', overflowY: 'auto' }}>
+              <ol className="list-group list-group-numbered">
+                {differentDimensions && store.quote.ltlManyDifDimeCargo.length ?
+                  store.quote.ltlManyDifDimeCargo.map((item, i) => (
+                    <li className="list-group-item">
+                      <Dimension error={error} formData={formData}
+                                 handlerInput={handleInputChange}
+                                 key={i}
+                                 myKey={i}
+                                 value={item}
+                      />
+                    </li>
+                  ))
+                  :
+                  <li className="list-group-item">
                     <Dimension error={error} formData={formData}
-                               handlerInput={handleInputChange}
-                               many={i > 0 ? false : true}
-                               key={i}
-                               value={item}
+                               myKey={0}
                     />
-                  );
-                })
+                  </li>
                 }
-              </ul> :
-              <li className="list-group-item">
-                <Dimension error={error} formData={formData}
-                           handlerInput={handleInputChange}
-                           many={false}
-                />
-              </li>
-            }
+              </ol>
+            </div>
           </div>
         </>
         : groundCategory === "Full truck" ? <>
@@ -182,7 +209,6 @@ export const Ground = ({
                     name="trailerSize" onChange={handleInputChange}
             >
               <option selected>Select One</option>
-              <option value="20 feet">48 feet</option>
               <option value="40 feet">40 feet</option>
               <option value="45 feet">45 feet</option>
               <option value="48 feet">53 feet</option>

@@ -58,7 +58,7 @@ export const Ocean = ({error, formData, handleInputChange}) => {
           <div className="col-sm-4 mb-3 mt-3">
             <label className="form-label">Comority</label>
             <input type="text" className="form-control"
-                   style={{ border: error ? "2px solid red" : "" }}
+                   style={{ border: error && "2px solid red" }}
                    aria-describedby="weight"
             />
             {error ? (

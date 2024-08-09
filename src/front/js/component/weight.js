@@ -11,7 +11,7 @@ export const Weight = ({ error, formData, handlerInput }) => {
       <div className="col">
         <label className="form-label">Weight</label>
         <input type="text" className="form-control"
-               style={{ border: error ? "2px solid red" : "" }}
+               style={{ border: error && "2px solid red" }}
                aria-describedby="weight"
         />
         {error ? (

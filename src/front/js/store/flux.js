@@ -2,8 +2,11 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
+      localStorageCheck: false,
       quote: {
         name: "",
+        email:"",
+        address:"",
         phone: "",
         service: "ground",
         movement: "Door-to-Door",
@@ -19,6 +22,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         destinyStreet: "",
         destinyZip: "",
         destinyCity: "",
+        destinyState:"",
+        destinyCountry:"",
         dimensionLong: "",
         dimensionHigh: "",
         dimensionWide: "",
@@ -48,7 +53,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },
-
       setLtlManyDifDimeCargo: (cargoDimensions) => {
         const store = getStore();
         setStore({
@@ -58,7 +62,78 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
       },
+      setAmount: (amount) => {
+        const store = getStore();
+        setStore({
+          quote: {
+            ...store.quote,
+            amount: amount
+          }
+        });
+      },
+      setQuote: (myKey, value) => {
+        const store = getStore();
+        setStore({
+          quote: {
+            ...store.quote,
+            [myKey]: value
+          }
+        });
+      },
+      updateQuoteFromLocalStorage: () => {
+        const { setQuote } = getActions();
 
+        if (localStorage.getItem("name")) {
+          setQuote("name", localStorage.getItem("name"));
+        }
+        if (localStorage.getItem("email")) {
+          setQuote("email", localStorage.getItem("email"));
+        }
+        if (localStorage.getItem("address")) {
+          setQuote("address", localStorage.getItem("address"));
+        }
+        if (localStorage.getItem("phone")) {
+          setQuote("phone", localStorage.getItem("phone"));
+        }
+        if (localStorage.getItem("originNumber")) {
+          setQuote("originNumber", localStorage.getItem("originNumber"));
+        }
+        if (localStorage.getItem("originStreet")) {
+          setQuote("originStreet", localStorage.getItem("originStreet"));
+        }
+        if (localStorage.getItem("originZip")) {
+          setQuote("originZip", localStorage.getItem("originZip"));
+        }
+        if (localStorage.getItem("originCity")) {
+          setQuote("originCity", localStorage.getItem("originCity"));
+        }
+        if (localStorage.getItem("originState")) {
+          setQuote("originState", localStorage.getItem("originState"));
+        }
+        if (localStorage.getItem("originCountry")) {
+          setQuote("originCountry", localStorage.getItem("originCountry"));
+        }
+        if (localStorage.getItem("destinyNumber")) {
+          setQuote("destinyNumber", localStorage.getItem("destinyNumber"));
+        }
+        if (localStorage.getItem("destinyStreet")) {
+          setQuote("destinyStreet", localStorage.getItem("destinyStreet"));
+        }
+        if (localStorage.getItem("destinyZip")) {
+          setQuote("destinyZip", localStorage.getItem("destinyZip"));
+        }
+        if (localStorage.getItem("destinyCity")) {
+          setQuote("destinyCity", localStorage.getItem("destinyCity"));
+        }
+        if (localStorage.getItem("destinyState")) {
+          setQuote("destinyState", localStorage.getItem("destinyState"));
+        }
+        if (localStorage.getItem("destinyCountry")) {
+          setQuote("destinyCountry", localStorage.getItem("destinyCountry"));
+        }
+
+        setStore({ localStorageCheck: true });
+      },
       getMessage: async () => {
         try {
           // fetching data from the backend

@@ -12,7 +12,7 @@ export const Air = ({error, formData, handleInputChange}) => {
       <div className="row">
         <div className="col-sm-4 mb-3 ">
           <label htmlFor="exampleInputName" className="form-label">Product</label>
-          <input style={{ border: error ? "2px solid red" : "" }}
+          <input style={{ border: error && "2px solid red" }}
                  type="text" className="form-control"
                  id="validationDefault01"
                  name="type"

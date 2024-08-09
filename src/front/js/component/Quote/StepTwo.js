@@ -3,15 +3,21 @@ import { Context } from "../../store/appContext";
 import { Dimension } from "../dimension";
 import { Weight } from "../weight";
 
-export const StepTwo = ({
-                          error, formData, handleInputChange,
-                          handlePhoneInputChange
-                        }) => {
+export const StepTwo = ({ error, handleError }) => {
 
   const { store, actions } = useContext(Context);
-  const [service, setService] = useState(formData.service);
-  const [movement, setMovement] = useState("Door-to-Door");
+  const {
+    originNumber, originStreet, originZip, originCity,
+    originState, originCountry, destinyNumber, destinyStreet,
+    destinyZip, destinyCity, destinyState, destinyCountry
+  } = store.quote;
+  const [service, setService] = useState(store.quote.service);
+  const [movement, setMovement] = useState(store.quote.movement);
 
+  const handleInputChange = (event) => {
+    actions.setQuote(event.target.name, event.target.value);
+    handleError(false);
+  };
 
   return <>
     <div className="container d-flex justify-content-center align-items-center">
@@ -36,20 +42,14 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     Address number
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          name="originNumber"
-                         value={formData.originNumber}
+                         value={originNumber}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div id="nameHelp" style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
                 </div>
               </div>
               <div className="col">
@@ -57,20 +57,15 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     Street
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          name="originStreet"
-                         value={formData.originStreet}
+                         value={originStreet}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div id="nameHelp" style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
+
                 </div>
               </div>
             </div>
@@ -81,21 +76,15 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     Zip
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          id="validationDefault02"
                          name="originZip"
-                         value={formData.originZip}
+                         value={originZip}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div id="nameHelp" style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
                 </div>
               </div>
               <div className="col">
@@ -103,20 +92,14 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     City
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          name="originCity"
-                         value={formData.originCity}
+                         value={originCity}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div id="nameHelp" style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
                 </div>
               </div>
             </div>
@@ -127,20 +110,14 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     State
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          name="originState"
-                         value={formData.originState}
+                         value={originState}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div id="nameHelp" style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
                 </div>
               </div>
               <div className="col">
@@ -148,25 +125,20 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     Country
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          name="originCountry"
-                         value={formData.originCountry}
+                         value={originCountry}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div id="nameHelp" style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <div className="col">
           {/*Destino*/}
           <div className="card" style={{ width: "25rem", padding: "2rem" }}>
@@ -187,20 +159,14 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     Address number
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          name="destinyNumber"
-                         value={formData.destinyNumber}
+                         value={destinyNumber}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
                 </div>
               </div>
               <div className="col">
@@ -208,20 +174,14 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     Street
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          name="destinyStreet"
-                         value={formData.destinyStreet}
+                         value={destinyStreet}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
                 </div>
               </div>
             </div>
@@ -232,20 +192,14 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     Zip
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          name="destinyZip"
-                         value={formData.destinyZip}
+                         value={destinyZip}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
                 </div>
               </div>
               <div className="col">
@@ -253,20 +207,14 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     City
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          name="destinyCity"
-                         value={formData.destinyCity}
+                         value={destinyCity}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
                 </div>
               </div>
             </div>
@@ -277,20 +225,14 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     State
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          name="destinyState"
-                         value={formData.destinyState}
+                         value={destinyState}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
                 </div>
               </div>
               <div className="col">
@@ -298,21 +240,15 @@ export const StepTwo = ({
                   <label htmlFor="exampleInputAddress" className="form-label">
                     Country
                   </label>
-                  <input style={{ border: error ? "2px solid red" : "" }}
+                  <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
                          id="validationDefault02"
-                         name="name"
-                         value={formData.address}
+                         name="destinyCountry"
+                         value={destinyCountry}
                          onChange={event => {
                            handleInputChange(event);
-                         }}
+                         }} required
                   />
-                  {error ?
-                    <div style={{ color: "red" }} className="form-text">
-                      This is a required field
-                    </div>
-                    : <></>
-                  }
                 </div>
               </div>
             </div>
@@ -345,7 +281,7 @@ export const StepTwo = ({
                    }}
             />
             <label className="form-check-label" htmlFor="flexRadioService1">
-             Ground
+              Ground
             </label>
           </div>
           <div className="form-check">
