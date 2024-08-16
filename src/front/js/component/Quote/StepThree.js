@@ -7,65 +7,53 @@ import { Air } from "./Air";
 import { Ocean } from "./Ocean";
 
 
-export const StepThree = ({
-                            error, formData, handleInputChange, currentService,
-                            handlePhoneInputChange
-                          }) => {
+export const StepThree = ({ error, handleError }) => {
 
   const { store, actions } = useContext(Context);
 
-  const [service, setService] = useState(formData.service);
+  const { service } = store.quote;
 
   return <>
     <nav>
       <div className="nav nav-tabs"
            id="nav-tab" role="tablist"
       >
-        {service === "ground" ?
+        {service === "ground" && (
           <button className="nav-link active" id="nav-ground-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-ground"
                   type="button" role="tab" aria-controls="nav-ground"
                   aria-selected="true">
             Ground
-          </button> : <></>
+          </button>)
         }
-        {service === "air" ?
+        {service === "air" && (
           <button className="nav-link active" id="nav-ground-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-ground"
                   type="button" role="tab" aria-controls="nav-ground"
                   aria-selected="true">
             Air
-          </button> : <></>
+          </button>)
         }
-        {service === "ocean" ?
+        {service === "ocean" && (
           <button className="nav-link active" id="nav-ground-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-ground"
                   type="button" role="tab" aria-controls="nav-ground"
                   aria-selected="true">
             Ocean
-          </button> : <></>
+          </button>)
         }
       </div>
     </nav>
 
     <div className="tab-content" id="nav-tabContent">
       {service === "ground" ?
-        <Ground formData={formData}
-                error={error}
-                handleInputChange={handleInputChange}
-        />
+        <Ground error={error} handleError={handleError} />
         : service === "air" ?
-          <Air formData={formData}
-               error={error}
-               handleInputChange={handleInputChange}
-          />
-          : <Ocean formData={formData}
-                   error={error}
-                   handleInputChange={handleInputChange}
-          />
+          <Air error={error} handleError={handleError} />
+          : <Ocean />
       }
     </div>
   </>;

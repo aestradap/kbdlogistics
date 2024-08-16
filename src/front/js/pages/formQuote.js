@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { Form, Button, ProgressBar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
@@ -10,6 +10,7 @@ import { StepOne } from "../component/Quote/StepOne";
 import { StepTwo } from "../component/Quote/StepTwo";
 import { StepThree } from "../component/Quote/StepThree";
 import { StepFour } from "../component/Quote/StepFour";
+import { Preview } from "../component/Quote/Preview";
 
 export const FormQuote = () => {
     const { store, actions } = useContext(Context);
@@ -17,6 +18,23 @@ export const FormQuote = () => {
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState(store.quote);
     const [error, setError] = useState(false);
+    const [showPreview, setShowPreview] = useState(false);
+    const modalPreview = useRef();
+
+    const showModalPreview = () => {
+      const modalEle = modalPreview.current;
+      const bsModal = new bootstrap.Modal(modalEle, {
+        backdrop: "static",
+        keyboard: false
+      });
+      bsModal.show();
+    };
+
+    const hideModal = () => {
+      const modalEle = modalPreview.current;
+      const bsModal = bootstrap.Modal.getInstance(modalEle);
+      bsModal.hide();
+    };
 
     const handleNext = (event) => {
       event.preventDefault();
@@ -25,8 +43,10 @@ export const FormQuote = () => {
         form.reportValidity();
         return;
       }
+      console.log("ERROR", error);
       setStep(step + 1);
     };
+
 
     const handleError = () => {
       if (step === 1) {
@@ -40,6 +60,7 @@ export const FormQuote = () => {
           localStorage.setItem("address", store.quote.address);
           localStorage.setItem("email", store.quote.email);
           localStorage.setItem("phone", store.quote.phone);
+
           console.log("MY QUOTE", store.quote);
         }
       } else if (step === 2) {
@@ -69,13 +90,52 @@ export const FormQuote = () => {
           localStorage.setItem("destinyCity", store.quote.destinyCity);
           localStorage.setItem("destinyState", store.quote.destinyState);
           localStorage.setItem("destinyCountry", store.quote.destinyCountry);
+          localStorage.setItem("movement", store.quote.movement);
+          localStorage.setItem("service", store.quote.service);
+
           console.log("MY QUOTE", store.quote);
         }
+      } else if (step === 3 && store.quote.service === "ground") {
+        if (store.quote.groundCategory === "LTL") {
+          if (store.quote.groundLtlAmount === "" ||
+            store.quote.manyDifDimeCargo === "") {
+            setError(true);
+          } else {
+            localStorage.setItem("groundCategory", store.quote.groundCategory);
+            localStorage.setItem("groundLtlAmount", store.quote.groundLtlAmount);
+            const dimensionsString = JSON.stringify(store.quote.manyDifDimeCargo);
+            localStorage.setItem("manyDifDimeCargo", dimensionsString);
 
-      } else {
-        console.log("Estoy fuera del step 1");
-      }
+            console.log("MY QUOTE", store.quote);
+          }
+        } else if (store.quote.groundCategory === "Full truck") {
+          if (store.quote.groundFullTruckEquipment === "" ||
+            store.quote.groundFullTruckTrailerSize === "") {
+            setError(true);
+          } else {
+            localStorage.setItem("groundFullTruckEquipment",
+              store.quote.groundFullTruckEquipment);
+            localStorage.setItem("groundFullTruckTrailerSize",
+              store.quote.groundFullTruckTrailerSize);
+          }
+
+        } else if (store.quote.groundCategory === "Drayage") {
+          if (store.quote.groundDrayageEquipmentSize === "" ||
+            store.quote.groundDrayageEquipmentType === "") {
+            setError(true);
+          } else {
+            localStorage.setItem("groundFullTruckEquipment",
+              store.quote.groundFullTruckEquipment);
+            localStorage.setItem("groundFullTruckTrailerSize",
+              store.quote.groundFullTruckTrailerSize);
+          }
+        }
+
+      } else console.log("Estoy fuera del step 1");
+      console.log("MY QUOTE", store.quote);
+
     };
+
 
     const handlePrevious = () => {
       setStep(step - 1);
@@ -95,15 +155,17 @@ export const FormQuote = () => {
       setFormData({ ...formData, ["phone"]: number });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault();
       // handle form submission
-      console.log("FormData", formData);
+      console.log("MyQuote-after-send: ",store.quote);
+      const response = await actions.sendQuote();
       // if ( validator.isEmpty(formData[name]) ) {
       //   setError(true);
       // } else {
       //   console.log("FormData",formData);
       // }
+      return response;
     };
 
     return <>
@@ -127,7 +189,9 @@ export const FormQuote = () => {
             </div>
           </div>
         }
-        <h2 className="fw-normal" style={{ marginBottom: "2rem" }}>Request a quote</h2>
+        <h2 className="fw-normal" style={{ marginBottom: "2rem" }}>
+          Request a quote
+        </h2>
         <div className="position-relative m-4">
           <div className="progress" role="progressbar"
                aria-label="Animated striped example" aria-valuenow="75"
@@ -199,29 +263,19 @@ export const FormQuote = () => {
 
           {/*step1*/}
           {step === 1 && (<>
-              <StepOne error={error}
-                       handleError={setError}
-              />
+              <StepOne error={error} handleError={setError} />
             </>
           )}
 
           {/*step2*/}
           {step === 2 && (<>
-              <StepTwo error={error}
-                       formData={formData}
-                       handleInputChange={handleInputChange}
-                       handlePhoneInputChange={handlePhoneInputChange}
-              />
+              <StepTwo error={error} handleError={setError} />
             </>
           )}
 
           {/*step3*/}
           {step === 3 && (<>
-              <StepThree error={error}
-                         formData={formData}
-                         handleInputChange={handleInputChange}
-                         handlePhoneInputChange={handlePhoneInputChange}
-              />
+              <StepThree error={error} handleError={setError} />
             </>
           )}
 
@@ -245,25 +299,60 @@ export const FormQuote = () => {
             {step < 4 ? (
               <button className="btn btn-home-primary"
                       onClick={(event) => {
-                        handleNext(event);
                         handleError();
+                        handleNext(event);
                       }}>
                 Next
               </button>
             ) : (
-              <p><a className="btn btn-home-primary" type="submit"
-                    onClick={handleNext}>
-                Submit
-              </a></p>
-              // <Button variant="primary"
-              //         type="submit"
-              //         onClick={() => {
-              //           handleNext();
-              //         }}
-              // >
+              // <p><a className="btn btn-home-primary" type="submit"
+              //       onClick={handleNext}>
               //   Submit
-              // </Button>
+              // </a></p>
+              <Button variant="primary btn-home-primary"
+                      onClick={() => {
+                        // handleNext();
+                        showModalPreview();
+                      }}
+              >
+                Preview
+              </Button>
             )}
+          </div>
+          <div show={showPreview}
+               aria-hidden="true"
+               className="modal fade"
+               data-bs-backdrop="static"
+               aria-labelledby="exampleModalLabel"
+               ref={modalPreview}
+          >
+            <div className="modal-dialog modal-dialog-scrollable">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h4 className="nav-link active mb-0"
+                      style={{ color: "#ffffff" }}
+                      aria-current="page" href="#"
+                  >
+                    <b>K&BD</b> LOGISTICS INC
+                  </h4>
+                </div>
+                <div className="modal-body">
+                  <Preview />
+                </div>
+                <div className="modal-footer">
+                  <Button variant="primary btn-home-primary"
+                          type="submit"
+                          onClick={() => {
+                            // handleNext();
+                            showModalPreview();
+
+                          }}
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
       </div>

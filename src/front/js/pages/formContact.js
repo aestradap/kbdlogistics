@@ -91,7 +91,7 @@ const ContactForm = () => {
             type="text"
             id="name"
             name="name"
-            value={formData.name}
+            value={name}
             onChange={handleChange}
             required
           />

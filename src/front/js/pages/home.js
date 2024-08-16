@@ -53,7 +53,10 @@ export const Home = () => {
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 className="nav-link active mb-0" style={{ color: "#ffffff" }} aria-current="page" href="#">
+            <h4 className="nav-link active mb-0"
+                style={{ color: "#ffffff" }}
+                aria-current="page" href="#"
+            >
               <b>K&BD</b> LOGISTICS INC
             </h4>
           </div>

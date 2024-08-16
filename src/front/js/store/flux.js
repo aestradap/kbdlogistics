@@ -5,8 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       localStorageCheck: false,
       quote: {
         name: "",
-        email:"",
-        address:"",
+        email: "",
+        address: "",
         phone: "",
         service: "ground",
         movement: "Door-to-Door",
@@ -22,18 +22,27 @@ const getState = ({ getStore, getActions, setStore }) => {
         destinyStreet: "",
         destinyZip: "",
         destinyCity: "",
-        destinyState:"",
-        destinyCountry:"",
+        destinyState: "",
+        destinyCountry: "",
         dimensionLong: "",
         dimensionHigh: "",
         dimensionWide: "",
         dimensionWeight: "",
-        equipmentType: "",
-        equipmentSize: "",
-        equipment: "",
-        trailerSize: "",
-        amount: "1",
-        ltlManyDifDimeCargo: []
+        groundCategory: "LTL",
+        groundLtlAmount: 1,
+        groundLtlManyCargoes: false,
+        manyDifDimeCargo: [{
+          long: "",
+          high: "",
+          wide: "",
+          weight: ""
+        }],
+        groundFullTruckEquipment: "",
+        groundFullTruckTrailerSize: "",
+        groundDrayageEquipmentSize: "",
+        groundDrayageEquipmentType: "",
+        airProductKind: ""
+
       },
       demo: [
         {
@@ -50,24 +59,63 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       // Use getActions to call a function within a fuction
+      sendQuote: async () => {
+        const myQuote = getStore().quote;
+        console.log("MyQuote", myQuote);
+        const response = await fetch(
+          process.env.BACKEND_URL + "api/send-email", {
+            method: "POST",
+            body: JSON.stringify(myQuote),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        );
+        if (response.status !== 201){
+          return false; console.log("TRUE")
+        }else  {return true; console.log("FALSE")}
+
+
+      },
+
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },
-      setLtlManyDifDimeCargo: (cargoDimensions) => {
+      setManyDifDimeCargo: (cargoDimensions) => {
         const store = getStore();
         setStore({
           quote: {
             ...store.quote,
-            ltlManyDifDimeCargo: cargoDimensions
+            manyDifDimeCargo: cargoDimensions
           }
         });
+      },
+      setItemManyDifDimeCargo: (position, key, value) => {
+        const store = getStore();
+        // Copia el arreglo actual de `manyDifDimeCargo`
+        const updatedCargoes = [...store.quote.manyDifDimeCargo];
+        // Si la posición es válida y existe un objeto en esa posición
+        if (updatedCargoes[position]) {
+          // Actualiza el valor específico del objeto en la posición dada
+          updatedCargoes[position] = {
+            ...updatedCargoes[position],
+            [key]: value
+          };
+          // Actualiza el store con el nuevo arreglo
+          setStore({
+            quote: {
+              ...store.quote,
+              manyDifDimeCargo: updatedCargoes
+            }
+          });
+        }
       },
       setAmount: (amount) => {
         const store = getStore();
         setStore({
           quote: {
             ...store.quote,
-            amount: amount
+            groundLtlAmount: amount
           }
         });
       },
@@ -131,13 +179,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (localStorage.getItem("destinyCountry")) {
           setQuote("destinyCountry", localStorage.getItem("destinyCountry"));
         }
+        if (localStorage.getItem("movement")) {
+          setQuote("movement", localStorage.getItem("movement"));
+        }
+        if (localStorage.getItem("service")) {
+          setQuote("service", localStorage.getItem("service"));
+        }
 
         setStore({ localStorageCheck: true });
       },
       getMessage: async () => {
         try {
           // fetching data from the backend
-          const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
+          const resp = await fetch(process.env.BACKEND_URL + "api/hello");
           const data = await resp.json();
           setStore({ message: data.message });
           // don't forget to return something, that is how the async resolves

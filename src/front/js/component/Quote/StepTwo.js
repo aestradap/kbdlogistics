@@ -7,16 +7,27 @@ export const StepTwo = ({ error, handleError }) => {
 
   const { store, actions } = useContext(Context);
   const {
-    originNumber, originStreet, originZip, originCity,
-    originState, originCountry, destinyNumber, destinyStreet,
-    destinyZip, destinyCity, destinyState, destinyCountry
+    originNumber, originStreet, originZip,
+    originCity, originState, originCountry
   } = store.quote;
-  const [service, setService] = useState(store.quote.service);
-  const [movement, setMovement] = useState(store.quote.movement);
+  const {
+    destinyNumber, destinyStreet, destinyZip,
+    destinyCity, destinyState, destinyCountry
+  } = store.quote;
+
+  const { service, movement } = store.quote;
 
   const handleInputChange = (event) => {
     actions.setQuote(event.target.name, event.target.value);
     handleError(false);
+  };
+
+  const handleServiceRadio = (event) => {
+    actions.setQuote("service", event.target.value);
+  };
+
+  const handleMovementRadio = (event) => {
+    actions.setQuote("movement", event.target.value);
   };
 
   return <>
@@ -277,7 +288,6 @@ export const StepTwo = ({ error, handleError }) => {
                    checked={service === "ground"}
                    onChange={event => {
                      handleInputChange(event);
-                     setService(event.target.value);
                    }}
             />
             <label className="form-check-label" htmlFor="flexRadioService1">
@@ -292,8 +302,7 @@ export const StepTwo = ({ error, handleError }) => {
                    value="air"
                    checked={service === "air"}
                    onChange={event => {
-                     handleInputChange(event);
-                     setService(event.target.value);
+                     handleServiceRadio(event);
                    }}
             />
             <label className="form-check-label" htmlFor="flexRadioService2">
@@ -308,8 +317,7 @@ export const StepTwo = ({ error, handleError }) => {
                    value="ocean"
                    checked={service === "ocean"}
                    onChange={event => {
-                     handleInputChange(event);
-                     setService(event.target.value);
+                     handleServiceRadio(event);
                    }}
             />
             <label className="form-check-label" htmlFor="flexRadioService3">
@@ -335,8 +343,7 @@ export const StepTwo = ({ error, handleError }) => {
                    value="Door-to-Door"
                    checked={movement === "Door-to-Door"}
                    onChange={event => {
-                     handleInputChange(event);
-                     setMovement(event.target.value);
+                     handleMovementRadio(event);
                    }}
             />
             <label className="form-check-label" htmlFor="flexRadioMovement1">
@@ -351,8 +358,7 @@ export const StepTwo = ({ error, handleError }) => {
                    value="Door-to-Port"
                    checked={movement === "Door-to-Port"}
                    onChange={event => {
-                     handleInputChange(event);
-                     setMovement(event.target.value);
+                     handleMovementRadio(event);
                    }}
             />
             <label className="form-check-label" htmlFor="flexRadioMovement2">
@@ -367,8 +373,7 @@ export const StepTwo = ({ error, handleError }) => {
                    value="Port-to-Port"
                    checked={movement === "Port-to-Port"}
                    onChange={event => {
-                     handleInputChange(event);
-                     setMovement(event.target.value);
+                     handleMovementRadio(event);
                    }}
             />
             <label className="form-check-label" htmlFor="flexRadioMovement3">
@@ -383,8 +388,7 @@ export const StepTwo = ({ error, handleError }) => {
                    value="Port-to-Door"
                    checked={movement === "Port-to-Door"}
                    onChange={event => {
-                     handleInputChange(event);
-                     setMovement(event.target.value);
+                     handleMovementRadio(event);
                    }}
             />
             <label className="form-check-label" htmlFor="flexRadioMovement4">
