@@ -6,7 +6,7 @@ import { Context } from "../../store/appContext";
 export const Air = ({ error, handleError }) => {
 
   const { store, actions } = useContext(Context);
-  const { airProductKind } = store.quote;
+  const { airProductKind, manyDifDimeCargo } = store.quote;
   const handleInputChange = (event) => {
     actions.setQuote(event.target.name, event.target.value);
     handleError(false);
@@ -31,18 +31,13 @@ export const Air = ({ error, handleError }) => {
           </div>
         </div>
         <div className="col mb-3 ">
-          {/*<label htmlFor="exampleInputName" className="form-label">4-OPCT</label>*/}
-          {/*<select className="form-select" aria-label="Default select example">*/}
-          {/*  <option selected>Transportation area</option>*/}
-          {/*  <option value="1">One</option>*/}
-          {/*  <option value="2">Two</option>*/}
-          {/*  <option value="3">Three</option>*/}
-          {/*</select>*/}
+
         </div>
         <div className="row">
           <div className="col mb-3 mt-3">
             <Dimension error={error}
                        handleError={handleError}
+                       item={manyDifDimeCargo[0]}
                        myKey={0}
             />
           </div>

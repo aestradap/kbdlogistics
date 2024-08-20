@@ -8,18 +8,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         email: "",
         address: "",
         phone: "",
-        service: "ground",
+        service: "Ground",
         movement: "Door-to-Door",
         origin: "",
-        originNumber: "",
-        originStreet: "",
+        originAddress: "",
         originZip: "",
         originCity: "",
         originState: "",
         originCountry: "",
         destiny: "",
-        destinyNumber: "",
-        destinyStreet: "",
+        destinyAddress: "",
         destinyZip: "",
         destinyCity: "",
         destinyState: "",
@@ -41,7 +39,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         groundFullTruckTrailerSize: "",
         groundDrayageEquipmentSize: "",
         groundDrayageEquipmentType: "",
-        airProductKind: ""
+        airProductKind: "",
+        oceanCategory: "LTL",
+        oceanComority:'',
+        transportationArea:'',
+        comments:''
 
       },
       demo: [
@@ -71,9 +73,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           }
         );
-        if (response.status !== 201){
-          return false; console.log("TRUE")
-        }else  {return true; console.log("FALSE")}
+        if (response.status !== 201) {
+          return false;
+          console.log("TRUE");
+        } else {
+          return true;
+          console.log("FALSE");
+        }
 
 
       },
@@ -143,11 +149,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (localStorage.getItem("phone")) {
           setQuote("phone", localStorage.getItem("phone"));
         }
-        if (localStorage.getItem("originNumber")) {
-          setQuote("originNumber", localStorage.getItem("originNumber"));
-        }
-        if (localStorage.getItem("originStreet")) {
-          setQuote("originStreet", localStorage.getItem("originStreet"));
+        if (localStorage.getItem("originAddress")) {
+          setQuote("originAddress", localStorage.getItem("originAddress"));
         }
         if (localStorage.getItem("originZip")) {
           setQuote("originZip", localStorage.getItem("originZip"));
@@ -161,11 +164,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (localStorage.getItem("originCountry")) {
           setQuote("originCountry", localStorage.getItem("originCountry"));
         }
-        if (localStorage.getItem("destinyNumber")) {
-          setQuote("destinyNumber", localStorage.getItem("destinyNumber"));
-        }
-        if (localStorage.getItem("destinyStreet")) {
-          setQuote("destinyStreet", localStorage.getItem("destinyStreet"));
+        if (localStorage.getItem("destinyAddress")) {
+          setQuote("destinyAddress", localStorage.getItem("destinyAddress"));
         }
         if (localStorage.getItem("destinyZip")) {
           setQuote("destinyZip", localStorage.getItem("destinyZip"));
@@ -184,6 +184,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
         if (localStorage.getItem("service")) {
           setQuote("service", localStorage.getItem("service"));
+        }
+        if (localStorage.getItem("oceanCategory")) {
+          setQuote("oceanCategory", localStorage.getItem("oceanCategory"));
         }
 
         setStore({ localStorageCheck: true });

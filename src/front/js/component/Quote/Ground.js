@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../../store/appContext";
 import { Dimension } from "../dimension";
-import { Weight } from "../weight";
-import { target } from "bc-console/webpack.config";
 
 export const Ground = ({ error, handleError }) => {
 
@@ -89,7 +87,6 @@ export const Ground = ({ error, handleError }) => {
             <label className="form-check-label" htmlFor="flexGroundCategory1">
               Full truck
             </label>
-
           </div>
 
           <div className="form-check">

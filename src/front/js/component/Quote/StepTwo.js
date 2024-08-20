@@ -7,11 +7,11 @@ export const StepTwo = ({ error, handleError }) => {
 
   const { store, actions } = useContext(Context);
   const {
-    originNumber, originStreet, originZip,
+    originAddress, originZip,
     originCity, originState, originCountry
   } = store.quote;
   const {
-    destinyNumber, destinyStreet, destinyZip,
+    destinyAddress, destinyZip,
     destinyCity, destinyState, destinyCountry
   } = store.quote;
 
@@ -51,32 +51,16 @@ export const StepTwo = ({ error, handleError }) => {
               <div className="col">
                 <div className="mb-3">
                   <label htmlFor="exampleInputAddress" className="form-label">
-                    Address number
+                    Address
                   </label>
                   <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
-                         name="originNumber"
-                         value={originNumber}
+                         name="originAddress"
+                         value={originAddress}
                          onChange={event => {
                            handleInputChange(event);
                          }} required
                   />
-                </div>
-              </div>
-              <div className="col">
-                <div className="mb-3">
-                  <label htmlFor="exampleInputAddress" className="form-label">
-                    Street
-                  </label>
-                  <input style={{ border: error && "2px solid red" }}
-                         type="text" className="form-control"
-                         name="originStreet"
-                         value={originStreet}
-                         onChange={event => {
-                           handleInputChange(event);
-                         }} required
-                  />
-
                 </div>
               </div>
             </div>
@@ -172,23 +156,8 @@ export const StepTwo = ({ error, handleError }) => {
                   </label>
                   <input style={{ border: error && "2px solid red" }}
                          type="text" className="form-control"
-                         name="destinyNumber"
-                         value={destinyNumber}
-                         onChange={event => {
-                           handleInputChange(event);
-                         }} required
-                  />
-                </div>
-              </div>
-              <div className="col">
-                <div className="mb-3">
-                  <label htmlFor="exampleInputAddress" className="form-label">
-                    Street
-                  </label>
-                  <input style={{ border: error && "2px solid red" }}
-                         type="text" className="form-control"
-                         name="destinyStreet"
-                         value={destinyStreet}
+                         name="destinyAddress"
+                         value={destinyAddress}
                          onChange={event => {
                            handleInputChange(event);
                          }} required
@@ -284,8 +253,8 @@ export const StepTwo = ({ error, handleError }) => {
                    type="radio"
                    id="flexRadioService1"
                    name="service"
-                   value="ground"
-                   checked={service === "ground"}
+                   value="Ground"
+                   checked={service === "Ground"}
                    onChange={event => {
                      handleInputChange(event);
                    }}
@@ -299,8 +268,8 @@ export const StepTwo = ({ error, handleError }) => {
                    type="radio"
                    id="flexRadioService2"
                    name="service"
-                   value="air"
-                   checked={service === "air"}
+                   value="Air"
+                   checked={service === "Air"}
                    onChange={event => {
                      handleServiceRadio(event);
                    }}
@@ -314,8 +283,8 @@ export const StepTwo = ({ error, handleError }) => {
                    type="radio"
                    id="flexRadioService3"
                    name="service"
-                   value="ocean"
-                   checked={service === "ocean"}
+                   value="Ocean"
+                   checked={service === "Ocean"}
                    onChange={event => {
                      handleServiceRadio(event);
                    }}

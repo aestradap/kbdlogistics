@@ -64,28 +64,24 @@ export const FormQuote = () => {
           console.log("MY QUOTE", store.quote);
         }
       } else if (step === 2) {
-        if (store.quote.originNumber === "" ||
-          store.quote.originStreet === "" ||
+        if (store.quote.originAddress === "" ||
           store.quote.originZip === "" ||
           store.quote.originCity === "" ||
           store.quote.originState === "" ||
           store.quote.originCountry === "" ||
-          store.quote.destinyNumber === "" ||
-          store.quote.destinyStreet === "" ||
+          store.quote.destinyAddress === "" ||
           store.quote.destinyZip === "" ||
           store.quote.destinyCity === "" ||
           store.quote.destinyState === "" ||
           store.quote.destinyCountry === "") {
           setError(true);
         } else {
-          localStorage.setItem("originNumber", store.quote.originNumber);
-          localStorage.setItem("originStreet", store.quote.originStreet);
+          localStorage.setItem("originAddress", store.quote.originAddress);
           localStorage.setItem("originZip", store.quote.originZip);
           localStorage.setItem("originCity", store.quote.originCity);
           localStorage.setItem("originState", store.quote.originState);
           localStorage.setItem("originCountry", store.quote.originCountry);
-          localStorage.setItem("destinyNumber", store.quote.destinyNumber);
-          localStorage.setItem("destinyStreet", store.quote.destinyStreet);
+          localStorage.setItem("destinyAddress", store.quote.destinyAddress);
           localStorage.setItem("destinyZip", store.quote.destinyZip);
           localStorage.setItem("destinyCity", store.quote.destinyCity);
           localStorage.setItem("destinyState", store.quote.destinyState);
@@ -287,14 +283,10 @@ export const FormQuote = () => {
 
           <div className="d-flex justify-content-between mt-5">
             {step > 1 && (
-              <p><a className="btn btn-secondary btn-previous"
-                    onClick={handlePrevious}>
-                previous
-              </a></p>
-              // <button type="button" className="btn btn-secondary"
-              //         onClick={handlePrevious}>
-              //   previousss
-              // </button>
+              <button type="button" className="btn btn-secondary btn-previous"
+                      onClick={handlePrevious}>
+              Previous
+              </button>
             )}
             {step < 4 ? (
               <button className="btn btn-home-primary"
@@ -304,20 +296,16 @@ export const FormQuote = () => {
                       }}>
                 Next
               </button>
-            ) : (
-              // <p><a className="btn btn-home-primary" type="submit"
-              //       onClick={handleNext}>
-              //   Submit
-              // </a></p>
-              <Button variant="primary btn-home-primary"
+            ) :
+              <button variant="btn btn-home-primary"
                       onClick={() => {
                         // handleNext();
                         showModalPreview();
                       }}
               >
                 Preview
-              </Button>
-            )}
+              </button>
+            }
           </div>
           <div show={showPreview}
                aria-hidden="true"
@@ -329,17 +317,23 @@ export const FormQuote = () => {
             <div className="modal-dialog modal-dialog-scrollable">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h4 className="nav-link active mb-0"
+                  <h4 className="nav-link active mb-0 p-0"
                       style={{ color: "#ffffff" }}
                       aria-current="page" href="#"
                   >
                     <b>K&BD</b> LOGISTICS INC
                   </h4>
+                  <button type="button" className="btn-close"
+                          data-bs-dismiss="modal" aria-label="Close"/>
                 </div>
                 <div className="modal-body">
                   <Preview />
                 </div>
                 <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary"
+                          data-bs-dismiss="modal">
+                    Close
+                  </button>
                   <Button variant="primary btn-home-primary"
                           type="submit"
                           onClick={() => {

@@ -4,10 +4,14 @@ import { Dimension } from "../dimension";
 import { Weight } from "../weight";
 
 
-export const Ocean = ({error, formData, handleInputChange}) => {
+export const Ocean = ({ error, handleError }) => {
 
   const { store, actions } = useContext(Context);
-  const [oceanCategory, setOceanCategory] = useState("LCL");
+  const { oceanCategory, oceanComority, manyDifDimeCargo } = store.quote;
+  const handleInputChange = (event) => {
+    actions.setQuote(event.target.name, event.target.value);
+    handleError(false);
+  };
 
   return <>
     <div className="row">
@@ -17,15 +21,14 @@ export const Ocean = ({error, formData, handleInputChange}) => {
                  type="radio"
                  id="flexRadioDefault3"
                  name="oceanCategory"
-                 value="Full container"
-                 checked={oceanCategory === "Full container"}
+                 value="Full Container"
+                 checked={oceanCategory === "Full Container"}
                  onChange={event => {
                    handleInputChange(event);
-                   setOceanCategory(event.target.value);
                  }}
           />
           <label className="form-check-label" htmlFor="flexRadioDefault3">
-            Full container
+            Full Container
           </label>
         </div>
         <div className="form-check">
@@ -33,54 +36,53 @@ export const Ocean = ({error, formData, handleInputChange}) => {
                  type="radio"
                  id="flexRadioDefault4"
                  name="oceanCategory"
-                 value="LCL"
-                 checked={oceanCategory === "LCL"}
+                 value="LTL"
+                 checked={oceanCategory === "LTL"}
                  onChange={event => {
                    handleInputChange(event);
-                   setOceanCategory(event.target.value);
                  }}
           />
           <label className="form-check-label" htmlFor="flexRadioDefault4">
-            LCL
+            LTL
           </label>
         </div>
       </div>
-      {oceanCategory === "LCL"
-        ? <>
-          <div className="col-sm-4 mb-3 mt-5">
-            <Dimension error={error} formData={formData} handlerInput={handleInputChange} />
-          </div>
-          <div className="col-sm-4 mb-3 mt-5">
-            <Weight error={error} formData={formData} handlerInput={handleInputChange} />
-          </div>
-
+      {oceanCategory === "LTL" ?
+        <>
           <div className="col-sm-4 mb-3 mt-3" />
           <div className="col-sm-4 mb-3 mt-3">
             <label className="form-label">Comority</label>
             <input type="text" className="form-control"
                    style={{ border: error && "2px solid red" }}
                    aria-describedby="weight"
+                   name="oceanComority"
+                   value={oceanComority}
+                   onChange={event => handleInputChange(event)}
             />
             {error ? (
-              <div id="nameHelp" style={{ color: "red" }} className="form-text">This is a required
-                field</div>
+              <div id="nameHelp" style={{ color: "red" }} className="form-text">
+                This is a required
+                field
+              </div>
             ) : (
-              <div id="emailHelp" className="form-text">Entender bien q es la comority?</div>
+              <div id="emailHelp" className="form-text">
+                Entender bien q es la comority?
+              </div>
             )}
           </div>
-          <div className="col-sm-4 mb-3 mt-3">
-            <label htmlFor="exampleInputName" className="form-label">4-OPCT</label>
-            <select className="form-select" aria-label="Default select example">
-              <option selected>Entender q es opct</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
+          <div className="col-sm-4 mb-3 mt-5">
+            <Dimension error={error} handleError={handleError}
+                       item={manyDifDimeCargo[0]}
+                       myKey={0}
+            />
           </div>
-        </>
-        : <>
+        </> :
+        <>
           <div className="col-sm-6 mb-3 mt-5">
-            <select className="form-select" aria-label="Default select example">
+            <select className="form-select" aria-label="Default select example"
+                    name="transportationArea"
+                    onChange={handleInputChange} required
+            >
               <option selected>Transportation area</option>
               <option value="1">One</option>
               <option value="2">Two</option>

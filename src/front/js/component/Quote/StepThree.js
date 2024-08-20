@@ -18,7 +18,7 @@ export const StepThree = ({ error, handleError }) => {
       <div className="nav nav-tabs"
            id="nav-tab" role="tablist"
       >
-        {service === "ground" && (
+        {service === "Ground" && (
           <button className="nav-link active" id="nav-ground-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-ground"
@@ -27,7 +27,7 @@ export const StepThree = ({ error, handleError }) => {
             Ground
           </button>)
         }
-        {service === "air" && (
+        {service === "Air" && (
           <button className="nav-link active" id="nav-ground-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-ground"
@@ -36,7 +36,7 @@ export const StepThree = ({ error, handleError }) => {
             Air
           </button>)
         }
-        {service === "ocean" && (
+        {service === "Ocean" && (
           <button className="nav-link active" id="nav-ground-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-ground"
@@ -49,11 +49,11 @@ export const StepThree = ({ error, handleError }) => {
     </nav>
 
     <div className="tab-content" id="nav-tabContent">
-      {service === "ground" ?
+      {service === "Ground" ?
         <Ground error={error} handleError={handleError} />
-        : service === "air" ?
+        : service === "Air" ?
           <Air error={error} handleError={handleError} />
-          : <Ocean />
+          : <Ocean error={error} handleError={handleError} />
       }
     </div>
   </>;
