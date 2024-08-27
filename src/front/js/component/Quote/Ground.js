@@ -6,8 +6,9 @@ export const Ground = ({ error, handleError }) => {
 
     const { store, actions } = useContext(Context);
     const {
-      groundLtlAmount, groundCategory,
-      groundLtlManyCargoes, manyDifDimeCargo
+      groundLtlAmount, groundCategory, groundDrayageEquipmentType,
+      groundLtlManyCargoes, groundDrayageEquipmentSize, manyDifDimeCargo,
+      groundFullTruckEquipment, groundFullTruckTrailerSize
     } = store.quote;
     const dimensions = {
       long: "",
@@ -183,9 +184,10 @@ export const Ground = ({ error, handleError }) => {
               </label>
               <select className="form-select" aria-label="Default select example"
                       name="groundFullTruckEquipment"
+                      value={groundFullTruckEquipment}
                       onChange={handleInputChange} required
               >
-                <option selected>Select One</option>
+                <option value="" selected>Select One</option>
                 <option value="Dry Van / Truckload">Dry Van / Truckload</option>
                 <option value="Flatbed / Stepdeck">Flatbed / Stepdeck</option>
                 <option value="Temperature Controlled - Fresh">
@@ -205,9 +207,10 @@ export const Ground = ({ error, handleError }) => {
               </label>
               <select className="form-select" aria-label="Default select example"
                       name="groundFullTruckTrailerSize"
+                      value={groundFullTruckTrailerSize}
                       onChange={handleInputChange} required
               >
-                <option selected>Select One</option>
+                <option value="" selected>Select One</option>
                 <option value="40 feet">40 feet</option>
                 <option value="45 feet">45 feet</option>
                 <option value="48 feet">53 feet</option>
@@ -221,11 +224,11 @@ export const Ground = ({ error, handleError }) => {
               </label>
               <select className="form-select" aria-label="Default select example"
                       name="groundDrayageEquipmentType"
+                      value={groundDrayageEquipmentType}
                       style={{ border: error && "2px solid red" }}
-                      onChange={handleInputChange}
-                      required
+                      onChange={handleInputChange} required
               >
-                <option value = "" selected>Select One</option>
+                <option value="" selected>Select One</option>
                 <option value="Standard">Standard</option>
                 <option value="High Cube">High Cube</option>
                 <option value="Refrigerated">Refrigerated</option>
@@ -241,10 +244,11 @@ export const Ground = ({ error, handleError }) => {
               </label>
               <select className="form-select" aria-label="Default select example"
                       name="groundDrayageEquipmentSize"
+                      value={groundDrayageEquipmentSize}
                       style={{ border: error && "2px solid red" }}
                       onChange={handleInputChange} required
               >
-                <option value = "" selected>Select One</option>
+                <option value="" selected>Select One</option>
                 <option value="20 feet">20 feet</option>
                 <option value="40 feet">40 feet</option>
                 <option value="45 feet">45 feet</option>

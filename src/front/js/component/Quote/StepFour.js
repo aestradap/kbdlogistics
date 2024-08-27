@@ -17,7 +17,7 @@ export const StepFour = ({
       "Before submitting, please feel free to provide any details or comments you think we should consider."
     </label>
     <div className="form-floating">
-      <textarea className="form-control mt-5"
+      <textarea className="form-control mt-5 myTextArea"
                 placeholder="Leave a comment here" id="floatingTextarea2"
                 style={{ height: 100 }}
                 name="comments"

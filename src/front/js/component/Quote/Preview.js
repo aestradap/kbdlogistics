@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
 import { Ocean } from "./Ocean";
 
-export const Preview = ({ onSubmit }) => {
+export const Preview = () => {
 
   const { store, actions } = useContext(Context);
   // Info step
@@ -24,6 +24,12 @@ export const Preview = ({ onSubmit }) => {
   // Preferences Ocean
   const { oceanCategory, oceanComority, transportationArea } = store.quote;
   const { comments } = store.quote;
+
+  useEffect(() => {
+
+
+
+  }, []);
 
   return (
     <div>
@@ -124,7 +130,7 @@ export const Preview = ({ onSubmit }) => {
         }
         {service === "Ocean" && oceanCategory === "LTL" ?
           <>
-            <p><strong>Comority: </strong>
+            <p><strong>Commodity: </strong>
               {oceanComority}
             </p>
             <p><strong>Dimensions: </strong>
@@ -158,7 +164,7 @@ export const Preview = ({ onSubmit }) => {
         }
         {service === "Air" &&
           <>
-            <p><strong>Producto: </strong>
+            <p><strong>Product: </strong>
               {airProductKind}
             </p>
             <p><strong>Dimensions: </strong>

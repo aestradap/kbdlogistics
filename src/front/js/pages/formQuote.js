@@ -15,7 +15,8 @@ import { Preview } from "../component/Quote/Preview";
 export const FormQuote = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
-    const [step, setStep] = useState(1);
+    // const [step, setStep] = useState(store.quote.step);
+    const { step } = store;
     const [formData, setFormData] = useState(store.quote);
     const [error, setError] = useState(false);
     const [showPreview, setShowPreview] = useState(false);
@@ -44,7 +45,21 @@ export const FormQuote = () => {
         return;
       }
       console.log("ERROR", error);
-      setStep(step + 1);
+      actions.setStep(step + 1);
+    };
+
+    const handlePrevious = () => {
+      actions.setStep(step - 1);
+      setError(false);
+    };
+
+    const handleStepClick = (stepNumber) => {
+      actions.setStep(stepNumber);
+    };
+
+    const handleInputChange = (event) => {
+      const { name, value } = event.target;
+      setFormData({ ...formData, [name]: value });
     };
 
 
@@ -91,7 +106,7 @@ export const FormQuote = () => {
 
           console.log("MY QUOTE", store.quote);
         }
-      } else if (step === 3 && store.quote.service === "ground") {
+      } else if (step === 3 && store.quote.service === "Ground") {
         if (store.quote.groundCategory === "LTL") {
           if (store.quote.groundLtlAmount === "" ||
             store.quote.manyDifDimeCargo === "") {
@@ -114,54 +129,59 @@ export const FormQuote = () => {
             localStorage.setItem("groundFullTruckTrailerSize",
               store.quote.groundFullTruckTrailerSize);
           }
-
         } else if (store.quote.groundCategory === "Drayage") {
           if (store.quote.groundDrayageEquipmentSize === "" ||
             store.quote.groundDrayageEquipmentType === "") {
             setError(true);
           } else {
-            localStorage.setItem("groundFullTruckEquipment",
-              store.quote.groundFullTruckEquipment);
-            localStorage.setItem("groundFullTruckTrailerSize",
-              store.quote.groundFullTruckTrailerSize);
+            localStorage.setItem("groundDrayageEquipmentSize",
+              store.quote.groundDrayageEquipmentSize);
+            localStorage.setItem("groundDrayageEquipmentType",
+              store.quote.groundDrayageEquipmentType);
           }
         }
-
-      } else console.log("Estoy fuera del step 1");
-      console.log("MY QUOTE", store.quote);
-
+      } else if (step === 3 && store.quote.service === "Air") {
+        if (store.quote.airProductKind === "") {
+          setError(true);
+        } else {
+          localStorage.setItem("airProductKind", store.quote.airProductKind);
+          const dimensionsString = JSON.stringify(store.quote.manyDifDimeCargo);
+          localStorage.setItem("manyDifDimeCargo", dimensionsString);
+        }
+      } else if (step === 3 && store.quote.service === "Ocean") {
+        if (store.quote.oceanCategory === "LTL") {
+          if (store.quote.oceanComority === "" ||
+            store.quote.manyDifDimeCargo === "") {
+            setError(true);
+          } else {
+            localStorage.setItem("oceanComority", store.quote.oceanComority);
+            const dimensionsString = JSON.stringify(store.quote.manyDifDimeCargo);
+            localStorage.setItem("manyDifDimeCargo", dimensionsString);
+          }
+        } else if (store.quote.oceanCategory === "Full Container") {
+          if (store.quote.transportationArea === "") {
+            setError(true);
+          } else {
+            localStorage.setItem("transportationArea",
+              store.quote.transportationArea);
+          }
+        }
+      }
     };
 
-
-    const handlePrevious = () => {
-      setStep(step - 1);
-    };
-
-    const handleStepClick = (stepNumber) => {
-      setStep(stepNumber);
-    };
-
-
-    const handleInputChange = (event) => {
-      const { name, value } = event.target;
-      setFormData({ ...formData, [name]: value });
-    };
-
-    const handlePhoneInputChange = (number) => {
-      setFormData({ ...formData, ["phone"]: number });
-    };
 
     const handleSubmit = async (event) => {
       event.preventDefault();
       // handle form submission
-      console.log("MyQuote-after-send: ",store.quote);
+      console.log("MyQuote-after-send: ", store.quote);
       const response = await actions.sendQuote();
-      // if ( validator.isEmpty(formData[name]) ) {
-      //   setError(true);
-      // } else {
-      //   console.log("FormData",formData);
-      // }
-      return response;
+      if (response) {
+        actions.setStore({ sending: false });
+        console.log("Success");
+      } else {
+        actions.setStore({ sending: false });
+        console.log("Fail");
+      }
     };
 
     return <>
@@ -203,28 +223,27 @@ export const FormQuote = () => {
                  }}></div>
           </div>
           <button type="button"
-                  className="position-absolute top-0
+                  className="position-absolute top-0 btn-home-primary
                  translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ left: "0%" }}
                   onClick={() => handleStepClick(1)}
           >1
           </button>
           <button type="button"
-                  className="position-absolute top-0
+                  className="position-absolute top-0 btn-home-primary
                  translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ left: "25%" }}
                   onClick={() => handleStepClick(2)}
           >2
           </button>
-          <button type="button"
-                  className="position-absolute top-0
+          <button className="position-absolute top-0 btn-home-primary
                 translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ left: "50%" }}
                   onClick={() => handleStepClick(3)}
           >3
           </button>
           <button type="button"
-                  className="position-absolute top-0
+                  className="position-absolute top-0 btn-home-primary
                 translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ left: "75%" }}
                   onClick={() => handleStepClick(4)}
@@ -285,21 +304,22 @@ export const FormQuote = () => {
             {step > 1 && (
               <button type="button" className="btn btn-secondary btn-previous"
                       onClick={handlePrevious}>
-              Previous
+                Previous
               </button>
             )}
             {step < 4 ? (
+                <button className="btn btn-home-primary"
+                        onClick={(event) => {
+                          handleError();
+                          handleNext(event);
+                        }}>
+                  Next
+                </button>
+              ) :
               <button className="btn btn-home-primary"
                       onClick={(event) => {
-                        handleError();
                         handleNext(event);
-                      }}>
-                Next
-              </button>
-            ) :
-              <button variant="btn btn-home-primary"
-                      onClick={() => {
-                        // handleNext();
+                        actions.buildFinalQuote();
                         showModalPreview();
                       }}
               >
@@ -307,6 +327,7 @@ export const FormQuote = () => {
               </button>
             }
           </div>
+
           <div show={showPreview}
                aria-hidden="true"
                className="modal fade"
@@ -324,26 +345,33 @@ export const FormQuote = () => {
                     <b>K&BD</b> LOGISTICS INC
                   </h4>
                   <button type="button" className="btn-close"
-                          data-bs-dismiss="modal" aria-label="Close"/>
+                          onClick={handlePrevious}
+                          data-bs-dismiss="modal" aria-label="Close" />
                 </div>
                 <div className="modal-body">
                   <Preview />
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary"
-                          data-bs-dismiss="modal">
-                    Close
-                  </button>
-                  <Button variant="primary btn-home-primary"
-                          type="submit"
-                          onClick={() => {
-                            // handleNext();
-                            showModalPreview();
-
-                          }}
-                  >
-                    Submit
-                  </Button>
+                  {store.sending ?
+                    <div className="spinner-border text-success" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div> :
+                    <>
+                      <button type="button" className="btn btn-secondary"
+                              onClick={() => {
+                                actions.cleanFinalQuote();
+                                handlePrevious();
+                              }}
+                              data-bs-dismiss="modal">
+                        Close
+                      </button>
+                      <button className="btn btn-home-primary"
+                              type="submit"
+                      >
+                        Submit
+                      </button>
+                    </>
+                  }
                 </div>
               </div>
             </div>

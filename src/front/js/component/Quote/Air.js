@@ -26,13 +26,17 @@ export const Air = ({ error, handleError }) => {
                  value={airProductKind}
                  onChange={handleInputChange} required
           />
-          <div id="nameHelp" className="form-text">
-            Define, what kind of product?
-          </div>
+          {error ?
+            <div id="nameHelp" style={{ color: "red" }} className="form-text">
+              This is a required
+              field
+            </div> :
+            <div id="nameHelp" className="form-text">
+              Define, what kind of product?
+            </div>
+          }
         </div>
-        <div className="col mb-3 ">
-
-        </div>
+        <div className="col mb-3 " />
         <div className="row">
           <div className="col mb-3 mt-3">
             <Dimension error={error}

@@ -7,7 +7,10 @@ import { Weight } from "../weight";
 export const Ocean = ({ error, handleError }) => {
 
   const { store, actions } = useContext(Context);
-  const { oceanCategory, oceanComority, manyDifDimeCargo } = store.quote;
+  const {
+    oceanCategory, oceanComority,
+    manyDifDimeCargo, transportationArea
+  } = store.quote;
   const handleInputChange = (event) => {
     actions.setQuote(event.target.name, event.target.value);
     handleError(false);
@@ -49,9 +52,8 @@ export const Ocean = ({ error, handleError }) => {
       </div>
       {oceanCategory === "LTL" ?
         <>
-          <div className="col-sm-4 mb-3 mt-3" />
           <div className="col-sm-4 mb-3 mt-3">
-            <label className="form-label">Comority</label>
+            <label className="form-label">Commodity</label>
             <input type="text" className="form-control"
                    style={{ border: error && "2px solid red" }}
                    aria-describedby="weight"
@@ -59,18 +61,15 @@ export const Ocean = ({ error, handleError }) => {
                    value={oceanComority}
                    onChange={event => handleInputChange(event)}
             />
-            {error ? (
+            {error && (
               <div id="nameHelp" style={{ color: "red" }} className="form-text">
                 This is a required
                 field
               </div>
-            ) : (
-              <div id="emailHelp" className="form-text">
-                Entender bien q es la comority?
-              </div>
             )}
           </div>
-          <div className="col-sm-4 mb-3 mt-5">
+          <div className="col-sm-4 mb-3 mt-3" />
+          <div className="col mb-3 mt-5">
             <Dimension error={error} handleError={handleError}
                        item={manyDifDimeCargo[0]}
                        myKey={0}
@@ -80,14 +79,22 @@ export const Ocean = ({ error, handleError }) => {
         <>
           <div className="col-sm-6 mb-3 mt-5">
             <select className="form-select" aria-label="Default select example"
+                    style={{ border: error && "2px solid red" }}
                     name="transportationArea"
+                    value={transportationArea}
                     onChange={handleInputChange} required
             >
-              <option selected>Transportation area</option>
+              <option value="" selected>Transportation area</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
             </select>
+            {error && (
+              <div id="nameHelp" style={{ color: "red" }} className="form-text">
+                This is a required
+                field
+              </div>
+            )}
           </div>
         </>
       }

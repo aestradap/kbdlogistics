@@ -2,7 +2,10 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
+      step: 1,
       localStorageCheck: false,
+      sending: false,
+      finalQuote: [],
       quote: {
         name: "",
         email: "",
@@ -41,9 +44,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         groundDrayageEquipmentType: "",
         airProductKind: "",
         oceanCategory: "LTL",
-        oceanComority:'',
-        transportationArea:'',
-        comments:''
+        oceanComority: "",
+        transportationArea: "",
+        comments: ""
 
       },
       demo: [
@@ -60,33 +63,96 @@ const getState = ({ getStore, getActions, setStore }) => {
       ]
     },
     actions: {
-      // Use getActions to call a function within a fuction
+
       sendQuote: async () => {
-        const myQuote = getStore().quote;
-        console.log("MyQuote", myQuote);
+        const finalQuote = getStore().finalQuote;
+        console.log("Final-Quote: ", finalQuote);
+
         const response = await fetch(
           process.env.BACKEND_URL + "api/send-email", {
             method: "POST",
-            body: JSON.stringify(myQuote),
+            body: JSON.stringify({ finalQuote }),
             headers: {
               "Content-Type": "application/json"
             }
           }
         );
+
         if (response.status !== 201) {
+          console.log("Failed to send email.");
           return false;
-          console.log("TRUE");
         } else {
+          console.log("Email send successfully.");
           return true;
-          console.log("FALSE");
+        }
+      },
+
+      buildFinalQuote: () => {
+        const myQuote = getStore().quote;
+
+        getActions().updateFinalQuote("1", "1");
+        getActions().updateFinalQuote("Name", myQuote.name);
+        getActions().updateFinalQuote("Email", myQuote.email);
+        getActions().updateFinalQuote("Address", myQuote.address);
+        getActions().updateFinalQuote("Phone", myQuote.phone);
+
+        getActions().updateFinalQuote("2", "2");
+        getActions().updateFinalQuote("Origin", `${myQuote.originAddress}, ${myQuote.originZip}, ${myQuote.originCity}, ${myQuote.originState}, ${myQuote.originCountry}`);
+        getActions().updateFinalQuote("Destiny", `${myQuote.destinyAddress}, ${myQuote.destinyZip}, ${myQuote.destinyCity}, ${myQuote.destinyState}, ${myQuote.destinyCountry}`);
+        getActions().updateFinalQuote("Service", myQuote.service);
+        getActions().updateFinalQuote("Movement", myQuote.movement);
+
+        getActions().updateFinalQuote("3", "3");
+        if (myQuote.service === "Ground")
+          getActions().updateFinalQuote("Category", myQuote.groundCategory);
+        if (myQuote.service === "Ocean")
+          getActions().updateFinalQuote("Category", myQuote.oceanCategory);
+
+        if (myQuote.service === "Ground" && myQuote.groundCategory === "LTL") {
+          getActions().updateFinalQuote("manyDifDimeCargo", myQuote.manyDifDimeCargo);
+        } else if (myQuote.service === "Ground" && myQuote.groundCategory === "Full truck") {
+          getActions().updateFinalQuote("Equipment", myQuote.groundFullTruckEquipment);
+          getActions().updateFinalQuote("Trailer size", myQuote.groundFullTruckTrailerSize);
+        } else if (myQuote.service === "Ground" && myQuote.groundCategory === "Drayage") {
+          getActions().updateFinalQuote("Equipment", myQuote.groundFullTruckEquipment);
+          getActions().updateFinalQuote("Trailer size", myQuote.groundFullTruckTrailerSize);
         }
 
+        if (myQuote.service === "Ocean" && myQuote.oceanCategory === "LTL") {
+          getActions().updateFinalQuote("Commodity", myQuote.groundFullTruckEquipment);
+          getActions().updateFinalQuote("manyDifDimeCargo", myQuote.manyDifDimeCargo);
+        } else if (myQuote.service === "Ocean" && myQuote.oceanCategory === "Full Container") {
+          getActions().updateFinalQuote("Transportation Area", myQuote.transportationArea);
+        }
 
+        if (myQuote.service === "Air") {
+          getActions().updateFinalQuote("Product", myQuote.airProductKind);
+          getActions().updateFinalQuote("manyDifDimeCargo", myQuote.manyDifDimeCargo);
+        }
+
+        if (myQuote.comments != "") {
+          getActions().updateFinalQuote("4", "4");
+          getActions().updateFinalQuote("Comments", myQuote.comments);
+        }
+      },
+
+      updateFinalQuote: (key, value) => {
+        const store = getStore();
+        const quoteToSend = [...store.finalQuote];
+        console.log("Adding to finalQuote:", { [key]: value });
+        quoteToSend.push({ [key]: value });
+        console.log("Updated finalQuote:", quoteToSend);
+        setStore({ finalQuote: quoteToSend });
+      },
+
+      cleanFinalQuote: () => {
+        setStore({ finalQuote: [] });
       },
 
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },
+
       setManyDifDimeCargo: (cargoDimensions) => {
         const store = getStore();
         setStore({
@@ -96,6 +162,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
       },
+
       setItemManyDifDimeCargo: (position, key, value) => {
         const store = getStore();
         // Copia el arreglo actual de `manyDifDimeCargo`
@@ -116,6 +183,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         }
       },
+
       setAmount: (amount) => {
         const store = getStore();
         setStore({
@@ -134,9 +202,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
       },
+
       updateQuoteFromLocalStorage: () => {
         const { setQuote } = getActions();
 
+        if (localStorage.getItem("step")) {
+          setStore({ step: localStorage.getItem("step") });
+        }
         if (localStorage.getItem("name")) {
           setQuote("name", localStorage.getItem("name"));
         }
@@ -188,8 +260,21 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (localStorage.getItem("oceanCategory")) {
           setQuote("oceanCategory", localStorage.getItem("oceanCategory"));
         }
+        if (localStorage.getItem("groundDrayageEquipmentSize")) {
+          setQuote("groundDrayageEquipmentSize",
+            localStorage.getItem("groundDrayageEquipmentSize"));
+        }
+        if (localStorage.getItem("groundDrayageEquipmentType")) {
+          setQuote("groundDrayageEquipmentType",
+            localStorage.getItem("groundDrayageEquipmentType"));
+        }
 
         setStore({ localStorageCheck: true });
+      },
+      setStep: (value) => {
+        console.log("Step", value);
+        setStore({ step: value });
+        localStorage.setItem("step", value);
       },
       getMessage: async () => {
         try {
