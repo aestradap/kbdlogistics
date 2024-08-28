@@ -37,6 +37,7 @@ button:focus {
 }
 
 /* BackgroundVideo.css */
+/*-------------------------------------------------- */
 .video-container {
     position: absolute;
     top: 0;
@@ -55,6 +56,8 @@ button:focus {
     height: 100%;
     transform: translate(-50%, -50%);
     object-fit: cover;
+    outline: none;
+    pointer-events: none;
 }
 
 .video-overlay {
@@ -328,12 +331,16 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
+    border: none !important;
+    border-radius: 0px !important;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #212529;
+}
+
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
 }
