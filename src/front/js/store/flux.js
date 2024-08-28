@@ -207,7 +207,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         const { setQuote } = getActions();
 
         if (localStorage.getItem("step")) {
-          setStore({ step: localStorage.getItem("step") });
+          const stepNumber = localStorage.getItem("step");
+          setStore({ step: parseInt(stepNumber) });
         }
         if (localStorage.getItem("name")) {
           setQuote("name", localStorage.getItem("name"));

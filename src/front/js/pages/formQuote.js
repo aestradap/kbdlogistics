@@ -232,20 +232,20 @@ export const FormQuote = () => {
           <button type="button"
                   className="position-absolute top-0 btn-home-primary
                  translate-middle btn btn-sm btn-quote-progress rounded-pill"
-                  style={{ left: "25%" }}
+                  style={{ backgroundColor: step < 2 && "#6C757D", left: "25%" }}
                   onClick={() => handleStepClick(2)}
           >2
           </button>
           <button className="position-absolute top-0 btn-home-primary
                 translate-middle btn btn-sm btn-quote-progress rounded-pill"
-                  style={{ left: "50%" }}
+                  style={{ backgroundColor: step < 3 && "#6C757D", left: "50%" }}
                   onClick={() => handleStepClick(3)}
           >3
           </button>
           <button type="button"
                   className="position-absolute top-0 btn-home-primary
                 translate-middle btn btn-sm btn-quote-progress rounded-pill"
-                  style={{ left: "75%" }}
+                  style={{ backgroundColor: step < 4 && "#6C757D", left: "75%" }}
                   onClick={() => handleStepClick(4)}
           >4
           </button>
