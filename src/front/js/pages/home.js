@@ -11,12 +11,14 @@ import { BackgroundVideo } from "../component/BackgroundVideo";
 import boatVideo from "../../img/container-boat-video.mp4";
 import truckVideo from "../../img/container-truck-video.mp4";
 import portVideo from "../../img/container-port-video.mp4";
+import { useNavigate } from "react-router-dom";
 
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
   const [show, setShow] = useState(false);
   const modalCookies = useRef();
+  const navigate = useNavigate();
 
   const showModal = () => {
     const modalEle = modalCookies.current;
@@ -112,7 +114,7 @@ export const Home = () => {
             <div className="carousel-caption">
               <h1>Reaching Across The World.</h1>
               <p>Whatever you need, we've got it handled..</p>
-              <p><a className="btn btn-lg btn-home-primary" href="#">Explore our solutions</a></p>
+              <p><a className="btn btn-lg btn-home-primary" href="/about">Explore our solutions</a></p>
             </div>
           </div>
         </div>
@@ -124,7 +126,7 @@ export const Home = () => {
               <p>We offer real-time shipment tracking information, competitive pricing, and guaranteed delivery
                 security.</p>
               {/*<p><a className="btn btn-lg btn-primary" href="#">Browse gallery</a></p>*/}
-              <p><a className="btn btn-lg btn-home-primary" href="#">Connect whit us</a></p>
+              <p><a className="btn btn-lg btn-home-primary" href="/contact">Connect whit us</a></p>
             </div>
           </div>
         </div>
@@ -153,7 +155,7 @@ export const Home = () => {
           </a>
           <h2 className="fw-normal">Ground</h2>
           <p>Our ground freight services are not only fast but also efficient and consistently reliable.</p>
-          <p><a className="btn btn-home-primary" href="#">View details &raquo;</a></p>
+          <p><a className="btn btn-home-primary" href="/ground-cargo">View details &raquo;</a></p>
         </div>
 
         {/*.col-lg-4 */}
@@ -165,7 +167,7 @@ export const Home = () => {
           </a>
           <h2 className="fw-normal">Air</h2>
           <p>Air freight is one of the fastest and most reliable ways of transportation.</p>
-          <p><a className="btn btn-home-primary" href="#">View details &raquo;</a></p>
+          <p><a className="btn btn-home-primary" href="/air-cargo">View details &raquo;</a></p>
         </div>
 
         {/*.col-lg-4 */}
@@ -177,7 +179,7 @@ export const Home = () => {
           </a>
           <h2 className="fw-normal">Ocean</h2>
           <p>We entrust our cargo to the world's most elite ocean freight liners.</p>
-          <p><a className="btn btn-home-primary" href="#">View details &raquo;</a></p>
+          <p><a className="btn btn-home-primary" href="/ocean-cargo">View details &raquo;</a></p>
         </div>
       </div>
 
@@ -202,7 +204,9 @@ export const Home = () => {
                backgroundImage: `url(${greenTruck})`,
                backgroundSize: "cover",
                backgroundPosition: "center"
-             }}>
+             }}
+             onClick={() => navigate("/ground-cargo")}
+        >
         </div>
       </div>
 
@@ -227,7 +231,9 @@ export const Home = () => {
                backgroundImage: `url(${cargoPlane})`,
                backgroundSize: "cover",
                backgroundPosition: "center"
-             }}>
+             }}
+             onClick={() => navigate("/air-cargo")}
+        >
         </div>
       </div>
 
@@ -248,7 +254,9 @@ export const Home = () => {
           backgroundImage: `url(${containersBoat})`,
           backgroundSize: "cover",
           backgroundPosition: "center"
-        }}>
+        }}
+             onClick={() => navigate("/ocean-cargo")}
+        >
         </div>
       </div>
       <hr className="featurette-divider hr-home" />

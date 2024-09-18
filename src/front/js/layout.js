@@ -14,6 +14,9 @@ import { ThemeSwitcher } from "./component/ThemeSwitcher";
 import { FormQuote } from "./pages/formQuote";
 import ContactForm from "./pages/formContact";
 import AboutUs from "./pages/aboutUs";
+import { TruckCargo } from "./pages/truckCargo";
+import { OceanCargo } from "./pages/oceanCargo";
+import { AirCargo } from "./pages/airCargo";
 
 
 //create your first component
@@ -32,6 +35,9 @@ const Layout = () => {
           <Route element={<Home />} path="/" />
           <Route element={<Demo />} path="/demo" />
           <Route element={<FormQuote />} path="/quote" />
+          <Route element={<TruckCargo />} path="/ground-cargo" />
+          <Route element={<OceanCargo />} path="/ocean-cargo" />
+          <Route element={<AirCargo />} path="/air-cargo" />
           <Route element={<ContactForm />} path="/contact" />
           <Route element={<AboutUs />} path="/about" />
           <Route element={<Single />} path="/single/:theid" />
