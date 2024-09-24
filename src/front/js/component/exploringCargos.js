@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import boat from "../../img/containers-boat-2421992563.jpg";
 import truck from "../../img/green-truck1.jpg";
+import { useTranslation } from "react-i18next";
 
 
 export const ExploringCargos = ({
@@ -11,6 +12,7 @@ export const ExploringCargos = ({
                                 }) => {
 
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const handlerNavigate = (position) => {
     if (subject === "ground") {
       if (position === 1)
@@ -63,7 +65,7 @@ export const ExploringCargos = ({
                   </div>
                   <button className="btn btn-home-primary"
                           onClick={() => navigate("/quote")}>
-                    <b>Request a quote</b>
+                    <b>{t("request")}</b>
                   </button>
                 </div>
               </div>

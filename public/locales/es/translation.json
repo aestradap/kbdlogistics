@@ -1,0 +1,14 @@
+{
+  "request": "Solicitar cotización",
+  "welcome": "Welcome to our application!",
+  "description": "This is a multi-language app using i18next.",
+  "home": {
+    "title": "Home Page",
+    "subtitle": "This is the home page subtitle"
+  },
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  }
+}

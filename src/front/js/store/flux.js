@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      lng: "en",
       message: null,
       step: 1,
       localStorageCheck: false,
@@ -206,6 +207,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       updateQuoteFromLocalStorage: () => {
         const { setQuote } = getActions();
 
+        if (localStorage.getItem("lng")) {
+          const selectedLng = localStorage.getItem("lng");
+          setStore({ lng: selectedLng});
+        }
+
         if (localStorage.getItem("step")) {
           const stepNumber = localStorage.getItem("step");
           setStore({ step: parseInt(stepNumber) });
@@ -288,6 +294,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         } catch (error) {
           console.log("Error loading message from backend", error);
         }
+      },
+      setLng: (lngValue) => {
+        setStore({ lng: lngValue });
+        localStorage.setItem("lng", lngValue);
       },
       changeColor: (index, color) => {
         //get the store

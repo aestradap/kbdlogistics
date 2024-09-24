@@ -60,6 +60,20 @@ app.register_blueprint(api, url_prefix='/api')
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
 
+# Ruta base del directorio de traducciones
+TRANSLATIONS_DIR = os.path.join(os.getcwd(), 'public', 'locales')
+
+
+@app.route('/locales/<lang>/<filename>')
+def get_translation(lang, filename):
+    print(TRANSLATIONS_DIR)
+    translation_path = os.path.join(TRANSLATIONS_DIR, lang)
+    file_path = os.path.join(translation_path, filename)
+    if not os.path.isfile(file_path):
+        return jsonify({"error": "Archivo no encontrado"}), 404
+    return send_from_directory(translation_path, filename)
+
+
 # generate sitemap with all your endpoints
 @app.route('/')
 def sitemap():

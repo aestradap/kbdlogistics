@@ -27,16 +27,14 @@
 	"license": "ISC",
 	"devDependencies": {
 		"@babel/cli": "^7.16.0",
-		"@babel/core": "^7.16.0",
+		"@babel/core": "^7.25.2",
 		"@babel/eslint-parser": "^7.24.5",
-		"@babel/plugin-proposal-className-properties": "^7.16.0",
+		"@babel/plugin-transform-class-properties": "^7.25.4",
 		"@babel/plugin-transform-runtime": "^7.16.4",
-		"@babel/preset-env": "^7.16.4",
-		"@babel/preset-react": "^7.16.0",
+		"@babel/preset-env": "^7.25.4",
+		"@babel/preset-react": "^7.24.7",
 		"@babel/runtime": "^7.16.3",
-		"babel-eslint": "^10.1.0",
 		"babel-loader": "^8.2.3",
-		"babel-plugin-transform-class-properties": "^6.10.2",
 		"bc-console": "0.0.2",
 		"css-loader": "^6.5.1",
 		"dotenv-webpack": "^7.0.3",
@@ -65,7 +63,7 @@
 			"@babel/preset-react"
 		],
 		"plugins": [
-			"@babel/plugin-proposal-class-properties",
+			"@babel/plugin-transform-class-properties",
 			[
 				"@babel/plugin-transform-runtime",
 				{
@@ -76,13 +74,18 @@
 	},
 	"dependencies": {
 		"bootstrap": "^5.3.3",
+		"i18next": "^23.15.1",
+		"i18next-browser-languagedetector": "^8.0.0",
+		"i18next-http-backend": "^2.6.1",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-bootstrap": "^2.10.3",
 		"react-dom": "^16.8.4",
+		"react-i18next": "^15.0.2",
 		"react-phone-input-2": "^2.15.1",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
+		"rimraf": "^3.0.2",
 		"validator": "^13.12.0"
 	}
 }

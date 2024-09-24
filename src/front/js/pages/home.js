@@ -12,6 +12,7 @@ import boatVideo from "../../img/container-boat-video.mp4";
 import truckVideo from "../../img/container-truck-video.mp4";
 import portVideo from "../../img/container-port-video.mp4";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 export const Home = () => {
@@ -19,7 +20,7 @@ export const Home = () => {
   const [show, setShow] = useState(false);
   const modalCookies = useRef();
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   const showModal = () => {
     const modalEle = modalCookies.current;
     const bsModal = new bootstrap.Modal(modalEle, {
@@ -28,13 +29,11 @@ export const Home = () => {
     });
     bsModal.show();
   };
-
   const hideModal = () => {
     const modalEle = modalCookies.current;
     const bsModal = bootstrap.Modal.getInstance(modalEle);
     bsModal.hide();
   };
-
 
   useEffect(() => {
     setTimeout(() => {
@@ -42,19 +41,18 @@ export const Home = () => {
     }, 1000);
   }, []);
 
-
   return <>
 
-    <div show={show} class="modal fade"
+    <div show={show} className="modal fade"
          id="exampleModal" tabindex="-1"
          aria-labelledby="exampleModalLabel"
          aria-hidden="true"
          data-bs-backdrop="static"
          ref={modalCookies}
     >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
+      <div className="modal-dialog modal-lg">
+        <div className="modal-content">
+          <div className="modal-header">
             <h4 className="nav-link active mb-0"
                 style={{ color: "#ffffff" }}
                 aria-current="page" href="#"
@@ -62,21 +60,18 @@ export const Home = () => {
               <b>K&BD</b> LOGISTICS INC
             </h4>
           </div>
-          <div class="modal-body">
-            <label className="form-label" style={{ color: "#00A651" }}>
-              This website is currently under development.
-              Feel free to interact and learn more as the solution is finished.
-              Please note that the main functionalities will not be released
-              until after the testing phase is completed.
-              And of course be kind and <b>accept cookies</b>.
+          <div className="modal-body">
+            <label className="form-label" style={{ color: "#00A651", textAlign: "justify" }}>
+              {t("cookies_msg")}
+              <b>{t("cookies")}</b>.
             </label>
           </div>
-          <div class="modal-footer">
+          <div className="modal-footer">
 
             <p><a className="btn btn-lg btn-home-primary"
                   onClick={hideModal}
             >
-              Accept Cookies
+              {t("cookies_btn")}
             </a></p>
           </div>
         </div>
@@ -98,12 +93,12 @@ export const Home = () => {
           <BackgroundVideo video={boatVideo} />
           <div className="container">
             <div className="carousel-caption text-start">
-              <h1>Supply Chain Solutions.</h1>
+              <h1>{t("supply")}</h1>
               <p className="opacity-75">
-                We deliver essential supply chain solutions to the world's leading companies.
+                {t("supply_msg")}
               </p>
               <p><a className="btn btn-lg btn-home-primary" href="/quote">
-                Request a quote
+                {t("request")}
               </a></p>
             </div>
           </div>
@@ -112,9 +107,11 @@ export const Home = () => {
           <BackgroundVideo video={portVideo} />
           <div className="container">
             <div className="carousel-caption">
-              <h1>Reaching Across The World.</h1>
-              <p>Whatever you need, we've got it handled..</p>
-              <p><a className="btn btn-lg btn-home-primary" href="/about">Explore our solutions</a></p>
+              <h1>{t("reaching")}</h1>
+              <p>{t("reaching_msg")}</p>
+              <p><a className="btn btn-lg btn-home-primary" href="/about">
+                {t("explore")}
+              </a></p>
             </div>
           </div>
         </div>
@@ -122,28 +119,26 @@ export const Home = () => {
           <BackgroundVideo video={truckVideo} />
           <div className="container">
             <div className="carousel-caption text-end">
-              <h1>The client always comes first.</h1>
-              <p>We offer real-time shipment tracking information, competitive pricing, and guaranteed delivery
-                security.</p>
-              {/*<p><a className="btn btn-lg btn-primary" href="#">Browse gallery</a></p>*/}
-              <p><a className="btn btn-lg btn-home-primary" href="/contact">Connect whit us</a></p>
+              <h1>{t("client")}</h1>
+              <p>{t("client_msg")}</p>
+              <p><a className="btn btn-lg btn-home-primary" href="/contact">
+                {t("connect")}
+              </a></p>
             </div>
           </div>
         </div>
       </div>
       <button className="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Previous</span>
+        <span className="visually-hidden">{t("previous")}</span>
       </button>
       <button className="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Next</span>
+        <span className="visually-hidden">{t("next")}</span>
       </button>
     </div>
 
-
     {/*Marketing messaging and featurettes*/}
-
 
     <div className="container marketing">
       {/*Three columns of text below the carousel*/}
@@ -153,9 +148,11 @@ export const Home = () => {
             <img src={onlyTruck} alt="Logo"
                  className="d-inline-block align-text-top" />
           </a>
-          <h2 className="fw-normal">Ground</h2>
-          <p>Our ground freight services are not only fast but also efficient and consistently reliable.</p>
-          <p><a className="btn btn-home-primary" href="/ground-cargo">View details &raquo;</a></p>
+          <h2 className="fw-normal">{t("ground")}</h2>
+          <p style={{ textAlign: "justify" }}>{t("ground_msg")}</p>
+          <p><a className="btn btn-home-primary" href="/ground-cargo">
+            {t("view_details")}
+          </a></p>
         </div>
 
         {/*.col-lg-4 */}
@@ -165,9 +162,11 @@ export const Home = () => {
             <img src={onlyPlane} alt="Logo"
                  className="d-inline-block align-text-top" />
           </a>
-          <h2 className="fw-normal">Air</h2>
-          <p>Air freight is one of the fastest and most reliable ways of transportation.</p>
-          <p><a className="btn btn-home-primary" href="/air-cargo">View details &raquo;</a></p>
+          <h2 className="fw-normal">{t("air")}</h2>
+          <p style={{ textAlign: "justify" }}>{t("air_msg")}</p>
+          <p><a className="btn btn-home-primary" href="/air-cargo">
+            {t("view_details")}
+          </a></p>
         </div>
 
         {/*.col-lg-4 */}
@@ -177,9 +176,11 @@ export const Home = () => {
             <img src={onlyBoat} alt="Logo"
                  className="d-inline-block align-text-top" />
           </a>
-          <h2 className="fw-normal">Ocean</h2>
-          <p>We entrust our cargo to the world's most elite ocean freight liners.</p>
-          <p><a className="btn btn-home-primary" href="/ocean-cargo">View details &raquo;</a></p>
+          <h2 className="fw-normal">{t("ocean")}</h2>
+          <p style={{ textAlign: "justify" }}>{t("ocean_msg")}</p>
+          <p><a className="btn btn-home-primary" href="/ocean-cargo">
+            {t("view_details")}
+          </a></p>
         </div>
       </div>
 
@@ -190,13 +191,9 @@ export const Home = () => {
       <div className="row featurette">
         <div className="col-md-7">
           <h2 className="featurette-heading fw-normal lh-1">
-            The shortest routes to your location.</h2>
-          <p className="lead">
-            Our ground freight services are not only swift but also efficient
-            and consistently dependable. With routes spanning all states in the
-            United States, we ensure your products are delivered safely and
-            securely. Your trust is our top priority, and we guarantee that
-            everything you ship arrives in your hands without fail.
+            {t("home_ground_title")}</h2>
+          <p className="lead" style={{ textAlign: "justify" }}>
+            {t("home_ground_msg")}
           </p>
         </div>
         <div className="col-md-5"
@@ -215,15 +212,10 @@ export const Home = () => {
       <div className="row featurette">
         <div className="col-md-7 order-md-2">
           <h2 className="featurette-heading fw-normal lh-1">
-            Air Freight, Simplified.
+            {t("home_air_title")}
           </h2>
-          <p className="lead">
-            It is a fact that air freight is one of the fastest and most
-            reliable modes of transportation. We are focused on creating
-            reliable transport lines with the best companies in the world.
-            Our air freight service is among the fastest and safest in the
-            world. If you are looking for reliability and efficiency, you
-            are looking for K&BD LOGISTICS.
+          <p className="lead" style={{ textAlign: "justify" }}>
+            {t("home_air_msg")}
           </p>
         </div>
         <div className="col-md-5 order-md-1"
@@ -242,12 +234,10 @@ export const Home = () => {
       <div className="row featurette">
         <div className="col-md-7">
           <h2 className="featurette-heading fw-normal lh-1">
-            Easy Ocean Freight Solutions.
+            {t("home_ocean_title")}
           </h2>
-          <p className="lead">Our ocean freight is handled by the most capable
-            carriers. We maintain and cultivate the best relationships to
-            ensure meticulously cared-for transportation, guaranteeing you
-            will always receive your goods exactly as you expect them.
+          <p className="lead" style={{ textAlign: "justify" }}>
+            {t("home_ocean_msg")}
           </p>
         </div>
         <div className="col-md-5" style={{
@@ -264,21 +254,4 @@ export const Home = () => {
   </>;
 };
 
-// return (
-//   <div className="text-center mt-5">
-//     <h1>Hello Rigo!!</h1>
-//     <p>
-//       <img src={rigoImageUrl} />
-//     </p>
-//     <div className="alert alert-info">
-//       {store.message || "Loading message from the backend (make sure your python backend is running)..."}
-//     </div>
-//     <p>
-//       This boilerplate comes with lots of documentation:{" "}
-//       <a href="https://start.4geeksacademy.com/starters/react-flask">
-//         Read documentation
-//       </a>
-//     </p>
-//   </div>
-// );
 
