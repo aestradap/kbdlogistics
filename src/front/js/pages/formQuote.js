@@ -11,11 +11,12 @@ import { StepTwo } from "../component/Quote/StepTwo";
 import { StepThree } from "../component/Quote/StepThree";
 import { StepFour } from "../component/Quote/StepFour";
 import { Preview } from "../component/Quote/Preview";
+import { useTranslation } from "react-i18next";
 
 export const FormQuote = () => {
+    const { t } = useTranslation();
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
-    // const [step, setStep] = useState(store.quote.step);
     const { step } = store;
     const [formData, setFormData] = useState(store.quote);
     const [error, setError] = useState(false);
@@ -62,7 +63,6 @@ export const FormQuote = () => {
       setFormData({ ...formData, [name]: value });
     };
 
-
     const handleError = () => {
       if (step === 1) {
         if (store.quote.name === "" ||
@@ -108,12 +108,12 @@ export const FormQuote = () => {
         }
       } else if (step === 3 && store.quote.service === "Ground") {
         if (store.quote.groundCategory === "LTL") {
-          if (store.quote.groundLtlAmount === "" ||
+          if (store.quote.amount === "" ||
             store.quote.manyDifDimeCargo === "") {
             setError(true);
           } else {
             localStorage.setItem("groundCategory", store.quote.groundCategory);
-            localStorage.setItem("groundLtlAmount", store.quote.groundLtlAmount);
+            localStorage.setItem("amount", store.quote.amount);
             const dimensionsString = JSON.stringify(store.quote.manyDifDimeCargo);
             localStorage.setItem("manyDifDimeCargo", dimensionsString);
 
@@ -145,16 +145,18 @@ export const FormQuote = () => {
           setError(true);
         } else {
           localStorage.setItem("airProductKind", store.quote.airProductKind);
+          localStorage.setItem("amount", store.quote.amount);
           const dimensionsString = JSON.stringify(store.quote.manyDifDimeCargo);
           localStorage.setItem("manyDifDimeCargo", dimensionsString);
         }
       } else if (step === 3 && store.quote.service === "Ocean") {
-        if (store.quote.oceanCategory === "LTL") {
+        if (store.quote.oceanCategory === "LCL") {
           if (store.quote.oceanComority === "" ||
             store.quote.manyDifDimeCargo === "") {
             setError(true);
           } else {
             localStorage.setItem("oceanComority", store.quote.oceanComority);
+            localStorage.setItem("amount", store.quote.amount);
             const dimensionsString = JSON.stringify(store.quote.manyDifDimeCargo);
             localStorage.setItem("manyDifDimeCargo", dimensionsString);
           }
@@ -168,7 +170,6 @@ export const FormQuote = () => {
         }
       }
     };
-
 
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -201,12 +202,12 @@ export const FormQuote = () => {
               <use href="#exclamation-triangle-fill" />
             </svg>
             <div>
-              All fields are required, be sure to fill each space with specific information!
+              {t("error_msg1")}
             </div>
           </div>
         }
         <h2 className="fw-normal" style={{ marginBottom: "2rem" }}>
-          Request a quote
+          {t("request")}
         </h2>
         <div className="position-relative m-4">
           <div className="progress" role="progressbar"
@@ -254,22 +255,22 @@ export const FormQuote = () => {
         <div className="d-flex justify-content-between position-relative">
           <div className="text-center flex-fill">
             <h4 className="fw-normal" style={{ color: "#00A651" }}>
-              Info
+              {t("info")}
             </h4>
           </div>
           <div className="text-center flex-fill">
             <h4 className="fw-normal" style={{ color: "#00A651" }}>
-              Details
+              {t("details")}
             </h4>
           </div>
           <div className="text-center flex-fill">
             <h4 className="fw-normal" style={{ color: "#00A651" }}>
-              Preferences
+              {t("preferences")}
             </h4>
           </div>
           <div className="text-center flex-fill">
             <h4 className="fw-normal" style={{ color: "#00A651" }}>
-              Complete
+              {t("complete")}
             </h4>
           </div>
         </div>
@@ -304,7 +305,7 @@ export const FormQuote = () => {
             {step > 1 && (
               <button type="button" className="btn btn-secondary btn-previous"
                       onClick={handlePrevious}>
-                Previous
+                {t("previous")}
               </button>
             )}
             {step < 4 ? (
@@ -313,7 +314,7 @@ export const FormQuote = () => {
                           handleError();
                           handleNext(event);
                         }}>
-                  Next
+                  {t("next")}
                 </button>
               ) :
               <button className="btn btn-home-primary"
@@ -323,7 +324,7 @@ export const FormQuote = () => {
                         showModalPreview();
                       }}
               >
-                Preview
+                {t("preview")}
               </button>
             }
           </div>

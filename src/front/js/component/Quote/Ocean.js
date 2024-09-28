@@ -2,13 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../../store/appContext";
 import { Dimension } from "../dimension";
 import { Weight } from "../weight";
+import { useTranslation } from "react-i18next";
+import { ProductHandler } from "./productHandler";
 
 
 export const Ocean = ({ error, handleError }) => {
 
+  const { t } = useTranslation();
   const { store, actions } = useContext(Context);
   const {
-    oceanCategory, oceanComority,
+    oceanCategory, oceanComority, containerSize,
     manyDifDimeCargo, transportationArea
   } = store.quote;
   const handleInputChange = (event) => {
@@ -17,87 +20,87 @@ export const Ocean = ({ error, handleError }) => {
   };
 
   return <>
-    <div className="row">
-      <div className="col-sm-4 mb-3 mt-5">
-        <div className="form-check">
-          <input className="form-check-input"
-                 type="radio"
-                 id="flexRadioDefault3"
-                 name="oceanCategory"
-                 value="Full Container"
-                 checked={oceanCategory === "Full Container"}
-                 onChange={event => {
-                   handleInputChange(event);
-                 }}
-          />
-          <label className="form-check-label" htmlFor="flexRadioDefault3">
-            Full Container
-          </label>
+    <div className="container mb-3 mt-5">
+      <div className="row">
+        <div className="col-sm-4 mb-3 mt-5">
+          <div className="form-check">
+            <input className="form-check-input"
+                   type="radio"
+                   id="flexRadioDefault3"
+                   name="oceanCategory"
+                   value="Full Container"
+                   checked={oceanCategory === "Full Container"}
+                   onChange={event => {
+                     handleInputChange(event);
+                   }}
+            />
+            <label className="form-check-label" htmlFor="flexRadioDefault3">
+              {t("full_container")}
+            </label>
+          </div>
+          <div className="form-check">
+            <input className="form-check-input"
+                   type="radio"
+                   id="flexRadioDefault4"
+                   name="oceanCategory"
+                   value="LCL"
+                   checked={oceanCategory === "LCL"}
+                   onChange={event => {
+                     handleInputChange(event);
+                   }}
+            />
+            <label className="form-check-label" htmlFor="flexRadioDefault4">
+              {t("lcl")}
+            </label>
+          </div>
         </div>
-        <div className="form-check">
-          <input className="form-check-input"
-                 type="radio"
-                 id="flexRadioDefault4"
-                 name="oceanCategory"
-                 value="LTL"
-                 checked={oceanCategory === "LTL"}
-                 onChange={event => {
-                   handleInputChange(event);
-                 }}
-          />
-          <label className="form-check-label" htmlFor="flexRadioDefault4">
-            LTL
-          </label>
-        </div>
+        {oceanCategory === "LCL" ?
+          <>
+            <div className="col-4 mb-3 mt-5">
+              <label className="form-label">
+                {t("commodity")}
+              </label>
+              <input style={{ border: error && "2px solid red" }}
+                     type="text" className="form-control"
+                     name="oceanComority"
+                     value={oceanComority}
+                     onChange={handleInputChange} required
+              />
+              {error ?
+                <div id="nameHelp" style={{ color: "red" }} className="form-text">
+                  {t("error_msg2")}
+                </div> :
+                <div id="nameHelp" className="form-text">
+                  {t("product_define")}
+                </div>
+              }
+            </div>
+            <div className="col-sm-4 mb-3 mt-3" />
+            <ProductHandler error={error} handleError={handleError} />
+          </> :
+          <>
+            <div className="col-sm-4 mb-3 mt-5">
+              <label className="form-label">
+                {t("container_size")}
+              </label>
+              <select className="form-select" aria-label="Default select example"
+                      name="groundFullTruckTrailerSize"
+                      value={containerSize}
+                      onChange={handleInputChange} required
+              >
+                <option value="20'" selected>20'</option>
+                <option value="40'">40'</option>
+                <option value="45'">45'</option>
+                <option value="40HQ'">40HQ'</option>
+                <option value="open top'">open top'</option>
+                <option value="refrigerated">refrigerated</option>
+                <option value="Other">{t("other")}</option>
+
+              </select>
+            </div>
+          </>
+        }
       </div>
-      {oceanCategory === "LTL" ?
-        <>
-          <div className="col-sm-4 mb-3 mt-3">
-            <label className="form-label">Commodity</label>
-            <input type="text" className="form-control"
-                   style={{ border: error && "2px solid red" }}
-                   aria-describedby="weight"
-                   name="oceanComority"
-                   value={oceanComority}
-                   onChange={event => handleInputChange(event)}
-            />
-            {error && (
-              <div id="nameHelp" style={{ color: "red" }} className="form-text">
-                This is a required
-                field
-              </div>
-            )}
-          </div>
-          <div className="col-sm-4 mb-3 mt-3" />
-          <div className="col mb-3 mt-5">
-            <Dimension error={error} handleError={handleError}
-                       item={manyDifDimeCargo[0]}
-                       myKey={0}
-            />
-          </div>
-        </> :
-        <>
-          <div className="col-sm-6 mb-3 mt-5">
-            <select className="form-select" aria-label="Default select example"
-                    style={{ border: error && "2px solid red" }}
-                    name="transportationArea"
-                    value={transportationArea}
-                    onChange={handleInputChange} required
-            >
-              <option value="" selected>Transportation area</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-            {error && (
-              <div id="nameHelp" style={{ color: "red" }} className="form-text">
-                This is a required
-                field
-              </div>
-            )}
-          </div>
-        </>
-      }
     </div>
   </>;
 };

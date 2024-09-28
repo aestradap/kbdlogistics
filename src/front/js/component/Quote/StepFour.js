@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../../store/appContext";
+import { useTranslation } from "react-i18next";
 
-export const StepFour = ({
-                           error, handleError
-                         }) => {
+export const StepFour = handleError => {
 
+  const { t } = useTranslation();
   const { store, actions } = useContext(Context);
   const { comments } = store.quote;
   const handleInputChange = (event) => {
@@ -14,7 +14,7 @@ export const StepFour = ({
 
   return <div className="container text-center">
     <label className="form-label" style={{ color: "#00A651" }}>
-      "Before submitting, please feel free to provide any details or comments you think we should consider."
+      {t("cleary_msg")}
     </label>
     <div className="form-floating">
       <textarea className="form-control mt-5 myTextArea"
@@ -24,7 +24,9 @@ export const StepFour = ({
                 value={comments}
                 onChange={handleInputChange}
       />
-      <label htmlFor="floatingTextarea2">Comments</label>
+      <label htmlFor="floatingTextarea2">
+        {t("comments")}
+      </label>
     </div>
   </div>;
 };

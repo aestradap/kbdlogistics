@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
 import { Ocean } from "./Ocean";
+import { useTranslation } from "react-i18next";
 
 export const Preview = () => {
-
+  const { t } = useTranslation();
   const { store, actions } = useContext(Context);
   // Info step
   const { name, email, phone, address } = store.quote;
@@ -17,176 +18,171 @@ export const Preview = () => {
   const {
     groundCategory, groundDrayageEquipmentSize, groundDrayageEquipmentType,
     groundFullTruckEquipment, groundFullTruckTrailerSize,
-    groundLtlAmount, groundLtlManyCargoes, manyDifDimeCargo
+    amount, manyCargoes, manyDifDimeCargo
   } = store.quote;
   // Preferences Air
   const { airProductKind } = store.quote;
   // Preferences Ocean
-  const { oceanCategory, oceanComority, transportationArea } = store.quote;
+  const { oceanCategory, oceanComority, containerSize } = store.quote;
   const { comments } = store.quote;
-
-  useEffect(() => {
-
-
-
-  }, []);
 
   return (
     <div>
-      <h2>Review Your Data</h2>
+      <h2>{t("review")}</h2>
       <div className="scrollspy-example bg-body-tertiary rounded-2">
 
         {/*Info*/}
         <h4 className="nav-link active mb-0 p-0"
             aria-current="page" href="#"
         >
-          <b>Info</b>
+          <b>{t("info")}</b>
         </h4>
         <hr style={{ color: "#00A651", marginTop: 5 }} />
-        <p><strong>Name:</strong> {name}</p>
-        <p><strong>Email:</strong> {email}</p>
-        <p><strong>Address:</strong> {address}</p>
-        <p><strong>Phone:</strong> {phone}</p>
+        <p><strong>{t("name")}:</strong> {name}</p>
+        <p><strong>{t("email")}:</strong> {email}</p>
+        <p><strong>{t("address")}:</strong> {address}</p>
+        <p><strong>{t("phone")}:</strong> {phone}</p>
 
         {/*Details*/}
         <h4 className="nav-link active mb-0 p-0"
             aria-current="page" href="#"
         >
-          <b>Details</b>
+          <b>{t("details")}</b>
         </h4>
         <hr style={{ color: "#00A651", marginTop: 5 }} />
-        <p><strong>Origin: </strong>{`${originAddress}, ${originZip}, 
-          ${originCity}, ${originState}, ${originCountry}.`}
+        <p><strong>{t("origin")}: </strong>{`${originAddress}.`}
         </p>
-        <p><strong>Destiny: </strong>{`${destinyAddress}, ${destinyZip}, 
-           ${destinyCity}, ${destinyState}, ${destinyCountry}.`}
+        <p><strong>{t("destiny")}: </strong>{`${destinyAddress}.`}
         </p>
-        <p><strong>Service:</strong> {service}</p>
-        <p><strong>Movement:</strong> {movement}</p>
+        <p><strong>{t("service")}:</strong> {service}</p>
+        <p><strong>{t("movement")}:</strong> {movement}</p>
 
         {/*Preferences*/}
         <h4 className="nav-link active mb-0 p-0"
             aria-current="page" href="#"
         >
-          <b>Preferences</b>
+          <b>{t("preferences")}</b>
         </h4>
         <hr style={{ color: "#00A651", marginTop: 5 }} />
         {service === "Ground" &&
-          <p><strong>Category: </strong>
+          <p><strong> <b>{t("category")}</b>: </strong>
             {groundCategory}
           </p>}
         {service === "Ocean" &&
-          <p><strong>Category: </strong>
+          <p><strong>{t("category")}: </strong>
             {oceanCategory}
           </p>
         }
         {service === "Ground" && groundCategory === "LTL" ?
           <>
-            <p><strong>Amount: </strong>
-              {groundLtlAmount}
+            <p><strong>{t("amount")}: </strong>
+              {amount}
             </p>
-            <p><strong>Dimensions: </strong>
-              <ol className={`list-group ${groundLtlManyCargoes && "list-group-numbered"}`}>
+            <p><strong>{t("dimensions")}: </strong>
+              <ol className={`list-group ${manyCargoes && "list-group-numbered"}`}>
                 {manyDifDimeCargo.map((item, key) =>
                   <li className="list-group-item">
                     <div className="container text-center">
                       <div className="row" key={key}>
                         <div className="col">
-                          High: {item.high}
+                          {t("high")}: {item.high}
                         </div>
                         <div className="col">
-                          Long: {item.long}
+                          {t("long")}: {item.long}
                         </div>
                         <div className="col">
-                          Weight: {item.weight}
+                          {t("weight")}: {item.weight}
                         </div>
                         <div className="col">
-                          Wide: {item.wide}
+                          {t("wide")}: {item.wide}
                         </div>
                       </div>
                     </div>
                   </li>
                 )}
               </ol>
-
             </p>
           </> : service === "Ground" && groundCategory === "Full truck" ?
             <>
-              <p><strong>Equipment: </strong>
+              <p><strong>{t("equipment")}: </strong>
                 {groundFullTruckEquipment}
               </p>
-              <p><strong>Trailer size: </strong>
+              <p><strong>{t("trailer_size")}: </strong>
                 {groundFullTruckTrailerSize}
               </p>
             </> : service === "Ground" && groundCategory === "Drayage" &&
             <>
-              <p><strong>Equipment size: </strong>
+              <p><strong>{t("equipment_size")}: </strong>
                 {groundDrayageEquipmentSize}
               </p>
-              <p><strong>Equipment type: </strong>
+              <p><strong>{t("equipment_type")}: </strong>
                 {groundDrayageEquipmentType}
               </p>
             </>
         }
-        {service === "Ocean" && oceanCategory === "LTL" ?
+        {service === "Ocean" && oceanCategory === "LCL" ?
           <>
-            <p><strong>Commodity: </strong>
+            <p><strong>{t("commodity")}: </strong>
               {oceanComority}
             </p>
-            <p><strong>Dimensions: </strong>
-              <ol className="list-group">
-                <li className="list-group-item">
-                  <div className="container text-center">
-                    <div className="row">
-                      <div className="col">
-                        High: {manyDifDimeCargo[0].high}
-                      </div>
-                      <div className="col">
-                        Long: {manyDifDimeCargo[0].long}
-                      </div>
-                      <div className="col">
-                        Weight: {manyDifDimeCargo[0].weight}
-                      </div>
-                      <div className="col">
-                        Wide: {manyDifDimeCargo[0].wide}
+            <p><strong>{t("dimensions")}: </strong>
+              <ol className={`list-group ${manyCargoes && "list-group-numbered"}`}>
+                {manyDifDimeCargo.map((item, key) =>
+                  <li className="list-group-item">
+                    <div className="container text-center">
+                      <div className="row" key={key}>
+                        <div className="col">
+                          {t("high")}: {item.high}
+                        </div>
+                        <div className="col">
+                          {t("long")}: {item.long}
+                        </div>
+                        <div className="col">
+                          {t("weight")}: {item.weight}
+                        </div>
+                        <div className="col">
+                          {t("wide")}: {item.wide}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
+                  </li>
+                )}
               </ol>
             </p>
           </> : service === "Ocean" && oceanCategory === "Full Container" &&
           <>
-            <p><strong>Transportation Area: </strong>
-              {transportationArea}
+            <p><strong>{t("container_size")}: </strong>
+              {containerSize}
             </p>
           </>
         }
         {service === "Air" &&
           <>
-            <p><strong>Product: </strong>
+            <p><strong>{t("commodity")}: </strong>
               {airProductKind}
             </p>
-            <p><strong>Dimensions: </strong>
-              <ol className="list-group">
-                <li className="list-group-item">
-                  <div className="container text-center">
-                    <div className="row">
-                      <div className="col">
-                        High: {manyDifDimeCargo[0].high}
-                      </div>
-                      <div className="col">
-                        Long: {manyDifDimeCargo[0].long}
-                      </div>
-                      <div className="col">
-                        Weight: {manyDifDimeCargo[0].weight}
-                      </div>
-                      <div className="col">
-                        Wide: {manyDifDimeCargo[0].wide}
+            <p><strong>{t("dimensions")}: </strong>
+              <ol className={`list-group ${manyCargoes && "list-group-numbered"}`}>
+                {manyDifDimeCargo.map((item, key) =>
+                  <li className="list-group-item">
+                    <div className="container text-center">
+                      <div className="row" key={key}>
+                        <div className="col">
+                          {t("high")}: {item.high}
+                        </div>
+                        <div className="col">
+                          {t("long")}: {item.long}
+                        </div>
+                        <div className="col">
+                          {t("weight")}: {item.weight}
+                        </div>
+                        <div className="col">
+                          {t("wide")}: {item.wide}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
+                  </li>
+                )}
               </ol>
             </p>
           </>
@@ -196,7 +192,7 @@ export const Preview = () => {
             <h4 className="nav-link active mb-0 p-0"
                 aria-current="page" href="#"
             >
-              <b>Comments</b>
+              <b>{t("comments")}</b>
             </h4>
             <hr style={{ color: "#00A651", marginTop: 5 }} />
             <p>{comments}</p>

@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { useTranslation } from "react-i18next";
 
 
 export const Dimension = ({ error, handleError, item, myKey }) => {
-
+  const { t } = useTranslation();
   const { store, actions } = useContext(Context);
-  const {
-    manyDifDimeCargo
-  } = store.quote;
-
   const [dimensions, setDimensions] = useState({
     long: item ? item.long : "",
     high: item ? item.high : "",
@@ -17,16 +14,12 @@ export const Dimension = ({ error, handleError, item, myKey }) => {
   });
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    // Actualiza el estado local
     setDimensions({
       ...dimensions,
       [name]: value
     });
-    // Actualiza el store usando la acción
     actions.setItemManyDifDimeCargo(myKey, name, value);
-    // Limpia el error si hay cambios
     handleError(false);
-    console.log("manyDifDimeCargo", manyDifDimeCargo)
   };
 
   return <>
@@ -34,7 +27,7 @@ export const Dimension = ({ error, handleError, item, myKey }) => {
       <div className="row">
         <div className="col">
           <label htmlFor="exampleInputName" className="form-label">
-            Long
+            {t("long")}
           </label>
           <input style={{ border: error && "2px solid red" }}
                  type="text" className="form-control"
@@ -42,14 +35,16 @@ export const Dimension = ({ error, handleError, item, myKey }) => {
                  value={dimensions.long}
                  onChange={handleInputChange} required
           />
-          {!myKey ? (
-            <div className="form-text">Define cargo dimensions.</div>
-          ) : <label className="form-label" />
-          }
+          {/*{!myKey ? (*/}
+          {/*  <div className="form-text">*/}
+          {/*    {t("dimension_define")}*/}
+          {/*  </div>*/}
+          {/*) : <label className="form-label" />*/}
+          {/*}*/}
         </div>
         <div className="col">
           <label className="form-label">
-            High
+            {t("high")}
           </label>
           <input style={{ border: error && "2px solid red" }}
                  type="text" className="form-control"
@@ -60,7 +55,7 @@ export const Dimension = ({ error, handleError, item, myKey }) => {
         </div>
         <div className="col">
           <label className="form-label">
-            Wide
+            {t("wide")}
           </label>
           <input style={{ border: error && "2px solid red" }}
                  type="text" className="form-control"
@@ -71,7 +66,7 @@ export const Dimension = ({ error, handleError, item, myKey }) => {
         </div>
         <div className="col">
           <label className="form-label">
-            Weight
+            {t("weight")}
           </label>
           <input type="text" className="form-control"
                  style={{ border: error && "2px solid red" }}
@@ -81,7 +76,7 @@ export const Dimension = ({ error, handleError, item, myKey }) => {
                  onChange={handleInputChange} required
           />
           {error ?
-            <div className="form-text">Define weight of the cargo?</div>
+            <div className="form-text">{t("dimension_weight")}</div>
             : <label className="form-label" />
           }
         </div>

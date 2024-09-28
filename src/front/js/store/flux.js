@@ -32,7 +32,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         dimensionWeight: "",
         groundCategory: "LTL",
         groundLtlAmount: 1,
+        amount: 1,
         groundLtlManyCargoes: false,
+        manyCargoes: false,
         manyDifDimeCargo: [{
           long: "",
           high: "",
@@ -44,9 +46,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         groundDrayageEquipmentSize: "",
         groundDrayageEquipmentType: "",
         airProductKind: "",
-        oceanCategory: "LTL",
+        oceanCategory: "LCL",
+        containerSize: "",
         oceanComority: "",
-        transportationArea: "",
         comments: ""
 
       },
@@ -116,14 +118,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           getActions().updateFinalQuote("Trailer size", myQuote.groundFullTruckTrailerSize);
         } else if (myQuote.service === "Ground" && myQuote.groundCategory === "Drayage") {
           getActions().updateFinalQuote("Equipment", myQuote.groundFullTruckEquipment);
-          getActions().updateFinalQuote("Trailer size", myQuote.groundFullTruckTrailerSize);
+          getActions().updateFinalQuote("Trailer size", myQuote.tra);
         }
 
-        if (myQuote.service === "Ocean" && myQuote.oceanCategory === "LTL") {
+        if (myQuote.service === "Ocean" && myQuote.oceanCategory === "LCL") {
           getActions().updateFinalQuote("Commodity", myQuote.groundFullTruckEquipment);
           getActions().updateFinalQuote("manyDifDimeCargo", myQuote.manyDifDimeCargo);
         } else if (myQuote.service === "Ocean" && myQuote.oceanCategory === "Full Container") {
-          getActions().updateFinalQuote("Transportation Area", myQuote.transportationArea);
+          getActions().updateFinalQuote("Container size", myQuote.containerSize);
         }
 
         if (myQuote.service === "Air") {
@@ -190,7 +192,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({
           quote: {
             ...store.quote,
-            groundLtlAmount: amount
+            amount: amount
           }
         });
       },
@@ -231,32 +233,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (localStorage.getItem("originAddress")) {
           setQuote("originAddress", localStorage.getItem("originAddress"));
         }
-        if (localStorage.getItem("originZip")) {
-          setQuote("originZip", localStorage.getItem("originZip"));
-        }
-        if (localStorage.getItem("originCity")) {
-          setQuote("originCity", localStorage.getItem("originCity"));
-        }
-        if (localStorage.getItem("originState")) {
-          setQuote("originState", localStorage.getItem("originState"));
-        }
-        if (localStorage.getItem("originCountry")) {
-          setQuote("originCountry", localStorage.getItem("originCountry"));
-        }
         if (localStorage.getItem("destinyAddress")) {
           setQuote("destinyAddress", localStorage.getItem("destinyAddress"));
-        }
-        if (localStorage.getItem("destinyZip")) {
-          setQuote("destinyZip", localStorage.getItem("destinyZip"));
-        }
-        if (localStorage.getItem("destinyCity")) {
-          setQuote("destinyCity", localStorage.getItem("destinyCity"));
-        }
-        if (localStorage.getItem("destinyState")) {
-          setQuote("destinyState", localStorage.getItem("destinyState"));
-        }
-        if (localStorage.getItem("destinyCountry")) {
-          setQuote("destinyCountry", localStorage.getItem("destinyCountry"));
         }
         if (localStorage.getItem("movement")) {
           setQuote("movement", localStorage.getItem("movement"));
