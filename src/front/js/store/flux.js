@@ -31,9 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         dimensionWide: "",
         dimensionWeight: "",
         groundCategory: "LTL",
-        groundLtlAmount: 1,
         amount: 1,
-        groundLtlManyCargoes: false,
         manyCargoes: false,
         manyDifDimeCargo: [{
           long: "",
@@ -81,7 +79,28 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
 
-        if (response.status !== 201) {
+        if (response.status !== 200) {
+          console.log("Failed to send email.");
+          return false;
+        } else {
+          console.log("Email send successfully.");
+          return true;
+        }
+      },
+
+      sendContact: async (data) => {
+
+        const response = await fetch(
+          process.env.BACKEND_URL + "api/send-contact-email", {
+            method: "POST",
+            body: JSON.stringify( data ),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        );
+
+        if (response.status !== 200) {
           console.log("Failed to send email.");
           return false;
         } else {
@@ -117,12 +136,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           getActions().updateFinalQuote("Equipment", myQuote.groundFullTruckEquipment);
           getActions().updateFinalQuote("Trailer size", myQuote.groundFullTruckTrailerSize);
         } else if (myQuote.service === "Ground" && myQuote.groundCategory === "Drayage") {
-          getActions().updateFinalQuote("Equipment", myQuote.groundFullTruckEquipment);
-          getActions().updateFinalQuote("Trailer size", myQuote.tra);
+          getActions().updateFinalQuote("Equipment", myQuote.groundDrayageEquipmentSize);
+          getActions().updateFinalQuote("Equipment size", myQuote.groundDrayageEquipmentType);
         }
 
         if (myQuote.service === "Ocean" && myQuote.oceanCategory === "LCL") {
-          getActions().updateFinalQuote("Commodity", myQuote.groundFullTruckEquipment);
+          getActions().updateFinalQuote("Commodity", myQuote.oceanComority);
           getActions().updateFinalQuote("manyDifDimeCargo", myQuote.manyDifDimeCargo);
         } else if (myQuote.service === "Ocean" && myQuote.oceanCategory === "Full Container") {
           getActions().updateFinalQuote("Container size", myQuote.containerSize);
@@ -196,6 +215,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
       },
+
       setQuote: (myKey, value) => {
         const store = getStore();
         setStore({
@@ -211,7 +231,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         if (localStorage.getItem("lng")) {
           const selectedLng = localStorage.getItem("lng");
-          setStore({ lng: selectedLng});
+          setStore({ lng: selectedLng });
         }
 
         if (localStorage.getItem("step")) {
@@ -245,6 +265,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (localStorage.getItem("oceanCategory")) {
           setQuote("oceanCategory", localStorage.getItem("oceanCategory"));
         }
+        if (localStorage.getItem("airProductKind")) {
+          setQuote("airProductKind", localStorage.getItem("airProductKind"));
+        }
         if (localStorage.getItem("groundDrayageEquipmentSize")) {
           setQuote("groundDrayageEquipmentSize",
             localStorage.getItem("groundDrayageEquipmentSize"));
@@ -253,14 +276,25 @@ const getState = ({ getStore, getActions, setStore }) => {
           setQuote("groundDrayageEquipmentType",
             localStorage.getItem("groundDrayageEquipmentType"));
         }
+        if (localStorage.getItem("manyDifDimeCargo")) {
+          const dimensionsString = localStorage.getItem("manyDifDimeCargo");
+          const dimensionsObject = JSON.parse(dimensionsString);
+          setQuote("manyDifDimeCargo", dimensionsObject);
+        }
+        if (localStorage.getItem("comments")) {
+          setQuote("comments",
+            localStorage.getItem("comments"));
+        }
 
         setStore({ localStorageCheck: true });
       },
+
       setStep: (value) => {
         console.log("Step", value);
         setStore({ step: value });
         localStorage.setItem("step", value);
       },
+
       getMessage: async () => {
         try {
           // fetching data from the backend
@@ -273,10 +307,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Error loading message from backend", error);
         }
       },
+
       setLng: (lngValue) => {
         setStore({ lng: lngValue });
         localStorage.setItem("lng", lngValue);
       },
+
       changeColor: (index, color) => {
         //get the store
         const store = getStore();

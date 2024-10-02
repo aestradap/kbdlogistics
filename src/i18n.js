@@ -75,6 +75,7 @@ const resources = {
       preview: "Preview",
       close: "Close",
       submit: "Submit",
+      send: "Enviar",
       error_msg1: "All fields are required, be sure to fill each space with specific information!",
       error_msg2: " This is a required field",
 
@@ -83,6 +84,7 @@ const resources = {
       email:"Email",
       address: "address",
       phone: "Phone",
+      message:"Message",
 
       //STEP-2
       origin: "Origin",
@@ -125,7 +127,13 @@ const resources = {
       comments:"Comments",
       cleary_msg: "Before submitting your request, please feel free to provide any details or comments you think are relevant.",
       review: "Review your data",
-      category:"Category"
+      category:"Category",
+
+      //CONTACT-US
+      contact_msg: "Describe your situation in the form below, and we will respond shortly with professional assistance. If needed, we can schedule a meeting.",
+      contact_msg2: "Your information and the provided description have been submitted successfully. We will contact you within 24 hours on business days.",
+      contact_msg3: "An error occurred while submitting your information. Please try again later. You can also make a phone call or write directly to ",
+
 
 
 
@@ -200,6 +208,12 @@ const resources = {
       error_msg1: "Todos los campos son obligatorios, asegúrate de llenar cada espacio con información específica.",
       error_msg2: "Este es un campo obligatorio",
 
+      // STEP-1
+      name: "Nombre",
+      email: "Correo electrónico",
+      phone: "Teléfono",
+      message: "Mensaje",
+
       // STEP-2
       origin: "Origen",
       destiny: "Destino",
@@ -242,6 +256,10 @@ const resources = {
       category:"Categoría",
       dimensions: "Dimensiones",
 
+      //CONTACT-US
+      contact_msg: "Descríbenos tu situación en el siguiente formulario y te responderemos en breve con asistencia profesional. Si es necesario, podemos agendar una reunión.",
+      contact_msg2: "Tus datos y la descripción proporcionada se han enviado correctamente. Nos pondremos en contacto contigo en un plazo de 24 horas en días laborables.",
+      contact_msg3: "Ha ocurrido un error al enviar sus datos. Por favor, inténtelo más tarde. También puede hacer una llamada telefónica o escribir directamente al correo ",
 
 
 

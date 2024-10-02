@@ -35,7 +35,8 @@ def send_email():
         msg = Message(
             'Form Data Submission',
             sender='ejimenez@kbdlogistics.com',
-            recipients=['aestradap17@gmail.com']  # Cambia esto a la dirección deseada
+            recipients=['aestradap17@gmail.com', 'Op02@kbdlogistics.com']
+
         )
 
         # Agregar la sección y el contenido del mensaje
@@ -70,6 +71,45 @@ def send_email():
 
     except Exception as e:
         return jsonify({'status': 'Failed to send email', 'error': str(e)}), 500
+
+# Endpoint para manejar el envío informacion de contacto al email
+@api.route('/send-contact-email', methods=['POST'])
+def send_contact_email():
+    data = request.json
+    print("Contact payload received:", data)
+
+    try:
+        msg = Message(
+            'New Contact Request',
+            sender='ejimenez@kbdlogistics.com',
+            recipients=['aestradap17@gmail.com', 'Op02@kbdlogistics.com']
+        )
+
+        # Formatear la información de contacto
+        name = data.get('name', 'No name provided')
+        email = data.get('email', 'No email provided')
+        phone = data.get('phone', 'No phone provided')
+        message = data.get('message', 'No message provided')
+
+        msg_body = f"""
+        <html>
+        <body>
+            <p>New contact request received:</p>
+            <strong>Name:</strong> {name}<br>
+            <strong>Email:</strong> {email}<br>
+            <strong>Phone:</strong> {phone}<br>
+            <strong>Message:</strong> {message}<br>
+        </body>
+        </html>
+        """
+
+        msg.html = msg_body  # Usar HTML en el cuerpo del mensaje
+
+        mail.send(msg)
+        return jsonify({'status': 'Contact email sent successfully!'}), 200
+
+    except Exception as e:
+        return jsonify({'status': 'Failed to send contact email', 'error': str(e)}), 500
 
 # @api.route('/send-email', methods=['POST'])
 # def send_email():

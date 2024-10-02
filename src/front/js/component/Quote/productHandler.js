@@ -7,7 +7,7 @@ export const ProductHandler = ({ error, handleError }) => {
   const { t } = useTranslation();
   const { store, actions } = useContext(Context);
   const {
-    amount, manyCargoes, manyDifDimeCargo
+    amount, manyCargoes
   } = store.quote;
   const dimensions = {
     long: "",
@@ -82,8 +82,7 @@ export const ProductHandler = ({ error, handleError }) => {
           <div className="form-check m-0 ">
             <input className="form-check-input" type="checkbox"
                    checked={manyCargoes}
-                   name="groundLtlManyCargoes"
-                   id="flexCheckDefault"
+                   name="manyCargoes"
                    onChange={event => {
                      handleDimensions(amount);
                    }}
@@ -100,13 +99,13 @@ export const ProductHandler = ({ error, handleError }) => {
           <div className="scrollspy-example bg-body-tertiary rounded-2"
                style={{ maxHeight: "300px", overflowY: "auto" }}>
             <ol className="list-group list-group-numbered">
-              {manyDifDimeCargo && store.quote.manyDifDimeCargo.length ?
+              { store.quote.manyDifDimeCargo.length ?
                 store.quote.manyDifDimeCargo.map((item, i) => (
                   <Dimension error={error}
                              handleError={handleError}
                              key={i}
                              myKey={i}
-                             value={item}
+                             item={item}
                   />
                 ))
                 :

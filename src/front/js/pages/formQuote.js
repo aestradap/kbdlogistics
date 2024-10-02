@@ -80,27 +80,11 @@ export const FormQuote = () => {
         }
       } else if (step === 2) {
         if (store.quote.originAddress === "" ||
-          store.quote.originZip === "" ||
-          store.quote.originCity === "" ||
-          store.quote.originState === "" ||
-          store.quote.originCountry === "" ||
-          store.quote.destinyAddress === "" ||
-          store.quote.destinyZip === "" ||
-          store.quote.destinyCity === "" ||
-          store.quote.destinyState === "" ||
-          store.quote.destinyCountry === "") {
+          store.quote.destinyAddress === "") {
           setError(true);
         } else {
           localStorage.setItem("originAddress", store.quote.originAddress);
-          localStorage.setItem("originZip", store.quote.originZip);
-          localStorage.setItem("originCity", store.quote.originCity);
-          localStorage.setItem("originState", store.quote.originState);
-          localStorage.setItem("originCountry", store.quote.originCountry);
           localStorage.setItem("destinyAddress", store.quote.destinyAddress);
-          localStorage.setItem("destinyZip", store.quote.destinyZip);
-          localStorage.setItem("destinyCity", store.quote.destinyCity);
-          localStorage.setItem("destinyState", store.quote.destinyState);
-          localStorage.setItem("destinyCountry", store.quote.destinyCountry);
           localStorage.setItem("movement", store.quote.movement);
           localStorage.setItem("service", store.quote.service);
 
@@ -161,23 +145,26 @@ export const FormQuote = () => {
             localStorage.setItem("manyDifDimeCargo", dimensionsString);
           }
         } else if (store.quote.oceanCategory === "Full Container") {
-          if (store.quote.transportationArea === "") {
+          if (store.quote.containerSize === "") {
             setError(true);
           } else {
-            localStorage.setItem("transportationArea",
-              store.quote.transportationArea);
+            localStorage.setItem("containerSize",
+              store.quote.containerSize);
           }
         }
+      } else if (step === 4) {
+        localStorage.setItem("comments", store.quote.comments);
       }
     };
 
     const handleSubmit = async (event) => {
       event.preventDefault();
       // handle form submission
-      console.log("MyQuote-after-send: ", store.quote);
+      console.log("MyQuote-after-send: ", store.finalQuote);
       const response = await actions.sendQuote();
       if (response) {
         actions.setStore({ sending: false });
+        localStorage.clear();
         console.log("Success");
       } else {
         actions.setStore({ sending: false });
@@ -297,7 +284,7 @@ export const FormQuote = () => {
 
           {/*step4*/}
           {step >= 4 && (<>
-              <StepFour handleInputChange={handleInputChange} />
+              <StepFour error={error} handleError={setError} />
             </>
           )}
 
@@ -319,6 +306,7 @@ export const FormQuote = () => {
               ) :
               <button className="btn btn-home-primary"
                       onClick={(event) => {
+                        handleError();
                         handleNext(event);
                         actions.buildFinalQuote();
                         showModalPreview();
@@ -364,12 +352,12 @@ export const FormQuote = () => {
                                 handlePrevious();
                               }}
                               data-bs-dismiss="modal">
-                        Close
+                        {t("close")}
                       </button>
                       <button className="btn btn-home-primary"
                               type="submit"
                       >
-                        Submit
+                        {t("send")}
                       </button>
                     </>
                   }

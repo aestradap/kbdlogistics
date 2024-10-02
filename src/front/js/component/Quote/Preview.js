@@ -11,9 +11,9 @@ export const Preview = () => {
   // Details step
   const { service, movement } = store.quote;
   // Origin Details step
-  const { originAddress, originCountry, originState, originCity, originZip } = store.quote;
+  const { originAddress } = store.quote;
   // Destiny Details step
-  const { destinyAddress, destinyCountry, destinyState, destinyCity, destinyZip } = store.quote;
+  const { destinyAddress} = store.quote;
   // Preferences Ground
   const {
     groundCategory, groundDrayageEquipmentSize, groundDrayageEquipmentType,

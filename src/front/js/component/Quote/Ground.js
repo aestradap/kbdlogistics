@@ -8,8 +8,8 @@ export const Ground = ({ error, handleError }) => {
     const { t } = useTranslation();
     const { store, actions } = useContext(Context);
     const {
-      groundLtlAmount, groundCategory, groundDrayageEquipmentType,
-      groundLtlManyCargoes, groundDrayageEquipmentSize, manyDifDimeCargo,
+      groundCategory, groundDrayageEquipmentType,
+      groundDrayageEquipmentSize,
       groundFullTruckEquipment, groundFullTruckTrailerSize
     } = store.quote;
     const dimensions = {

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../../store/appContext";
 import { useTranslation } from "react-i18next";
 
-export const StepFour = handleError => {
+export const StepFour = ({ error, handleError }) => {
 
   const { t } = useTranslation();
   const { store, actions } = useContext(Context);

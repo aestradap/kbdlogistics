@@ -1,7 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { Context } from "../store/appContext";
 
 const ContactForm = () => {
+
+  const { t } = useTranslation();
+  const { store, actions } = useContext(Context);
   const [show, setShow] = useState(false);
+  const [msg, setMsg] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,10 +25,20 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Aquí puedes manejar el envío de la información, por ejemplo, haciendo una llamada a una API
-    console.log("Información enviada:", formData);
+    // const response = await actions.sendContact(formData);
+    const response = false;
+    if (response) {
+      console.log("Success");
+      setMsg('Success');
+      showModalContact();
+    } else {
+      console.log("Fail");
+      setMsg('Fail');
+      showModalContact();
+    }
   };
 
   const showModalContact = () => {
@@ -40,16 +56,7 @@ const ContactForm = () => {
     bsModal.hide();
   };
 
-
-  useEffect(() => {
-    setTimeout(() => {
-      showModalContact();
-    }, 1000);
-  }, []);
-
-
-  return <div className="mt-5">
-
+  return <div className="container  mt-5">
     <div show={show} className="modal fade"
          id="exampleModal" tabIndex="-1"
          aria-labelledby="exampleModalLabel"
@@ -63,12 +70,18 @@ const ContactForm = () => {
             <h4 className="nav-link active mb-0" style={{ color: "#ffffff" }} aria-current="page" href="#">
               <b>K&BD</b> LOGISTICS INC
             </h4>
+            {msg === 'Fail' &&
+              <i className="bi bi-exclamation-triangle"
+                 style={{fontSize: '2rem', color: "#00A651" }} />
+            }
           </div>
           <div className="modal-body">
             <label className="form-label" style={{ color: "#00A651" }}>
-              This contact form is subject to changes.
-              Once finalized, this message will be removed.
-              <b> :) See you soon ;)</b>.
+              {msg === 'Success' ? t("contact_msg2") : (
+                <>
+                  {t("contact_msg3")} <strong>Op02@kbdlogistics.com</strong>.
+                </>
+              )}
             </label>
           </div>
           <div className="modal-footer">
@@ -82,58 +95,79 @@ const ContactForm = () => {
         </div>
       </div>
     </div>
-    <div className="contact-form mt-5">
-      <h2>Contact Us</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="phone">Phone</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div>
 
-        <button type="submit"
-                className="btn btn-lg btn-home-primary">
-          Send
-        </button>
-      </form>
+    <div className="mt-5">
+      <h2 className="mb-4">{t("contact")}</h2>
+      <div className="text-center">
+        <label className="form-label"
+               style={{ color: "#00A651", textAlign: "justify" }}>
+          {t("contact_msg")}
+        </label>
+      </div>
+      <div className="contact-form mt-3">
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="name">
+              {t("name")}
+            </label>
+            <input
+              type="name"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">
+              {t("email")}
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="phone">
+              {t("phone")}
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="message">
+              {t("message")}
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            ></textarea>
+          </div>
+
+          <div className="d-flex justify-content-end">
+            <button type="submit"
+                    className="btn btn-lg btn-home-primary">
+              {t("send")}
+            </button>
+          </div>
+
+        </form>
+      </div>
     </div>
+
   </div>;
 };
 

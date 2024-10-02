@@ -3,7 +3,8 @@ import { Context } from "../store/appContext";
 import { useTranslation } from "react-i18next";
 
 
-export const Dimension = ({ error, handleError, item, myKey }) => {
+export const Dimension = ({ error, handleError, item, key, myKey }) => {
+
   const { t } = useTranslation();
   const { store, actions } = useContext(Context);
   const [dimensions, setDimensions] = useState({
@@ -35,12 +36,6 @@ export const Dimension = ({ error, handleError, item, myKey }) => {
                  value={dimensions.long}
                  onChange={handleInputChange} required
           />
-          {/*{!myKey ? (*/}
-          {/*  <div className="form-text">*/}
-          {/*    {t("dimension_define")}*/}
-          {/*  </div>*/}
-          {/*) : <label className="form-label" />*/}
-          {/*}*/}
         </div>
         <div className="col">
           <label className="form-label">
