@@ -1,10 +1,29 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
     color: rgb(var(--bs-tertiary-color-rgb));
+    padding-top: 3rem;
+}
+
+#content {
+    flex: 1;
+}
+
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 3rem 0; /* Aquí añadimos el padding para reemplazar el que se eliminó del body */
+    width: 100%;
+    position: relative;
+    bottom: 0;
 }
 
 input:focus,

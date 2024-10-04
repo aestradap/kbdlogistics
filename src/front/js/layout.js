@@ -31,20 +31,23 @@ const Layout = () => {
     <BrowserRouter basename={basename}>
       <ScrollToTop>
         <Navbar />
-        <Routes>
-          <Route element={<Home />} path="/" />
-          <Route element={<Demo />} path="/demo" />
-          <Route element={<FormQuote />} path="/quote" />
-          <Route element={<TruckCargo />} path="/ground-cargo" />
-          <Route element={<OceanCargo />} path="/ocean-cargo" />
-          <Route element={<AirCargo />} path="/air-cargo" />
-          <Route element={<ContactForm />} path="/contact" />
-          <Route element={<AboutUs />} path="/about" />
-          <Route element={<Single />} path="/single/:theid" />
-          <Route element={<h1>Not found!</h1>} path="*" />
-        </Routes>
-        {/*<ThemeSwitcher />*/}
-        <Footer />
+        <div id="content">
+          <Routes>
+            <Route element={<Home />} path="/" />
+            <Route element={<Demo />} path="/demo" />
+            <Route element={<FormQuote />} path="/quote" />
+            <Route element={<TruckCargo />} path="/ground-cargo" />
+            <Route element={<OceanCargo />} path="/ocean-cargo" />
+            <Route element={<AirCargo />} path="/air-cargo" />
+            <Route element={<ContactForm />} path="/contact" />
+            <Route element={<AboutUs />} path="/about" />
+            <Route element={<Single />} path="/single/:theid" />
+            <Route element={<h1>Not found!</h1>} path="*" />
+          </Routes>
+          {/*<ThemeSwitcher />*/}
+          <Footer />
+        </div>
+
       </ScrollToTop>
     </BrowserRouter>
   </>;

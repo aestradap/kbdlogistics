@@ -180,7 +180,7 @@ export const FormQuote = () => {
         </symbol>
       </svg>
 
-      <div className="container  mt-5">
+      <div className="container  mt-5" style={{minHeight: "calc(100vh - 13rem)"}}>
         {error &&
           <div className="alert alert-danger d-flex align-items-center
            justify-content-center" role="alert">

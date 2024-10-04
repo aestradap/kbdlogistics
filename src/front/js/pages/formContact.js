@@ -56,7 +56,7 @@ const ContactForm = () => {
     bsModal.hide();
   };
 
-  return <div className="container  mt-5">
+  return <div className="container  mt-5" style={{minHeight: "calc(100vh - 13rem)"}}>
     <div show={show} className="modal fade"
          id="exampleModal" tabIndex="-1"
          aria-labelledby="exampleModalLabel"
