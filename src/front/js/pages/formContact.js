@@ -56,7 +56,8 @@ const ContactForm = () => {
     bsModal.hide();
   };
 
-  return <div className="container  mt-5" style={{minHeight: "calc(100vh - 13rem)"}}>
+  return <div className="container  mt-5"
+              style={{minHeight: "calc(100vh - 13rem)", marginBottom: "2rem"}}>
     <div show={show} className="modal fade"
          id="exampleModal" tabIndex="-1"
          aria-labelledby="exampleModalLabel"
@@ -104,7 +105,7 @@ const ContactForm = () => {
           {t("contact_msg")}
         </label>
       </div>
-      <div className="contact-form mt-3">
+      <div className="contact-form mt-3 p-0">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">

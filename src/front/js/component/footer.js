@@ -4,8 +4,8 @@ export const Footer = () => {
   return (
     <footer className="footer py-3 text-center bg-dark">
       <div className="row m-0">
-        <div className="col">Column</div>
-        <div className="col">Column</div>
+        <div className="col"></div>
+        <div className="col"></div>
         <div className="col">
           <a className="float-end" href="#">
             <i

@@ -1,8 +1,8 @@
 import React from "react";
 import { ExploringCargos } from "../component/exploringCargos";
-import cargoPlane from "../../img/cargo-plane.jpg";
-import boat from "../../img/containers-boat-2421992563.jpg";
-import truck from "../../img/back-truck-cargo.jpg";
+import cargoPlane from "../../img/cargo-plane.webp";
+import boat from "../../img/containers-boat-2421992563.webp";
+import truck from "../../img/back-truck-cargo.webp";
 import { useTranslation } from "react-i18next";
 
 

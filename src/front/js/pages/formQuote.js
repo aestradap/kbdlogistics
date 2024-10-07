@@ -180,7 +180,7 @@ export const FormQuote = () => {
         </symbol>
       </svg>
 
-      <div className="container  mt-5" style={{minHeight: "calc(100vh - 13rem)"}}>
+      <div className="container  mt-5" style={{ minHeight: "calc(100vh - 13rem)", marginBottom: "2rem" }}>
         {error &&
           <div className="alert alert-danger d-flex align-items-center
            justify-content-center" role="alert">
@@ -214,27 +214,27 @@ export const FormQuote = () => {
                   className="position-absolute top-0 btn-home-primary
                  translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ left: "0%" }}
-                  onClick={() => handleStepClick(1)}
+                  // onClick={() => handleStepClick(1)}
           >1
           </button>
           <button type="button"
                   className="position-absolute top-0 btn-home-primary
                  translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ backgroundColor: step < 2 && "#6C757D", left: "25%" }}
-                  onClick={() => handleStepClick(2)}
+                  // onClick={() => handleStepClick(2)}
           >2
           </button>
           <button className="position-absolute top-0 btn-home-primary
                 translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ backgroundColor: step < 3 && "#6C757D", left: "50%" }}
-                  onClick={() => handleStepClick(3)}
+                  // onClick={() => handleStepClick(3)}
           >3
           </button>
           <button type="button"
                   className="position-absolute top-0 btn-home-primary
                 translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ backgroundColor: step < 4 && "#6C757D", left: "75%" }}
-                  onClick={() => handleStepClick(4)}
+                  // onClick={() => handleStepClick(4)}
           >4
           </button>
 
