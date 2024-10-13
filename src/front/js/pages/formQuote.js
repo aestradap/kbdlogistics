@@ -163,7 +163,7 @@ export const FormQuote = () => {
       console.log("MyQuote-after-send: ", store.finalQuote);
       const response = await actions.sendQuote();
       if (response) {
-        actions.setStore({ sending: false });
+        actions.setStore({ sending: true });
         localStorage.clear();
         console.log("Success");
       } else {

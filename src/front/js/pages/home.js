@@ -109,7 +109,7 @@ export const Home = () => {
             <div className="carousel-caption">
               <h1>{t("reaching")}</h1>
               <p>{t("reaching_msg")}</p>
-              <p><a className="btn btn-lg btn-home-primary" href="/about">
+              <p><a className="btn btn-lg btn-home-primary" href="/air-cargo">
                 {t("explore")}
               </a></p>
             </div>
@@ -192,15 +192,17 @@ export const Home = () => {
         <div className="col-md-7">
           <h2 className="featurette-heading fw-normal lh-1">
             {t("home_ground_title")}</h2>
-          <p className="lead" style={{ textAlign: "justify" }}>
+          <p className="lead d-none d-md-block" style={{ textAlign: "justify" }}>
             {t("home_ground_msg")}
           </p>
         </div>
-        <div className="col-md-5"
+        <div className="col-md-5 w-100"
              style={{
                backgroundImage: `url(${greenTruck})`,
                backgroundSize: "cover",
-               backgroundPosition: "center"
+               backgroundPosition: "center",
+               minHeight: "15rem",
+               margin: 0
              }}
              onClick={() => navigate("/ground-cargo")}
         >
@@ -214,15 +216,17 @@ export const Home = () => {
           <h2 className="featurette-heading fw-normal lh-1">
             {t("home_air_title")}
           </h2>
-          <p className="lead" style={{ textAlign: "justify" }}>
+          <p className="lead d-none d-md-block" style={{ textAlign: "justify" }}>
             {t("home_air_msg")}
           </p>
         </div>
-        <div className="col-md-5 order-md-1"
+        <div className="col-md-5 order-md-1 w-100"
              style={{
                backgroundImage: `url(${cargoPlane})`,
                backgroundSize: "cover",
-               backgroundPosition: "center"
+               backgroundPosition: "center",
+               minHeight: "15rem",
+               margin: 0
              }}
              onClick={() => navigate("/air-cargo")}
         >
@@ -236,15 +240,18 @@ export const Home = () => {
           <h2 className="featurette-heading fw-normal lh-1">
             {t("home_ocean_title")}
           </h2>
-          <p className="lead" style={{ textAlign: "justify" }}>
+          <p className="lead d-none d-md-block" style={{ textAlign: "justify" }}>
             {t("home_ocean_msg")}
           </p>
         </div>
-        <div className="col-md-5" style={{
-          backgroundImage: `url(${containersBoat})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}
+        <div className="col-md-5 w-100"
+             style={{
+               backgroundImage: `url(${containersBoat})`,
+               backgroundSize: "cover",
+               backgroundPosition: "center",
+               minHeight: "15rem",
+               margin: 0
+             }}
              onClick={() => navigate("/ocean-cargo")}
         >
         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Context } from "../store/appContext";
+import contactImage from "../../img/contact-2336591569.jpg";
 
 const ContactForm = () => {
 
@@ -27,16 +28,14 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí puedes manejar el envío de la información, por ejemplo, haciendo una llamada a una API
-    // const response = await actions.sendContact(formData);
-    const response = false;
+    const response = await actions.sendContact(formData);
     if (response) {
       console.log("Success");
-      setMsg('Success');
+      setMsg("Success");
       showModalContact();
     } else {
       console.log("Fail");
-      setMsg('Fail');
+      setMsg("Fail");
       showModalContact();
     }
   };
@@ -56,50 +55,95 @@ const ContactForm = () => {
     bsModal.hide();
   };
 
-  return <div className="container  mt-5"
-              style={{minHeight: "calc(100vh - 13rem)", marginBottom: "2rem"}}>
-    <div show={show} className="modal fade"
-         id="exampleModal" tabIndex="-1"
-         aria-labelledby="exampleModalLabel"
-         aria-hidden="true"
-         data-bs-backdrop="static"
-         ref={modalContact}
-    >
-      <div className="modal-dialog modal-lg">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h4 className="nav-link active mb-0" style={{ color: "#ffffff" }} aria-current="page" href="#">
-              <b>K&BD</b> LOGISTICS INC
-            </h4>
-            {msg === 'Fail' &&
-              <i className="bi bi-exclamation-triangle"
-                 style={{fontSize: '2rem', color: "#00A651" }} />
-            }
-          </div>
-          <div className="modal-body">
-            <label className="form-label" style={{ color: "#00A651" }}>
-              {msg === 'Success' ? t("contact_msg2") : (
-                <>
-                  {t("contact_msg3")} <strong>Op02@kbdlogistics.com</strong>.
-                </>
-              )}
-            </label>
-          </div>
-          <div className="modal-footer">
+  return <>
+    <div className="cargo-banner"
+         style={{
+           height: "40rem",
+           backgroundImage: `url(${contactImage})`,
+           backgroundSize: "cover",
+           backgroundPosition: "center"
+         }}>
+      <div className="overlay">
+        <h1>Contact us</h1>
+      </div>
+    </div>
+    <div className="container  mt-5"
+         style={{
+           minHeight: "calc(100vh - 13rem)", marginBottom: "2rem"
+         }}>
+      <div show={show} className="modal fade"
+           id="exampleModal" tabIndex="-1"
+           aria-labelledby="exampleModalLabel"
+           aria-hidden="true"
+           data-bs-backdrop="static"
+           ref={modalContact}
+      >
+        <div className="modal-dialog modal-lg">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="nav-link active mb-0" style={{ color: "#ffffff" }} aria-current="page" href="#">
+                <b>K&BD</b> LOGISTICS INC
+              </h4>
+              {msg === "Fail" &&
+                <i className="bi bi-exclamation-triangle"
+                   style={{ fontSize: "2rem", color: "#00A651" }} />
+              }
+            </div>
+            <div className="modal-body">
+              <label className="form-label" style={{ color: "#00A651" }}>
+                {msg === "Success" ? t("contact_msg2") : (
+                  <>
+                    {t("contact_msg3")} <strong>Op02@kbdlogistics.com</strong>.
+                  </>
+                )}
+              </label>
+            </div>
+            <div className="modal-footer">
 
-            <p><a className="btn btn-lg btn-home-primary"
-                  onClick={hideModalContact}
-            >
-              Close
-            </a></p>
+              <p><a className="btn btn-lg btn-home-primary"
+                    onClick={hideModalContact}
+              >
+                {t("close")}
+              </a></p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div className="mt-5">
-      <h2 className="mb-4">{t("contact")}</h2>
+      <div className="text-center m-5">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex justify-content-center align-items-center">
+              <i className="bi bi-envelope-at p-2"
+                 style={{ fontSize: "3rem", color: "#00A651" }} />
+              <h3 style={{ color: "#00A651" }}>
+                {t("drop")}
+              </h3>
+            </div>
+            <h4 style={{ color: "#00A651" }}>
+              <strong>Op02@kbdlogistics.com</strong>
+            </h4>
+          </div>
+
+          <div className="col">
+            <div className="d-flex justify-content-center align-items-center">
+              <i className="bi bi-phone-vibrate p-2"
+                 style={{ fontSize: "3rem", color: "#00A651" }} />
+              <h3 style={{ color: "#00A651" }}>
+                {t('talk')}
+              </h3>
+            </div>
+            <h4 style={{ color: "#00A651" }}>
+              <strong>+1 (786) 289-1398</strong>
+            </h4>
+          </div>
+        </div>
+      </div>
+
       <div className="text-center">
+        <h4 style={{ color: "#00A651" }}>
+          <strong>{t("contact_you")}</strong>
+        </h4>
         <label className="form-label"
                style={{ color: "#00A651", textAlign: "justify" }}>
           {t("contact_msg")}
@@ -168,8 +212,7 @@ const ContactForm = () => {
         </form>
       </div>
     </div>
-
-  </div>;
+  </>;
 };
 
 export default ContactForm;

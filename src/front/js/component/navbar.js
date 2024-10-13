@@ -64,7 +64,7 @@ export const Navbar = () => {
               </li>
               <li className="nav-item d-flex align-items-center">
                 <a className="nav-link" href="/about">
-                  About Us
+                  {t('about')}
                 </a>
               </li>
 

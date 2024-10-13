@@ -75,16 +75,16 @@ const resources = {
       preview: "Preview",
       close: "Close",
       submit: "Submit",
-      send: "Enviar",
+      send: "Send",
       error_msg1: "All fields are required, be sure to fill each space with specific information!",
       error_msg2: " This is a required field",
 
       //STEP-1
       name: "Name",
-      email:"Email",
+      email: "Email",
       address: "address",
       phone: "Phone",
-      message:"Message",
+      message: "Message",
 
       //STEP-2
       origin: "Origin",
@@ -106,8 +106,8 @@ const resources = {
       product: "Product",
       product_define: "Define, what kind of product",
       full_truck: "Full truck",
-      ltl:"LTL",
-      lcl:"LCL",
+      ltl: "LTL",
+      lcl: "LCL",
       drayage: "Drayage",
       amount: "Amount",
       many_cargoes: "Different dimensions for cargoes",
@@ -122,21 +122,40 @@ const resources = {
       dimensions: "Dimensions",
 
 
-
       //STEP-4
-      comments:"Comments",
+      comments: "Comments",
       cleary_msg: "Before submitting your request, please feel free to provide any details or comments you think are relevant.",
       review: "Review your data",
-      category:"Category",
+      category: "Category",
 
       //CONTACT-US
       contact_msg: "Describe your situation in the form below, and we will respond shortly with professional assistance. If needed, we can schedule a meeting.",
       contact_msg2: "Your information and the provided description have been submitted successfully. We will contact you within 24 hours on business days.",
       contact_msg3: "An error occurred while submitting your information. Please try again later. You can also make a phone call or write directly to ",
+      drop: "Drop us a line!",
+      talk: "Let’s talk!",
+      contact_you: "Would you like us to contact you? Consider it done!",
 
-
-
-
+      //ABOUT-US
+      text_1: "Welcome to our logistics company, where we specialize in providing comprehensive transportation solutions to meet your needs. With a focus on efficiency, reliability, and customer satisfaction, we offer a range of services to ensure your shipments are delivered safely and on time.",
+      text_2: "With over 20 years of experience in the industry, our team includes seasoned veterans who bring deep connections and strong relationships with a wide network of transport companies. Our company offers three main types of transportation services:",
+      text_3: "Our ocean freight services are designed to handle large shipments with ease. We partner with leading carriers to ensure your goods are transported across the seas securely and efficiently.",
+      text_4: "Our ground freight services cover extensive routes across all states, providing swift and dependable transportation for your cargo. Whether it’s full truckload (FTL) or less than truckload (LTL), we have you covered.",
+      text_5: "Our air freight services are among the fastest and most reliable in the industry. We collaborate with top airlines to guarantee timely delivery of your urgent shipments.",
+      text_6: "We also offer flexible delivery options to cater to your specific requirements:",
+      text_7: "Comprehensive service where we handle the entire transport process from the seller’s door to the buyer’s door, ensuring convenience and minimal responsibility for both parties.",
+      text_8: "We manage the transport from the exporter’s premises to the port of origin, providing flexibility for exporters who need assistance with initial logistics.",
+      text_9: "Cost-effective service where we transport goods between ports, ideal for experienced shippers who can handle inland logistics and customs clearance.",
+      text_10: "We handle the transport from the port of destination to the importer’s premises, managing the final leg of the journey.",
+      text_11: "At our company, we understand the importance of reliable and efficient logistics. Our team of professionals is committed to providing top-notch services, ensuring your cargo is handled with the utmost care and precision. We pride ourselves on our ability to adapt to the unique needs of each client, delivering tailored solutions that drive success.",
+      text_12: "Thank you for choosing us as your logistics partner. We look forward to supporting your business and ensuring your shipments reach their destinations without a hitch.",
+      strong_text_1: "Maritime Transportation:",
+      strong_text_2: "Terrestrial Transportation:",
+      strong_text_3: "Aerial Transportation:",
+      strong_text_4: "Door-to-Door:",
+      strong_text_5: "Door-to-Port:",
+      strong_text_6: "Port-to-Port:",
+      strong_text_7: "Port-to-Door:"
     }
   },
   es: {
@@ -202,6 +221,7 @@ const resources = {
       complete: "Completar",
       previous: "Atrás",
       next: "Siquiente",
+      send: "Enviar",
       preview: "Vista previa",
       close: "Cerrar",
       submit: "Submitir",
@@ -235,7 +255,7 @@ const resources = {
       product: "Producto",
       product_define: "Define, ¿Qué tipo de producto?",
       full_truck: "Full truck",
-      ltl:"LTL",
+      ltl: "LTL",
       drayage: "Drayage",
       amount: "Cantidad",
       many_cargoes: "Dimensiones diferentes para las cargas",
@@ -250,18 +270,40 @@ const resources = {
       other: "otro",
 
       //STEP-4
-      comments:"Comentarios",
+      comments: "Comentarios",
       cleary_msg: "Antes de enviar su solicitud, no dude en proporcionar cualquier detalle o comentario que crea relevante.",
       review: "Revise sus datos",
-      category:"Categoría",
+      category: "Categoría",
       dimensions: "Dimensiones",
 
       //CONTACT-US
       contact_msg: "Descríbenos tu situación en el siguiente formulario y te responderemos en breve con asistencia profesional. Si es necesario, podemos agendar una reunión.",
       contact_msg2: "Tus datos y la descripción proporcionada se han enviado correctamente. Nos pondremos en contacto contigo en un plazo de 24 horas en días laborables.",
       contact_msg3: "Ha ocurrido un error al enviar sus datos. Por favor, inténtelo más tarde. También puede hacer una llamada telefónica o escribir directamente al correo ",
+      drop: "¡Envíanos un mensaje!",
+      talk: "¡Hablemos!",
+      contact_you: "¿Te gustaría que te contactáramos? ¡Hecho!",
 
-
+      //ABOUT-US
+      text_1: "Bienvenido a nuestra empresa de logística, donde nos especializamos en brindar soluciones de transporte integrales para satisfacer sus necesidades. Con un enfoque en la eficiencia, la confiabilidad y la satisfacción del cliente, ofrecemos una variedad de servicios para garantizar que sus envíos se entreguen de manera segura y a tiempo.",
+      text_2: "Con más de 20 años de experiencia en la industria, nuestro equipo incluye veteranos con profundas conexiones y relaciones sólidas con una amplia red de empresas de transporte. Nuestra empresa ofrece tres tipos principales de servicios de transporte:",
+      text_3: "Nuestros servicios de flete marítimo están diseñados para manejar grandes envíos con facilidad. Nos asociamos con las principales navieras para garantizar que sus productos se transporten de manera segura y eficiente a través de los mares.",
+      text_4: "Nuestros servicios de flete terrestre cubren rutas extensas en todos los estados, proporcionando un transporte rápido y confiable para su carga. Ya sea carga completa (FTL) o carga parcial (LTL), lo tenemos cubierto.",
+      text_5: "Nuestros servicios de flete aéreo están entre los más rápidos y confiables de la industria. Colaboramos con las principales aerolíneas para garantizar la entrega puntual de sus envíos urgentes.",
+      text_6: "También ofrecemos opciones de entrega flexibles para satisfacer sus requisitos específicos:",
+      text_7: "Servicio integral donde manejamos todo el proceso de transporte desde la puerta del vendedor hasta la puerta del comprador, garantizando comodidad y mínima responsabilidad para ambas partes.",
+      text_8: "Gestionamos el transporte desde las instalaciones del exportador hasta el puerto de origen, proporcionando flexibilidad para exportadores que necesitan asistencia con la logística inicial.",
+      text_9: "Servicio rentable donde transportamos bienes entre puertos, ideal para transportistas experimentados que pueden manejar la logística interna y el despacho de aduanas.",
+      text_10: "Nos encargamos del transporte desde el puerto de destino hasta las instalaciones del importador, gestionando la última etapa del trayecto.",
+      text_11: "En nuestra empresa, entendemos la importancia de la logística confiable y eficiente. Nuestro equipo de profesionales está comprometido a brindar servicios de primer nivel, asegurando que su carga sea manejada con el mayor cuidado y precisión. Nos enorgullecemos de nuestra capacidad para adaptarnos a las necesidades únicas de cada cliente, ofreciendo soluciones personalizadas que impulsan el éxito.",
+      text_12: "Gracias por elegirnos como su socio logístico. Esperamos apoyar su negocio y asegurarnos de que sus envíos lleguen a sus destinos sin contratiempos.",
+      strong_text_1: "Transporte Marítimo:",
+      strong_text_2: "Transporte Terrestre:",
+      strong_text_3: "Transporte Aéreo:",
+      strong_text_4: "Puerta a Puerta:",
+      strong_text_5: "Puerta a Puerto:",
+      strong_text_6: "Puerto a Puerto:",
+      strong_text_7: "Puerto a Puerta:",
 
     }
   }
