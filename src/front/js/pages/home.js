@@ -196,12 +196,9 @@ export const Home = () => {
             {t("home_ground_msg")}
           </p>
         </div>
-        <div className="col-md-5 w-100"
+        <div className="col-md-5 featurette-image"
              style={{
                backgroundImage: `url(${greenTruck})`,
-               backgroundSize: "cover",
-               backgroundPosition: "center",
-               minHeight: "15rem",
                margin: 0
              }}
              onClick={() => navigate("/ground-cargo")}
@@ -220,12 +217,9 @@ export const Home = () => {
             {t("home_air_msg")}
           </p>
         </div>
-        <div className="col-md-5 order-md-1 w-100"
+        <div className="col-md-5 order-md-1 featurette-image"
              style={{
                backgroundImage: `url(${cargoPlane})`,
-               backgroundSize: "cover",
-               backgroundPosition: "center",
-               minHeight: "15rem",
                margin: 0
              }}
              onClick={() => navigate("/air-cargo")}
@@ -244,12 +238,9 @@ export const Home = () => {
             {t("home_ocean_msg")}
           </p>
         </div>
-        <div className="col-md-5 w-100"
+        <div className="col-md-5 featurette-image"
              style={{
                backgroundImage: `url(${containersBoat})`,
-               backgroundSize: "cover",
-               backgroundPosition: "center",
-               minHeight: "15rem",
                margin: 0
              }}
              onClick={() => navigate("/ocean-cargo")}
