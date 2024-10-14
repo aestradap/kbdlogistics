@@ -47,7 +47,7 @@ export const Home = () => {
          id="exampleModal" tabindex="-1"
          aria-labelledby="exampleModalLabel"
          aria-hidden="true"
-         data-bs-backdrop="static"
+         data-bs-backdrop="true"
          ref={modalCookies}
     >
       <div className="modal-dialog modal-lg">
@@ -61,7 +61,8 @@ export const Home = () => {
             </h4>
           </div>
           <div className="modal-body">
-            <label className="form-label" style={{ color: "#00A651", textAlign: "justify" }}>
+            <label className="form-label"
+                   style={{ color: "#00A651", textAlign: "justify" }}>
               {t("cookies_msg")}
               <b>{t("cookies")}</b>.
             </label>
