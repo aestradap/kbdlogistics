@@ -25,7 +25,7 @@ const resources = {
       view_details: "View details »",
       home_ground_title: "The shortest and secure routes for your shipments.",
       home_ground_msg: "Our ground freight services are not only swift but also efficient and consistently dependable. With routes spanning all states in the United States, we ensure your products are delivered safely and securely. Your trust is our top priority, and we guarantee that everything you ship arrives in your hands without fail.",
-      home_air_title: "Air Freight, Simplified.",
+      home_air_title: "Global air freight solutions.",
       home_air_msg: "It is a fact that air freight is one of the fastest and most reliable modes of transportation. We are focused on creating reliable transport lines with the best companies in the world. Our air freight service is among the fastest and safest in the world. If you are looking for reliability and efficiency, you are looking for K&BD LOGISTICS.",
       home_ocean_title: "Easy Ocean Freight Solutions.",
       home_ocean_msg: "Our ocean freight is handled by the most capable carriers. We maintain and cultivate the best relationships to ensure meticulously cared-for transportation, guaranteeing you will always receive your goods exactly as you expect them.",
@@ -88,7 +88,7 @@ const resources = {
 
       //STEP-2
       origin: "Origin",
-      destiny: "Destiny",
+      destiny: "Destination",
       service: "Type of Service",
       movement: "Movement Types",
       d_to_d: "Door-to-Door",
@@ -110,7 +110,7 @@ const resources = {
       lcl: "LCL",
       drayage: "Drayage",
       amount: "Amount",
-      many_cargoes: "Different dimensions for cargoes",
+      many_cargoes: "Different dimensions for cargo",
       equipment: "Equipment",
       trailer_size: "Trailer size",
       equipment_type: "Equipment type",
@@ -149,13 +149,34 @@ const resources = {
       text_10: "We handle the transport from the port of destination to the importer’s premises, managing the final leg of the journey.",
       text_11: "At our company, we understand the importance of reliable and efficient logistics. Our team of professionals is committed to providing top-notch services, ensuring your cargo is handled with the utmost care and precision. We pride ourselves on our ability to adapt to the unique needs of each client, delivering tailored solutions that drive success.",
       text_12: "Thank you for choosing us as your logistics partner. We look forward to supporting your business and ensuring your shipments reach their destinations without a hitch.",
-      strong_text_1: "Maritime Transportation:",
-      strong_text_2: "Terrestrial Transportation:",
-      strong_text_3: "Aerial Transportation:",
+      strong_text_1: "Maritime Transport:",
+      strong_text_2: "Ground transport:",
+      strong_text_3: "Air transport:",
       strong_text_4: "Door-to-Door:",
       strong_text_5: "Door-to-Port:",
       strong_text_6: "Port-to-Port:",
-      strong_text_7: "Port-to-Door:"
+      strong_text_7: "Port-to-Door:",
+
+      //PRIVACY-TERMS
+      terms: "Terms",
+      privacy: "Privacy",
+      one_title: "1. Introduction:",
+      one_msg: "Welcome to K&BD LOGISTICS INC, your trusted partner in logistics and shipping solutions. We are committed to protecting your privacy and providing you with a safe online experience. By using our website, you agree to the following terms and conditions.",
+      two_title: "2. Data Collection and Usage:",
+      two_msg: "We collect personal information such as name, email, phone number, and shipping details when you request a quote or service. This data is used solely to process your requests, improve our services, and communicate with you regarding your logistics needs. We do not sell or share your information with third parties without your consent, except as required by law.",
+      three_title: "3. Cookies and Tracking:",
+      three_msg: "Our website uses cookies to enhance your browsing experience and analyze site traffic. By continuing to use our site, you consent to our use of cookies. You may disable cookies in your browser settings, but this may affect the functionality of the site.",
+      four_title: "4. Data Security:",
+      four_msg: "We implement industry-standard security measures to protect your data from unauthorized access, disclosure, or destruction. However, no method of transmission over the internet is completely secure, and we cannot guarantee absolute security.",
+      five_title: "5. User Responsibilities:",
+      five_msg: "As a user, you agree to provide accurate information when using our services. You are responsible for maintaining the confidentiality of your account details and for any activities conducted under your account.",
+      six_title: "6. Limitation of Liability:",
+      six_msg: "K&BD LOGISTICS INC is not liable for any indirect, incidental, or consequential damages arising from your use of our website or services. We strive to provide accurate and timely information, but we do not guarantee the completeness or reliability of the content on our site.",
+      seven_title: "7. Changes to the Privacy Policy and Terms:",
+      seven_msg: "We may update our Privacy Policy and Terms of Service from time to time. Any changes will be posted on this page, and your continued use of the site after such changes will constitute your acceptance.",
+      eight: "8. Contact Information:",
+      eight_msg: "If you have any questions or concerns about our Privacy Policy or Terms of Service, please contact us at "
+
     }
   },
   es: {
@@ -181,7 +202,7 @@ const resources = {
       view_details: "Ver detalles »",
       home_ground_title: "Las rutas más cortas y seguras para sus embarques.",
       home_ground_msg: "Con rutas que abarcan todos los Estados Unidos, garantizamos que sus embarques se entreguen de manera segura y puntual. Su confianza es nuestra máxima prioridad, y le garantizamos que todos los embargues llegarán al destino acordado en el menor tiempo posible.",
-      home_air_title: "Transporte aéreo, simplificado.",
+      home_air_title: "Soluciones globales de transporte aéreo de mercancías.",
       home_air_msg: "Nos enfocamos en crear líneas de transporte confiables con las mejores empresas del mundo. Nuestro servicio de transporte aéreo es uno de los más rápidos y seguros del mundo. Si buscas confiabilidad y eficiencia, estás buscando a K&BD LOGISTICS.",
       home_ocean_title: "Soluciones fáciles de transporte marítimo.",
       home_ocean_msg: "Mantenemos y cultivamos las mejores relaciones para asegurar un transporte meticulosamente cuidado, garantizando que siempre recibirás tus mercancías tal como las esperas.",
@@ -258,7 +279,7 @@ const resources = {
       ltl: "LTL",
       drayage: "Drayage",
       amount: "Cantidad",
-      many_cargoes: "Dimensiones diferentes para las cargas",
+      many_cargoes: "Dimensiones diferentes para la carga",
       equipment: "Equipamiento",
       trailer_size: "Tamaño del trailer",
       equipment_type: "Tipo de Equipamiento",
@@ -304,6 +325,26 @@ const resources = {
       strong_text_5: "Puerta a Puerto:",
       strong_text_6: "Puerto a Puerto:",
       strong_text_7: "Puerto a Puerta:",
+
+      //PRIVACY-TERMS
+      terms: "Términos",
+      privacy: "Privacidad",
+      one_title: "1. Introducción:",
+      one_msg: "Bienvenido a K&BD LOGISTICS INC, su socio confiable en soluciones de logística y envíos. Estamos comprometidos con la protección de su privacidad y con brindarle una experiencia en línea segura. Al utilizar nuestro sitio web, usted acepta los siguientes términos y condiciones.",
+      two_title: "2. Recopilación y Uso de Datos:",
+      two_msg: "Recopilamos información personal como nombre, correo electrónico, número de teléfono y detalles de envío cuando solicita una cotización o servicio. Estos datos se utilizan únicamente para procesar sus solicitudes, mejorar nuestros servicios y comunicarnos con usted sobre sus necesidades logísticas. No vendemos ni compartimos su información con terceros sin su consentimiento, excepto cuando lo exija la ley.",
+      three_title: "3. Cookies y Seguimiento:",
+      three_msg: "Nuestro sitio web utiliza cookies para mejorar su experiencia de navegación y analizar el tráfico del sitio. Al continuar utilizando nuestro sitio, usted acepta el uso de cookies. Puede deshabilitar las cookies en la configuración de su navegador, pero esto puede afectar la funcionalidad del sitio.",
+      four_title: "4. Seguridad de los Datos:",
+      four_msg: "Implementamos medidas de seguridad estándar de la industria para proteger sus datos contra el acceso no autorizado, divulgación o destrucción. Sin embargo, ningún método de transmisión por internet es completamente seguro, y no podemos garantizar una seguridad absoluta.",
+      five_title: "5. Responsabilidades del Usuario:",
+      five_msg: "Como usuario, usted acepta proporcionar información precisa al utilizar nuestros servicios. Es responsable de mantener la confidencialidad de los detalles de su cuenta y de cualquier actividad realizada bajo su cuenta.",
+      six_title: "6. Limitación de Responsabilidad:",
+      six_msg: "K&BD LOGISTICS INC no es responsable de daños indirectos, incidentales o consecuentes derivados del uso de nuestro sitio web o servicios. Nos esforzamos por proporcionar información precisa y oportuna, pero no garantizamos la integridad o confiabilidad del contenido de nuestro sitio.",
+      seven_title: "7. Cambios en la Política de Privacidad y Términos:",
+      seven_msg: "Podemos actualizar nuestra Política de Privacidad y Términos de Servicio ocasionalmente. Cualquier cambio se publicará en esta página, y el uso continuo del sitio después de dichos cambios constituirá su aceptación.",
+      eight: "8. Información de Contacto:",
+      eight_msg: "Si tiene alguna pregunta o inquietud sobre nuestra Política de Privacidad o Términos de Servicio, contáctenos en "
 
     }
   }

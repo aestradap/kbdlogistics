@@ -17,7 +17,7 @@ export const AirCargo = () => {
   </p>;
 
   return <ExploringCargos theme={t("air_cargo_theme")}
-                          title={t("air_cargo_title")}
+                          title={t("home_air_title")}
                           body={myBody}
                           subject="air"
                           imageSubject={cargoPlane}
