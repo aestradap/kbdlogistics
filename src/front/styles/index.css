@@ -47,6 +47,12 @@ button:focus {
     }
 }
 
+@media (max-width: 768px) {
+    .row-mobile-column {
+        display: flow-root;
+    }
+}
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 

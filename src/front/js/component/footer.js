@@ -25,12 +25,12 @@ export const Footer = () => {
 
   return <>
     <footer className="footer py-3 text-center bg-dark">
-      <div className="row m-0">
+      <div className="row m-0 row-mobile-column">
         <div className="col d-flex justify-content-center align-items-center">
           <i className="bi bi-phone-vibrate p-2"
              style={{ fontSize: "1rem", color: "#00A651" }} />
           <p style={{ margin: 0, color: "#00A651" }}>
-            <strong>+1 (786) 289-1389</strong>
+            <strong>+1 (786) 389-1398</strong>
           </p>
         </div>
 
@@ -44,7 +44,7 @@ export const Footer = () => {
         </div>
 
         <div className="col">
-          <a className="float-end" href="#">
+          <a className="float-end" href="#" onClick={() => window.scrollTo(0, 0)}>
             <i
               className="bi bi-arrow-up-circle"
               style={{ fontSize: "2rem", color: "#00A651" }}

@@ -149,7 +149,7 @@ const resources = {
       text_10: "We handle the transport from the port of destination to the importer’s premises, managing the final leg of the journey.",
       text_11: "At our company, we understand the importance of reliable and efficient logistics. Our team of professionals is committed to providing top-notch services, ensuring your cargo is handled with the utmost care and precision. We pride ourselves on our ability to adapt to the unique needs of each client, delivering tailored solutions that drive success.",
       text_12: "Thank you for choosing us as your logistics partner. We look forward to supporting your business and ensuring your shipments reach their destinations without a hitch.",
-      strong_text_1: "Maritime Transport:",
+      strong_text_1: "Ocean Transport:",
       strong_text_2: "Ground transport:",
       strong_text_3: "Air transport:",
       strong_text_4: "Door-to-Door:",
@@ -344,7 +344,42 @@ const resources = {
       seven_title: "7. Cambios en la Política de Privacidad y Términos:",
       seven_msg: "Podemos actualizar nuestra Política de Privacidad y Términos de Servicio ocasionalmente. Cualquier cambio se publicará en esta página, y el uso continuo del sitio después de dichos cambios constituirá su aceptación.",
       eight: "8. Información de Contacto:",
-      eight_msg: "Si tiene alguna pregunta o inquietud sobre nuestra Política de Privacidad o Términos de Servicio, contáctenos en "
+      eight_msg: "Si tiene alguna pregunta o inquietud sobre nuestra Política de Privacidad o Términos de Servicio, contáctenos en ",
+
+      //COOKIES
+      // "Este sitio utiliza cookies para mejorar tu experiencia de usuario y analizar el tráfico del sitio. Al continuar navegando, aceptas nuestro uso de cookies. Puedes cambiar la configuración en cualquier momento desde tu navegador. [Leer más]".
+
+//       Política de Cookies
+//
+//       1. Introducción
+//       En [Nombre de la Empresa], utilizamos cookies y tecnologías similares para mejorar la experiencia de los usuarios en nuestro sitio web, así como para analizar el tráfico y personalizar el contenido. Esta política explica qué son las cookies, cómo las usamos, y las opciones que tienes para controlarlas.
+//
+//       2. ¿Qué son las cookies?
+//   Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo (ordenador, smartphone o tablet) cuando visitas un sitio web. Permiten que el sitio recuerde tus acciones y preferencias (como el idioma, tamaño de fuente, y otras preferencias de visualización) durante un periodo de tiempo, de manera que no tengas que reconfigurarlas cada vez que vuelves al sitio.
+//
+// 3. ¿Cómo utilizamos las cookies?
+//   En [Nombre de la Empresa], utilizamos cookies para los siguientes propósitos:
+//
+//   Cookies necesarias: Son esenciales para el funcionamiento de nuestro sitio web y te permiten navegar y usar sus características, como acceder a áreas seguras.
+//   Cookies de rendimiento: Nos ayudan a mejorar nuestro sitio web al recopilar información sobre cómo los usuarios lo utilizan (por ejemplo, qué páginas son las más visitadas).
+// Cookies de funcionalidad: Nos permiten recordar tus preferencias, como el idioma o la región, para personalizar tu experiencia.
+//   Cookies de marketing: Utilizamos estas cookies para mostrarte anuncios relevantes y para medir la efectividad de nuestras campañas publicitarias.
+// 4. Cookies de terceros
+// Algunas cookies pueden ser colocadas por terceros, como servicios de análisis (por ejemplo, Google Analytics) o redes publicitarias. Estas cookies no son gestionadas por nosotros, sino por dichos terceros, y están sujetas a sus propias políticas de privacidad.
+//
+// 5. Control y eliminación de cookies
+// Puedes controlar y/o eliminar las cookies como desees, desde la configuración de tu navegador. A continuación, te explicamos cómo hacerlo:
+//
+//   Eliminar todas las cookies: Puedes eliminar todas las cookies que ya están en tu dispositivo.
+//   Bloquear todas las cookies: Puedes configurar tu navegador para que bloquee todas las cookies, pero esto podría afectar el funcionamiento de algunos sitios web, incluyendo el nuestro.
+//   Gestión de cookies por tipo: La mayoría de los navegadores te permiten bloquear cookies específicas o recibir una advertencia antes de que se guarden en tu dispositivo.
+//   Para más detalles sobre cómo gestionar las cookies, consulta la función de ayuda de tu navegador o visita sitios como www.allaboutcookies.org o www.youronlinechoices.com.
+//
+// 6. Actualizaciones de esta política
+// Podemos actualizar esta política de cookies periódicamente para reflejar cambios en la legislación o en nuestras prácticas de uso de cookies. Te recomendamos que revises esta página de vez en cuando para mantenerte informado sobre cómo usamos las cookies.
+//
+// 7. Contacto
+// Si tienes alguna pregunta o inquietud sobre nuestra política de cookies, puedes ponerte en contacto con nosotros a través de [email de contacto] o escribirnos a nuestra dirección física.
 
     }
   }

@@ -134,7 +134,7 @@ const ContactForm = () => {
               </h3>
             </div>
             <h4 style={{ color: "#00A651" }}>
-              <strong>+1 (786) 289-1389</strong>
+              <strong>+1 (786) 389-1398</strong>
             </h4>
           </div>
         </div>
