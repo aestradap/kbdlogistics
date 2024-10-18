@@ -57,7 +57,7 @@ export const Footer = () => {
         <p style={{ color: "#ffffff" }} onClick={showModalTerms}>
           &copy; 2024 K&BD LOGISTICS INC. &middot;
           <a style={{ color: "#00A651" }} href="#">
-            {t("Privacy")}
+            {t("privacy")}
           </a>
           &middot;
           <a style={{ color: "#00A651" }} href="#">
