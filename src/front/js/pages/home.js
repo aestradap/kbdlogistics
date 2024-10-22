@@ -11,13 +11,14 @@ import { BackgroundVideo } from "../component/BackgroundVideo";
 import boatVideo from "../../img/container-boat-video.mp4";
 import truckVideo from "../../img/container-truck-video.mp4";
 import portVideo from "../../img/landing_plane.webm";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
   const [show, setShow] = useState(false);
+  const [cookiesInfo, setCookiesInfo] = useState(false);
   const modalCookies = useRef();
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -44,13 +45,13 @@ export const Home = () => {
   return <>
 
     <div show={show} className="modal fade"
-         id="exampleModal" tabindex="-1"
-         aria-labelledby="exampleModalLabel"
-         aria-hidden="true"
-         data-bs-backdrop="true"
+         aria-hidden="false"
+         data-bs-backdrop="false"
+         onClick={hideModal}
          ref={modalCookies}
     >
-      <div className="modal-dialog modal-lg">
+      <div className="modal-dialog modal-lg modal-custom-position"
+           onClick={(e) => e.stopPropagation()}>
         <div className="modal-content">
           <div className="modal-header">
             <h4 className="nav-link active mb-0"
@@ -61,11 +62,80 @@ export const Home = () => {
             </h4>
           </div>
           <div className="modal-body">
-            <label className="form-label"
-                   style={{ color: "#00A651", textAlign: "justify" }}>
-              {t("cookies_msg")}
-              <b>{t("cookies")}</b>.
-            </label>
+            {cookiesInfo ?
+              <div className="scrollspy-example bg-body-tertiary rounded-2"
+                   style={{ textAlign: "justify" }}>
+                <h3 style={{ textAlign: "start !important" }}>
+                  <b>{t("cookies_title")}</b>
+                </h3>
+
+                <hr style={{ color: "#00A651", marginTop: 5 }} />
+
+                <p><strong>{t("cookies_one")}</strong></p>
+                <p>{t("cookies_one_msg")}</p>
+
+                <hr style={{ color: "#00A651", marginTop: 5 }} />
+
+                <p><strong>{t("cookies_two")}</strong></p>
+                <p>{t("cookies_two_msg")}</p>
+
+                <hr style={{ color: "#00A651", marginTop: 5 }} />
+
+                <p><strong>{t("cookies_three")}</strong></p>
+                <p>{t("cookies_three_msg")}</p>
+
+                <p><strong>{t("cookies_three_a")}</strong>
+                  {t("cookies_three_a_msg")}</p>
+
+                <p><strong>{t("cookies_three_b")}</strong>
+                  {t("cookies_three_b_msg")}</p>
+
+                <p><strong>{t("cookies_three_c")}</strong>
+                  {t("cookies_three_c_msg")}</p>
+
+                <p><strong>{t("cookies_three_d")}</strong>
+                  {t("cookies_three_d_msg")}</p>
+
+                <hr style={{ color: "#00A651", marginTop: 5 }} />
+
+                <p><strong>{t("cookies_four")}</strong></p>
+                <p>{t("cookies_four_msg")}</p>
+
+                <hr style={{ color: "#00A651", marginTop: 5 }} />
+
+                <p><strong>{t("cookies_five")}</strong></p>
+                <p>{t("cookies_five_msg")}</p>
+
+                <hr style={{ color: "#00A651", marginTop: 5 }} />
+
+                <p><strong>{t("cookies_six")}</strong></p>
+                <p>{t("cookies_six_msg")}</p>
+
+                <hr style={{ color: "#00A651", marginTop: 5 }} />
+
+                <p><strong>{t("cookies_seven")}</strong></p>
+                <p style={{
+                  margin: 0, color: "#00A651",
+                  textAlign: "start !important"
+                }}>
+                  {t("cookies_seven_msg")}
+                  <Link to="/contact" style={{ color: "#00A651" }}
+                        onClick={hideModal}>
+                    <strong>Op02@kbdlogistics.com</strong>
+                  </Link>
+                </p>
+
+              </div>
+              :
+              <label className="form-label"
+                     style={{ color: "#00A651", textAlign: "justify" }}>
+                {t("cookies_msg")}
+                <a style={{ color: "#00A651" }}
+                   onClick={() => setCookiesInfo(true)}>
+                  <b>{t("cookies_more")}</b>
+                </a>
+              </label>
+            }
           </div>
           <div className="modal-footer">
 
@@ -150,7 +220,7 @@ export const Home = () => {
                  className="d-inline-block align-text-top" />
           </a>
           <h2 className="fw-normal">{t("ground")}</h2>
-          <p style={{ textAlign: "justify" }}>{t("ground_msg")}</p>
+          <p>{t("ground_msg")}</p>
           <p><a className="btn btn-home-primary" href="/ground-cargo">
             {t("view_details")}
           </a></p>
@@ -164,7 +234,7 @@ export const Home = () => {
                  className="d-inline-block align-text-top" />
           </a>
           <h2 className="fw-normal">{t("air")}</h2>
-          <p style={{ textAlign: "justify" }}>{t("air_msg")}</p>
+          <p>{t("air_msg")}</p>
           <p><a className="btn btn-home-primary" href="/air-cargo">
             {t("view_details")}
           </a></p>
@@ -178,7 +248,7 @@ export const Home = () => {
                  className="d-inline-block align-text-top" />
           </a>
           <h2 className="fw-normal">{t("ocean")}</h2>
-          <p style={{ textAlign: "justify" }}>{t("ocean_msg")}</p>
+          <p>{t("ocean_msg")}</p>
           <p><a className="btn btn-home-primary" href="/ocean-cargo">
             {t("view_details")}
           </a></p>
@@ -252,5 +322,6 @@ export const Home = () => {
     </div>
   </>;
 };
+;
 
 

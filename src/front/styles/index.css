@@ -215,6 +215,15 @@ button:focus {
     -webkit-overflow-scrolling: touch;
 }
 
+.modal-custom-position {
+    position: fixed;
+    bottom: 0;
+    left: 2%;
+    transform: translateX(-50%);
+    max-width: 95%; /* Para ajustar el ancho */
+    width: 100%; /* Ocupa el 100% del ancho */
+}
+
 .hr-home {
     background-color: #00A651 ;
     height: 3px !important;

@@ -12,20 +12,16 @@ export const Navbar = () => {
   const { lng } = store;
   const [animate, setAnimate] = useState(false);
 
-  const LanguageSwitcher = (lngValue) => {
+  const LanguageSwitcher = () => {
     setAnimate(true);
 
-    if (lng === "es") {
-      setTimeout(() => {
-        i18n.changeLanguage("en");
-        actions.setLng("en");
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        i18n.changeLanguage("es");
-        actions.setLng("es");
-      }, 1000);
-    }
+    const newLng = lng === "es" ? "en" : "es";
+
+    setTimeout(() => {
+      i18n.changeLanguage(newLng);
+      actions.setLng(newLng);
+    }, 1000);
+
     setTimeout(() => setAnimate(false), 1000);
   };
 

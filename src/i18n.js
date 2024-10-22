@@ -206,13 +206,7 @@ const resources = {
       home_air_msg: "Nos enfocamos en crear líneas de transporte confiables con las mejores empresas del mundo. Nuestro servicio de transporte aéreo es uno de los más rápidos y seguros del mundo. Si buscas confiabilidad y eficiencia, estás buscando a K&BD LOGISTICS.",
       home_ocean_title: "Soluciones fáciles de transporte marítimo.",
       home_ocean_msg: "Mantenemos y cultivamos las mejores relaciones para asegurar un transporte meticulosamente cuidado, garantizando que siempre recibirás tus mercancías tal como las esperas.",
-      cookies_btn: "Aceptar cookies",
-      cookies: "acepta las cookies",
-      cookies_msg: "Este sitio web está actualmente en desarrollo.\n" +
-        "              Siéntete libre de interactuar y aprender más a medida que la solución se vaya completando.\n" +
-        "              Ten en cuenta que las funcionalidades principales no se liberarán\n" +
-        "              hasta que se complete la fase de pruebas.\n" +
-        "              Y, por supuesto, sé amable y ",
+
       // GROUND-CARGO
       ground_cargo_theme: "Servicio de Carga Terrestre",
       ground_cargo_title: "Rutas Garantizadas hacia Ti",
@@ -347,39 +341,41 @@ const resources = {
       eight_msg: "Si tiene alguna pregunta o inquietud sobre nuestra Política de Privacidad o Términos de Servicio, contáctenos en ",
 
       //COOKIES
-      // "Este sitio utiliza cookies para mejorar tu experiencia de usuario y analizar el tráfico del sitio. Al continuar navegando, aceptas nuestro uso de cookies. Puedes cambiar la configuración en cualquier momento desde tu navegador. [Leer más]".
+      cookies_btn: "Aceptar cookies",
+      cookies_more: " Leer más",
+      cookies_msg: "Este sitio utiliza cookies para mejorar tu experiencia de usuario y analizar el tráfico del sitio. Al continuar navegando, aceptas nuestro uso de cookies. Puedes cambiar la configuración en cualquier momento desde tu navegador.",
+      cookies_title: "Política de Cookies",
+      cookies_one: "1. Introducción",
+      cookies_one_msg: " En K&BD LOGISTICS, utilizamos cookies y tecnologías similares para mejorar la experiencia de los usuarios en nuestro sitio web, así como para analizar el tráfico y personalizar el contenido. Esta política explica qué son las cookies, cómo las usamos, y las opciones que tienes para controlarlas.",
+      cookies_two: "2. ¿Qué son las cookies?",
+      cookies_two_msg: "Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo (ordenador, smartphone o tablet) cuando visitas un sitio web. Permiten que el sitio recuerde tus acciones y preferencias (como el idioma, tamaño de fuente, y otras preferencias de visualización) durante un periodo de tiempo, de manera que no tengas que reconfigurarlas cada vez que vuelves al sitio.",
+      cookies_three: "3. ¿Cómo utilizamos las cookies?",
+      cookies_three_msg: "En K&BD LOGISTICS, utilizamos cookies para los siguientes propósitos:",
 
-//       Política de Cookies
-//
-//       1. Introducción
-//       En [Nombre de la Empresa], utilizamos cookies y tecnologías similares para mejorar la experiencia de los usuarios en nuestro sitio web, así como para analizar el tráfico y personalizar el contenido. Esta política explica qué son las cookies, cómo las usamos, y las opciones que tienes para controlarlas.
-//
-//       2. ¿Qué son las cookies?
-//   Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo (ordenador, smartphone o tablet) cuando visitas un sitio web. Permiten que el sitio recuerde tus acciones y preferencias (como el idioma, tamaño de fuente, y otras preferencias de visualización) durante un periodo de tiempo, de manera que no tengas que reconfigurarlas cada vez que vuelves al sitio.
-//
-// 3. ¿Cómo utilizamos las cookies?
-//   En [Nombre de la Empresa], utilizamos cookies para los siguientes propósitos:
-//
-//   Cookies necesarias: Son esenciales para el funcionamiento de nuestro sitio web y te permiten navegar y usar sus características, como acceder a áreas seguras.
-//   Cookies de rendimiento: Nos ayudan a mejorar nuestro sitio web al recopilar información sobre cómo los usuarios lo utilizan (por ejemplo, qué páginas son las más visitadas).
-// Cookies de funcionalidad: Nos permiten recordar tus preferencias, como el idioma o la región, para personalizar tu experiencia.
-//   Cookies de marketing: Utilizamos estas cookies para mostrarte anuncios relevantes y para medir la efectividad de nuestras campañas publicitarias.
-// 4. Cookies de terceros
-// Algunas cookies pueden ser colocadas por terceros, como servicios de análisis (por ejemplo, Google Analytics) o redes publicitarias. Estas cookies no son gestionadas por nosotros, sino por dichos terceros, y están sujetas a sus propias políticas de privacidad.
-//
-// 5. Control y eliminación de cookies
-// Puedes controlar y/o eliminar las cookies como desees, desde la configuración de tu navegador. A continuación, te explicamos cómo hacerlo:
-//
-//   Eliminar todas las cookies: Puedes eliminar todas las cookies que ya están en tu dispositivo.
-//   Bloquear todas las cookies: Puedes configurar tu navegador para que bloquee todas las cookies, pero esto podría afectar el funcionamiento de algunos sitios web, incluyendo el nuestro.
-//   Gestión de cookies por tipo: La mayoría de los navegadores te permiten bloquear cookies específicas o recibir una advertencia antes de que se guarden en tu dispositivo.
-//   Para más detalles sobre cómo gestionar las cookies, consulta la función de ayuda de tu navegador o visita sitios como www.allaboutcookies.org o www.youronlinechoices.com.
-//
-// 6. Actualizaciones de esta política
-// Podemos actualizar esta política de cookies periódicamente para reflejar cambios en la legislación o en nuestras prácticas de uso de cookies. Te recomendamos que revises esta página de vez en cuando para mantenerte informado sobre cómo usamos las cookies.
-//
-// 7. Contacto
-// Si tienes alguna pregunta o inquietud sobre nuestra política de cookies, puedes ponerte en contacto con nosotros a través de [email de contacto] o escribirnos a nuestra dirección física.
+      cookies_three_a: "Cookies necesarias: ",
+      cookies_three_a_msg: "Son esenciales para el funcionamiento de nuestro sitio web y te permiten navegar y usar sus características, como acceder a áreas seguras.",
+      cookies_three_b: "Cookies de rendimiento: ",
+      cookies_three_b_msg: "Nos ayudan a mejorar nuestro sitio web al recopilar información sobre cómo los usuarios lo utilizan (por ejemplo, qué páginas son las más visitadas).",
+      cookies_three_c: "Cookies de funcionalidad: ",
+      cookies_three_c_msg: "Nos permiten recordar tus preferencias, como el idioma o la región, para personalizar tu experiencia.",
+      cookies_three_d: "Cookies de marketing: ",
+      cookies_three_d_msg: "Utilizamos estass cookies para mostrarte anuncios relevantes y para medir la efectividad de nuestras campañas publicitarias.",
+      cookies_four: "4. Cookies de terceros",
+      cookies_four_msg: "Algunas cookies pueden ser colocadas por terceros, como servicios de análisis (por ejemplo, Google Analytics) o redes publicitarias. Estas cookies no son gestionadas por nosotros, sino por dichos terceros, y están sujetas a sus propias políticas de privacidad.",
+      cookies_five: "5. Control y eliminación de cookies ",
+      cookies_five_msg: "Puedes controlar y/o eliminar las cookies como desees, desde la configuración de tu navegador. A continuación, te explicamos cómo hacerlo: ",
+
+      cookies_five_a: "Eliminar todas las cookies: ",
+      cookies_five_a_msg: "Puedes eliminar todas las cookies que ya están en tu dispositivo.",
+      cookies_five_b: "Bloquear todas las cookies: ",
+      cookies_five_b_msg: "Puedes configurar tu navegador para que bloquee todas las cookies, pero esto podría afectar el funcionamiento de algunos sitios web, incluyendo el nuestro.",
+      cookies_five_c: "Gestión de cookies por tipo: ",
+      cookies_five_c_msg: "La mayoría de los navegadores te permiten bloquear cookies específicas o recibir una advertencia antes de que se guarden en tu dispositivo.",
+      cookies_five_d_msg: "Para más detalles sobre cómo gestionar las cookies, consulta la función de ayuda de tu navegador o visita sitios como www.allaboutcookies.org o www.youronlinechoices.com.",
+      cookies_six: "6. Actualizaciones de esta política",
+      cookies_six_msg: "Podemos actualizar esta política de cookies periódicamente para reflejar cambios en la legislación o en nuestras prácticas de uso de cookies. Te recomendamos que revises esta página de vez en cuando para mantenerte informado sobre cómo usamos las cookies.",
+      cookies_seven: "7. Contacto",
+      cookies_seven_msg: "Si tienes alguna pregunta o inquietud sobre nuestra política de cookies, puedes ponerte en contacto con nosotros a través de "
 
     }
   }
