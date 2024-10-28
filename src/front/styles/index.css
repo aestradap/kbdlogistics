@@ -220,8 +220,8 @@ button:focus {
     bottom: 0;
     left: 2%;
     transform: translateX(-50%);
-    max-width: 95%; /* Para ajustar el ancho */
-    width: 100%; /* Ocupa el 100% del ancho */
+    max-width: 95%;
+    width: 100%;
 }
 
 .hr-home {

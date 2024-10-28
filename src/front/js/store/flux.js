@@ -2,10 +2,12 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       lng: "en",
+      error: false,
       message: null,
       step: 1,
       localStorageCheck: false,
       sending: false,
+      sendingResult: "review",
       finalQuote: [],
       quote: {
         name: "",
@@ -93,7 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const response = await fetch(
           process.env.BACKEND_URL + "api/send-contact-email", {
             method: "POST",
-            body: JSON.stringify( data ),
+            body: JSON.stringify(data),
             headers: {
               "Content-Type": "application/json"
             }
@@ -224,6 +226,10 @@ const getState = ({ getStore, getActions, setStore }) => {
             [myKey]: value
           }
         });
+      },
+
+      updateStore: (myKey, value) => {
+        setStore({ [myKey]: value });
       },
 
       updateQuoteFromLocalStorage: () => {

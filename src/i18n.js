@@ -29,13 +29,7 @@ const resources = {
       home_air_msg: "It is a fact that air freight is one of the fastest and most reliable modes of transportation. We are focused on creating reliable transport lines with the best companies in the world. Our air freight service is among the fastest and safest in the world. If you are looking for reliability and efficiency, you are looking for K&BD LOGISTICS.",
       home_ocean_title: "Easy Ocean Freight Solutions.",
       home_ocean_msg: "Our ocean freight is handled by the most capable carriers. We maintain and cultivate the best relationships to ensure meticulously cared-for transportation, guaranteeing you will always receive your goods exactly as you expect them.",
-      cookies_btn: "Accept cookies",
-      cookies: "accept cookies",
-      cookies_msg: "This website is currently under development.\n" +
-        "              Feel free to interact and learn more as the solution is finished.\n" +
-        "              Please note that the main functionalities will not be released\n" +
-        "              until after the testing phase is completed.\n" +
-        "              And of course be kind and ",
+
       // GROUND-CARGO
       ground_cargo_theme: "Ground Cargo Service",
       ground_cargo_title: "Reliable Roads to You",
@@ -175,7 +169,45 @@ const resources = {
       seven_title: "7. Changes to the Privacy Policy and Terms:",
       seven_msg: "We may update our Privacy Policy and Terms of Service from time to time. Any changes will be posted on this page, and your continued use of the site after such changes will constitute your acceptance.",
       eight: "8. Contact Information:",
-      eight_msg: "If you have any questions or concerns about our Privacy Policy or Terms of Service, please contact us at "
+      eight_msg: "If you have any questions or concerns about our Privacy Policy or Terms of Service, please contact us at ",
+
+      // COOKIES
+      cookies_btn: "Accept Cookies",
+      cookies_more: " Read More",
+      cookies_msg: "This site uses cookies to enhance your user experience and analyze site traffic. By continuing to browse, you accept our use of cookies. You can change your settings at any time from your browser.",
+      cookies_title: "Cookies Policy",
+      cookies_one: "1. Introduction",
+      cookies_one_msg: "At K&BD LOGISTICS, we use cookies and similar technologies to improve user experience on our website, analyze traffic, and personalize content. This policy explains what cookies are, how we use them, and the options you have to control them.",
+      cookies_two: "2. What are cookies?",
+      cookies_two_msg: "Cookies are small text files stored on your device (computer, smartphone, or tablet) when you visit a website. They allow the site to remember your actions and preferences (such as language, font size, and other display preferences) over a period of time, so you don’t have to reconfigure them each time you return to the site.",
+      cookies_three: "3. How do we use cookies?",
+      cookies_three_msg: "At K&BD LOGISTICS, we use cookies for the following purposes:",
+
+      cookies_three_a: "Necessary Cookies:",
+      cookies_three_a_msg: "These are essential for the functioning of our website and allow you to navigate and use its features, such as accessing secure areas.",
+      cookies_three_b: "Performance Cookies:",
+      cookies_three_b_msg: "These help us improve our website by collecting information about how users interact with it (e.g., which pages are most visited).",
+      cookies_three_c: "Functionality Cookies:",
+      cookies_three_c_msg: "These allow us to remember your preferences, such as language or region, to personalize your experience.",
+      cookies_three_d: "Marketing Cookies:",
+      cookies_three_d_msg: "We use these cookies to show you relevant ads and to measure the effectiveness of our advertising campaigns.",
+      cookies_four: "4. Third-Party Cookies",
+      cookies_four_msg: "Some cookies may be placed by third parties, such as analytics services (e.g., Google Analytics) or advertising networks. These cookies are not managed by us but by those third parties, and they are subject to their own privacy policies.",
+      cookies_five: "5. Controlling and Deleting Cookies",
+      cookies_five_msg: "You can control and/or delete cookies as you wish from your browser settings. Below, we explain how to do this:",
+
+      cookies_five_a: "Delete all cookies:",
+      cookies_five_a_msg: "You can delete all cookies already on your device.",
+      cookies_five_b: "Block all cookies:",
+      cookies_five_b_msg: "You can set your browser to block all cookies, but this may affect the functionality of some websites, including ours.",
+      cookies_five_c: "Manage cookies by type:",
+      cookies_five_c_msg: "Most browsers allow you to block specific cookies or receive a warning before they are stored on your device.",
+      cookies_five_d_msg: "For more details on how to manage cookies, refer to your browser’s help function or visit websites like www.allaboutcookies.org or www.youronlinechoices.com.",
+      cookies_six: "6. Updates to this policy",
+      cookies_six_msg: "We may update this cookies policy periodically to reflect changes in legislation or our cookie usage practices. We recommend reviewing this page from time to time to stay informed about how we use cookies.",
+      cookies_seven: "7. Contact",
+      cookies_seven_msg: "If you have any questions or concerns about our cookies policy, you can contact us through"
+
 
     }
   },

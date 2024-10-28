@@ -17,9 +17,8 @@ export const FormQuote = () => {
     const { t } = useTranslation();
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
-    const { step } = store;
+    const { step, error } = store;
     const [formData, setFormData] = useState(store.quote);
-    const [error, setError] = useState(false);
     const [showPreview, setShowPreview] = useState(false);
     const modalPreview = useRef();
 
@@ -45,7 +44,6 @@ export const FormQuote = () => {
         form.reportValidity();
         return;
       }
-      console.log("ERROR", error);
       actions.setStep(step + 1);
     };
 
@@ -63,6 +61,9 @@ export const FormQuote = () => {
       setFormData({ ...formData, [name]: value });
     };
 
+    const setError = (boll) => {
+      actions.updateStore("error", boll);
+    };
     const handleError = () => {
       if (step === 1) {
         if (store.quote.name === "" ||
@@ -103,26 +104,11 @@ export const FormQuote = () => {
 
             console.log("MY QUOTE", store.quote);
           }
-        } else if (store.quote.groundCategory === "Full truck") {
-          if (store.quote.groundFullTruckEquipment === "" ||
-            store.quote.groundFullTruckTrailerSize === "") {
-            setError(true);
-          } else {
-            localStorage.setItem("groundFullTruckEquipment",
-              store.quote.groundFullTruckEquipment);
-            localStorage.setItem("groundFullTruckTrailerSize",
-              store.quote.groundFullTruckTrailerSize);
-          }
-        } else if (store.quote.groundCategory === "Drayage") {
-          if (store.quote.groundDrayageEquipmentSize === "" ||
-            store.quote.groundDrayageEquipmentType === "") {
-            setError(true);
-          } else {
-            localStorage.setItem("groundDrayageEquipmentSize",
-              store.quote.groundDrayageEquipmentSize);
-            localStorage.setItem("groundDrayageEquipmentType",
-              store.quote.groundDrayageEquipmentType);
-          }
+        } else {
+          localStorage.setItem("groundDrayageEquipmentSize",
+            store.quote.groundDrayageEquipmentSize);
+          localStorage.setItem("groundDrayageEquipmentType",
+            store.quote.groundDrayageEquipmentType);
         }
       } else if (step === 3 && store.quote.service === "Air") {
         if (store.quote.airProductKind === "") {
@@ -159,20 +145,29 @@ export const FormQuote = () => {
 
     const handleSubmit = async (event) => {
       event.preventDefault();
-      // handle form submission
+
+      actions.updateStore("sending", true);
+
       console.log("MyQuote-after-send: ", store.finalQuote);
-      const response = await actions.sendQuote();
+      const response = false; //await actions.sendQuote();
       if (response) {
-        actions.setStore({ sending: true });
+        actions.updateStore("sending", false);
+        actions.updateStore("sendingResult", "success");
         localStorage.clear();
-        console.log("Success");
+        actions.setStep(1);
+        setTimeout(() => hideModal(), 1000);
+
+
       } else {
-        actions.setStore({ sending: false });
-        console.log("Fail");
+        actions.updateStore("sending", false);
+        actions.updateStore("sendingResult", "fail");
+        setTimeout(() => hideModal(), 1000);
       }
     };
 
     return <>
+
+
       <svg xmlns="http://www.w3.org/2000/svg" className="d-none">
         <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
           <path
@@ -214,27 +209,27 @@ export const FormQuote = () => {
                   className="position-absolute top-0 btn-home-primary
                  translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ left: "0%" }}
-                  // onClick={() => handleStepClick(1)}
+            // onClick={() => handleStepClick(1)}
           >1
           </button>
           <button type="button"
                   className="position-absolute top-0 btn-home-primary
                  translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ backgroundColor: step < 2 && "#6C757D", left: "25%" }}
-                  // onClick={() => handleStepClick(2)}
+            // onClick={() => handleStepClick(2)}
           >2
           </button>
           <button className="position-absolute top-0 btn-home-primary
                 translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ backgroundColor: step < 3 && "#6C757D", left: "50%" }}
-                  // onClick={() => handleStepClick(3)}
+            // onClick={() => handleStepClick(3)}
           >3
           </button>
           <button type="button"
                   className="position-absolute top-0 btn-home-primary
                 translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ backgroundColor: step < 4 && "#6C757D", left: "75%" }}
-                  // onClick={() => handleStepClick(4)}
+            // onClick={() => handleStepClick(4)}
           >4
           </button>
 
@@ -338,7 +333,7 @@ export const FormQuote = () => {
                           data-bs-dismiss="modal" aria-label="Close" />
                 </div>
                 <div className="modal-body">
-                  <Preview />
+                  <Preview hidePreview={hideModal}/>
                 </div>
                 <div className="modal-footer">
                   {store.sending ?

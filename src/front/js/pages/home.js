@@ -50,7 +50,7 @@ export const Home = () => {
          onClick={hideModal}
          ref={modalCookies}
     >
-      <div className="modal-dialog modal-lg modal-custom-position"
+      <div className="modal-dialog modal-lg modal-dialog-scrollable modal-custom-position"
            onClick={(e) => e.stopPropagation()}>
         <div className="modal-content">
           <div className="modal-header">
