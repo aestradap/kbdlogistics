@@ -206,7 +206,11 @@ const resources = {
       cookies_six: "6. Updates to this policy",
       cookies_six_msg: "We may update this cookies policy periodically to reflect changes in legislation or our cookie usage practices. We recommend reviewing this page from time to time to stay informed about how we use cookies.",
       cookies_seven: "7. Contact",
-      cookies_seven_msg: "If you have any questions or concerns about our cookies policy, you can contact us through"
+      cookies_seven_msg: "If you have any questions or concerns about our cookies policy, you can contact us through",
+
+      //preview
+      success: "Success! We have received your information and will get back to you as soon as possible.",
+      fail: "Failed to send the email. An unexpected error occurred. Please try again later. If the error persists, don't hesitate to"
 
 
     }
@@ -407,7 +411,12 @@ const resources = {
       cookies_six: "6. Actualizaciones de esta política",
       cookies_six_msg: "Podemos actualizar esta política de cookies periódicamente para reflejar cambios en la legislación o en nuestras prácticas de uso de cookies. Te recomendamos que revises esta página de vez en cuando para mantenerte informado sobre cómo usamos las cookies.",
       cookies_seven: "7. Contacto",
-      cookies_seven_msg: "Si tienes alguna pregunta o inquietud sobre nuestra política de cookies, puedes ponerte en contacto con nosotros a través de "
+      cookies_seven_msg: "Si tienes alguna pregunta o inquietud sobre nuestra política de cookies, puedes ponerte en contacto con nosotros a través de ",
+
+      //preview
+      success: "¡Éxito! Hemos recibido tus datos y te responderemos lo antes posible.",
+      fail: "Fallo al enviar el correo. Ocurrió un error inesperado. Por favor, vuelve a intentarlo más tarde. Si persiste el error, no dudes en"
+
 
     }
   }

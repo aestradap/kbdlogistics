@@ -40,7 +40,7 @@ export const Preview = ({ hidePreview }) => {
                   style={{ color: "#00A651" }}
                   onClick={hidePreview}
             >
-              <strong>Op02@kbdlogistics.com</strong>
+              <strong> Op02@kbdlogistics.com</strong>
             </Link>
           </div> :
           <div>

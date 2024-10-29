@@ -172,6 +172,53 @@ const getState = ({ getStore, getActions, setStore }) => {
       cleanFinalQuote: () => {
         setStore({ finalQuote: [] });
       },
+      restoreQuote: () => {
+        setStore({
+          quote: {
+            name: "",
+            email: "",
+            address: "",
+            phone: "",
+            service: "Ground",
+            movement: "Door-to-Door",
+            origin: "",
+            originAddress: "",
+            originZip: "",
+            originCity: "",
+            originState: "",
+            originCountry: "",
+            destiny: "",
+            destinyAddress: "",
+            destinyZip: "",
+            destinyCity: "",
+            destinyState: "",
+            destinyCountry: "",
+            dimensionLong: "",
+            dimensionHigh: "",
+            dimensionWide: "",
+            dimensionWeight: "",
+            groundCategory: "LTL",
+            amount: 1,
+            manyCargoes: false,
+            manyDifDimeCargo: [{
+              long: "",
+              high: "",
+              wide: "",
+              weight: ""
+            }],
+            groundFullTruckEquipment: "",
+            groundFullTruckTrailerSize: "",
+            groundDrayageEquipmentSize: "",
+            groundDrayageEquipmentType: "",
+            airProductKind: "",
+            oceanCategory: "LCL",
+            containerSize: "",
+            oceanComority: "",
+            comments: ""
+
+          }
+        });
+      },
 
       exampleFunction: () => {
         getActions().changeColor(0, "green");

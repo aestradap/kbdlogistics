@@ -22,6 +22,49 @@ export const FormQuote = () => {
     const [showPreview, setShowPreview] = useState(false);
     const modalPreview = useRef();
 
+    const myQuote = {
+      name: "",
+      email: "",
+      address: "",
+      phone: "",
+      service: "Ground",
+      movement: "Door-to-Door",
+      origin: "",
+      originAddress: "",
+      originZip: "",
+      originCity: "",
+      originState: "",
+      originCountry: "",
+      destiny: "",
+      destinyAddress: "",
+      destinyZip: "",
+      destinyCity: "",
+      destinyState: "",
+      destinyCountry: "",
+      dimensionLong: "",
+      dimensionHigh: "",
+      dimensionWide: "",
+      dimensionWeight: "",
+      groundCategory: "LTL",
+      amount: 1,
+      manyCargoes: false,
+      manyDifDimeCargo: [{
+        long: "",
+        high: "",
+        wide: "",
+        weight: ""
+      }],
+      groundFullTruckEquipment: "",
+      groundFullTruckTrailerSize: "",
+      groundDrayageEquipmentSize: "",
+      groundDrayageEquipmentType: "",
+      airProductKind: "",
+      oceanCategory: "LCL",
+      containerSize: "",
+      oceanComority: "",
+      comments: ""
+    };
+
     const showModalPreview = () => {
       const modalEle = modalPreview.current;
       const bsModal = new bootstrap.Modal(modalEle, {
@@ -44,7 +87,10 @@ export const FormQuote = () => {
         form.reportValidity();
         return;
       }
-      actions.setStep(step + 1);
+      if (step < 5) {
+        actions.setStep(step + 1);
+      }
+
     };
 
     const handlePrevious = () => {
@@ -148,25 +194,31 @@ export const FormQuote = () => {
 
       actions.updateStore("sending", true);
 
-      console.log("MyQuote-after-send: ", store.finalQuote);
-      const response = false; //await actions.sendQuote();
+      const response = await actions.sendQuote();
       if (response) {
-        actions.updateStore("sending", false);
         actions.updateStore("sendingResult", "success");
+        actions.cleanFinalQuote();
+        actions.restoreQuote();
         localStorage.clear();
-        actions.setStep(1);
-        setTimeout(() => hideModal(), 1000);
-
-
-      } else {
         actions.updateStore("sending", false);
+        setTimeout(() => {
+          hideModal();
+          actions.setStep(1);
+          actions.updateStore("sendingResult", "review");
+        }, 3000);
+      } else {
         actions.updateStore("sendingResult", "fail");
-        setTimeout(() => hideModal(), 1000);
+        actions.updateStore("sending", false);
+        setTimeout(() => {
+          hideModal();
+          actions.setStep(step - 1);
+          actions.updateStore("sendingResult", "review");
+        }, 3000);
+
       }
     };
 
     return <>
-
 
       <svg xmlns="http://www.w3.org/2000/svg" className="d-none">
         <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
@@ -329,11 +381,12 @@ export const FormQuote = () => {
                     <b>K&BD</b> LOGISTICS INC
                   </h4>
                   <button type="button" className="btn-close"
+                          disabled={store.sendingResult != "review"}
                           onClick={handlePrevious}
                           data-bs-dismiss="modal" aria-label="Close" />
                 </div>
                 <div className="modal-body">
-                  <Preview hidePreview={hideModal}/>
+                  <Preview hidePreview={hideModal} />
                 </div>
                 <div className="modal-footer">
                   {store.sending ?
@@ -342,6 +395,7 @@ export const FormQuote = () => {
                     </div> :
                     <>
                       <button type="button" className="btn btn-secondary"
+                              disabled={store.sendingResult != "review"}
                               onClick={() => {
                                 actions.cleanFinalQuote();
                                 handlePrevious();
@@ -350,6 +404,7 @@ export const FormQuote = () => {
                         {t("close")}
                       </button>
                       <button className="btn btn-home-primary"
+                              disabled={store.sendingResult != "review"}
                               type="submit"
                       >
                         {t("send")}
