@@ -22,6 +22,10 @@ export const Ground = ({ error, handleError }) => {
     const many = store.quote.manyDifDimeCargo.length > 1 ? true : false;
 
     const handleInputChange = (event) => {
+      if(event.target.name === 'Full truck'){
+        actions.setQuote(event.target.name, event.target.value);
+      }
+
       actions.setQuote(event.target.name, event.target.value);
       handleError(false);
     };

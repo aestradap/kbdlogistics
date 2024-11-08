@@ -41,10 +41,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           wide: "",
           weight: ""
         }],
-        groundFullTruckEquipment: "",
-        groundFullTruckTrailerSize: "",
-        groundDrayageEquipmentSize: "",
-        groundDrayageEquipmentType: "",
+        groundFullTruckEquipment: "Flatbed / Stepdeck",
+        groundFullTruckTrailerSize: "20'" ,
+        groundDrayageEquipmentSize: "20 feet",
+        groundDrayageEquipmentType: "Standard",
         airProductKind: "",
         oceanCategory: "LCL",
         containerSize: "",
@@ -121,8 +121,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         getActions().updateFinalQuote("Phone", myQuote.phone);
 
         getActions().updateFinalQuote("2", "2");
-        getActions().updateFinalQuote("Origin", `${myQuote.originAddress}, ${myQuote.originZip}, ${myQuote.originCity}, ${myQuote.originState}, ${myQuote.originCountry}`);
-        getActions().updateFinalQuote("Destiny", `${myQuote.destinyAddress}, ${myQuote.destinyZip}, ${myQuote.destinyCity}, ${myQuote.destinyState}, ${myQuote.destinyCountry}`);
+        getActions().updateFinalQuote("Origin", myQuote.originAddress);
+        getActions().updateFinalQuote("Destiny", myQuote.destinyAddress);
         getActions().updateFinalQuote("Service", myQuote.service);
         getActions().updateFinalQuote("Movement", myQuote.movement);
 

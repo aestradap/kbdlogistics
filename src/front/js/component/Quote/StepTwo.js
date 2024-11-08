@@ -9,16 +9,7 @@ export const StepTwo = ({ error, handleError }) => {
   const { t } = useTranslation();
 
   const { store, actions } = useContext(Context);
-  const {
-    originAddress, originZip,
-    originCity, originState, originCountry
-  } = store.quote;
-  const {
-    destinyAddress, destinyZip,
-    destinyCity, destinyState, destinyCountry
-  } = store.quote;
-
-  const { service, movement } = store.quote;
+  const { service, movement, originAddress, destinyAddress } = store.quote;
 
   const handleInputChange = (event) => {
     actions.setQuote(event.target.name, event.target.value);

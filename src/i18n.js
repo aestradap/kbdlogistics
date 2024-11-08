@@ -417,7 +417,6 @@ const resources = {
       success: "¡Éxito! Hemos recibido tus datos y te responderemos lo antes posible.",
       fail: "Fallo al enviar el correo. Ocurrió un error inesperado. Por favor, vuelve a intentarlo más tarde. Si persiste el error, no dudes en"
 
-
     }
   }
 };
