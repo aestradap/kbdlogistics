@@ -1,5 +1,4 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
-import { Context } from "../store/appContext";
+import React, { useState, useRef, useEffect } from "react";
 import "../../styles/home.css";
 import onlyTruck from "../../img/onlytruck.png";
 import onlyPlane from "../../img/onlyplane-white.png";
@@ -16,8 +15,6 @@ import { useTranslation } from "react-i18next";
 
 
 export const Home = () => {
-  const { store, actions } = useContext(Context);
-  const [show, setShow] = useState(false);
   const [cookiesInfo, setCookiesInfo] = useState(false);
   const modalCookies = useRef();
   const navigate = useNavigate();
@@ -44,7 +41,7 @@ export const Home = () => {
 
   return <>
 
-    <div show={show} className="modal fade"
+    <div className="modal fade"
          aria-hidden="false"
          data-bs-backdrop="false"
          onClick={hideModal}

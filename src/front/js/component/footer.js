@@ -67,7 +67,7 @@ export const Footer = () => {
       </div>
     </footer>
 
-    <div show={showTerms}
+    <div
          aria-hidden="true"
          className="modal fade"
          data-bs-backdrop="static"
