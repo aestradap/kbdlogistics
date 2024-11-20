@@ -16,8 +16,6 @@ export const ProductHandler = ({ error, handleError }) => {
     weight: ""
   };
   const handleAmount = (event) => {
-    console.log(event.target.value);
-    console.log(amount);
     if (manyCargoes) {
       if (amount > event.target.value) {
 
@@ -83,9 +81,7 @@ export const ProductHandler = ({ error, handleError }) => {
             <input className="form-check-input" type="checkbox"
                    checked={manyCargoes}
                    name="manyCargoes"
-                   onChange={event => {
-                     handleDimensions(amount);
-                   }}
+                   onChange={() => {handleDimensions(amount);}}
             />
             <label className="form-check-label" htmlFor="flexCheckDefault">
               {t("many_cargoes")}

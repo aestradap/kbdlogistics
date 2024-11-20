@@ -1,11 +1,9 @@
-import React, { useRef, useState } from "react";
-import { Preview } from "./Quote/Preview";
+import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const { t } = useTranslation();
-  const [showTerms, setTerms] = useState(false);
   const modalTerms = useRef();
 
   const showModalTerms = () => {
@@ -79,7 +77,7 @@ export const Footer = () => {
           <div className="modal-header">
             <h4 className="nav-link active mb-0 p-0"
                 style={{ color: "#ffffff" }}
-                aria-current="page" href="#"
+                aria-current="page"
             >
               <b>K&BD</b> LOGISTICS INC
             </h4>

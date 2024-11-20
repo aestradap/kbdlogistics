@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Context } from "../../store/appContext";
 import { Ocean } from "./Ocean";
 import { useTranslation } from "react-i18next";
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const Preview = ({ hidePreview }) => {
   const { t } = useTranslation();
-  const { store, actions } = useContext(Context);
+  const { store } = useContext(Context);
   // Info step
   const { name, email, phone, address } = store.quote;
   // Details step
@@ -49,7 +49,7 @@ export const Preview = ({ hidePreview }) => {
 
               {/*Info*/}
               <h4 className="nav-link active mb-0 p-0"
-                  aria-current="page" href="#"
+                  aria-current="page"
               >
                 <b>{t("info")}</b>
               </h4>
@@ -61,21 +61,19 @@ export const Preview = ({ hidePreview }) => {
 
               {/*Details*/}
               <h4 className="nav-link active mb-0 p-0"
-                  aria-current="page" href="#"
+                  aria-current="page"
               >
                 <b>{t("details")}</b>
               </h4>
               <hr style={{ color: "#00A651", marginTop: 5 }} />
-              <p><strong>{t("origin")}: </strong>{`${originAddress}.`}
-              </p>
-              <p><strong>{t("destiny")}: </strong>{`${destinyAddress}.`}
-              </p>
+              <p><strong>{t("origin")}: </strong>{`${originAddress}.`} </p>
+              <p><strong>{t("destiny")}: </strong>{`${destinyAddress}.`} </p>
               <p><strong>{t("service")}:</strong> {service}</p>
               <p><strong>{t("movement")}:</strong> {movement}</p>
 
               {/*Preferences*/}
               <h4 className="nav-link active mb-0 p-0"
-                  aria-current="page" href="#"
+                  aria-current="page"
               >
                 <b>{t("preferences")}</b>
               </h4>
@@ -94,12 +92,12 @@ export const Preview = ({ hidePreview }) => {
                   <p><strong>{t("amount")}: </strong>
                     {amount}
                   </p>
-                  <p><strong>{t("dimensions")}: </strong>
+                  <p><strong>{t("dimensions")}: </strong> </p>
                     <ol className={`list-group ${manyCargoes && "list-group-numbered"}`}>
                       {manyDifDimeCargo.map((item, key) =>
-                        <li className="list-group-item">
+                        <li className="list-group-item" key={key}>
                           <div className="container text-center">
-                            <div className="row" key={key}>
+                            <div className="row">
                               <div className="col">
                                 {t("high")}: {item.high}
                               </div>
@@ -117,7 +115,6 @@ export const Preview = ({ hidePreview }) => {
                         </li>
                       )}
                     </ol>
-                  </p>
                 </> : service === "Ground" && groundCategory === "Full truck" ?
                   <>
                     <p><strong>{t("equipment")}: </strong>
@@ -141,12 +138,12 @@ export const Preview = ({ hidePreview }) => {
                   <p><strong>{t("commodity")}: </strong>
                     {oceanComority}
                   </p>
-                  <p><strong>{t("dimensions")}: </strong>
-                    <ol className={`list-group ${manyCargoes && "list-group-numbered"}`}>
+                  <p><strong>{t("dimensions")}: </strong> </p>
+                  <ol className={`list-group ${manyCargoes && "list-group-numbered"}`}>
                       {manyDifDimeCargo.map((item, key) =>
-                        <li className="list-group-item">
+                        <li className="list-group-item" key={key}>
                           <div className="container text-center">
-                            <div className="row" key={key}>
+                            <div className="row" >
                               <div className="col">
                                 {t("high")}: {item.high}
                               </div>
@@ -164,7 +161,6 @@ export const Preview = ({ hidePreview }) => {
                         </li>
                       )}
                     </ol>
-                  </p>
                 </> : service === "Ocean" && oceanCategory === "Full Container" &&
                 <>
                   <p><strong>{t("container_size")}: </strong>
@@ -177,12 +173,12 @@ export const Preview = ({ hidePreview }) => {
                   <p><strong>{t("commodity")}: </strong>
                     {airProductKind}
                   </p>
-                  <p><strong>{t("dimensions")}: </strong>
-                    <ol className={`list-group ${manyCargoes && "list-group-numbered"}`}>
+                  <p><strong>{t("dimensions")}: </strong></p>
+                  <ol className={`list-group ${manyCargoes && "list-group-numbered"}`}>
                       {manyDifDimeCargo.map((item, key) =>
-                        <li className="list-group-item">
+                        <li className="list-group-item" key={key}>
                           <div className="container text-center">
-                            <div className="row" key={key}>
+                            <div className="row" >
                               <div className="col">
                                 {t("high")}: {item.high}
                               </div>
@@ -200,13 +196,12 @@ export const Preview = ({ hidePreview }) => {
                         </li>
                       )}
                     </ol>
-                  </p>
                 </>
               }
-              {comments != "" &&
+              {comments !== "" &&
                 <>
                   <h4 className="nav-link active mb-0 p-0"
-                      aria-current="page" href="#"
+                      aria-current="page"
                   >
                     <b>{t("comments")}</b>
                   </h4>

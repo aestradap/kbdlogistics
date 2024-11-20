@@ -433,7 +433,7 @@ i18n
     interpolation: {
       escapeValue: false // No escapar valores (XSS seguro)
     },
-    debug: true          // Opcional: habilita los mensajes de depuración
+    debug: false          // Opcional: habilita los mensajes de depuración
   });
 
 export default i18n;

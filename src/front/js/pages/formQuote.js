@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
-import { Form, Button, ProgressBar } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useRef } from "react";
 import "react-phone-input-2/lib/style.css";
 import "../../styles/ProgressBarSteps.css";
-import validator from "validator";
 
 import { Context } from "../store/appContext";
 import { StepOne } from "../component/Quote/StepOne";
@@ -16,54 +13,8 @@ import { useTranslation } from "react-i18next";
 export const FormQuote = () => {
     const { t } = useTranslation();
     const { store, actions } = useContext(Context);
-    const navigate = useNavigate();
     const { step, error } = store;
-    const [formData, setFormData] = useState(store.quote);
-    const [showPreview, setShowPreview] = useState(false);
     const modalPreview = useRef();
-
-    const myQuote = {
-      name: "",
-      email: "",
-      address: "",
-      phone: "",
-      service: "Ground",
-      movement: "Door-to-Door",
-      origin: "",
-      originAddress: "",
-      originZip: "",
-      originCity: "",
-      originState: "",
-      originCountry: "",
-      destiny: "",
-      destinyAddress: "",
-      destinyZip: "",
-      destinyCity: "",
-      destinyState: "",
-      destinyCountry: "",
-      dimensionLong: "",
-      dimensionHigh: "",
-      dimensionWide: "",
-      dimensionWeight: "",
-      groundCategory: "LTL",
-      amount: 1,
-      manyCargoes: false,
-      manyDifDimeCargo: [{
-        long: "",
-        high: "",
-        wide: "",
-        weight: ""
-      }],
-      groundFullTruckEquipment: "",
-      groundFullTruckTrailerSize: "",
-      groundDrayageEquipmentSize: "",
-      groundDrayageEquipmentType: "",
-      airProductKind: "",
-      oceanCategory: "LCL",
-      containerSize: "",
-      oceanComority: "",
-      comments: ""
-    };
 
     const showModalPreview = () => {
       const modalEle = modalPreview.current;
@@ -90,21 +41,11 @@ export const FormQuote = () => {
       if (step < 5) {
         actions.setStep(step + 1);
       }
-
     };
 
     const handlePrevious = () => {
       actions.setStep(step - 1);
       setError(false);
-    };
-
-    const handleStepClick = (stepNumber) => {
-      actions.setStep(stepNumber);
-    };
-
-    const handleInputChange = (event) => {
-      const { name, value } = event.target;
-      setFormData({ ...formData, [name]: value });
     };
 
     const setError = (boll) => {
@@ -122,8 +63,6 @@ export const FormQuote = () => {
           localStorage.setItem("address", store.quote.address);
           localStorage.setItem("email", store.quote.email);
           localStorage.setItem("phone", store.quote.phone);
-
-          console.log("MY QUOTE", store.quote);
         }
       } else if (step === 2) {
         if (store.quote.originAddress === "" ||
@@ -134,8 +73,6 @@ export const FormQuote = () => {
           localStorage.setItem("destinyAddress", store.quote.destinyAddress);
           localStorage.setItem("movement", store.quote.movement);
           localStorage.setItem("service", store.quote.service);
-
-          console.log("MY QUOTE", store.quote);
         }
       } else if (step === 3 && store.quote.service === "Ground") {
         if (store.quote.groundCategory === "LTL") {
@@ -147,8 +84,6 @@ export const FormQuote = () => {
             localStorage.setItem("amount", store.quote.amount);
             const dimensionsString = JSON.stringify(store.quote.manyDifDimeCargo);
             localStorage.setItem("manyDifDimeCargo", dimensionsString);
-
-            console.log("MY QUOTE", store.quote);
           }
         } else {
           localStorage.setItem("groundDrayageEquipmentSize",
@@ -191,10 +126,9 @@ export const FormQuote = () => {
 
     const handleSubmit = async (event) => {
       event.preventDefault();
-
       actions.updateStore("sending", true);
-
       const response = await actions.sendQuote();
+
       if (response) {
         actions.updateStore("sendingResult", "success");
         actions.cleanFinalQuote();
@@ -261,27 +195,23 @@ export const FormQuote = () => {
                   className="position-absolute top-0 btn-home-primary
                  translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ left: "0%" }}
-            // onClick={() => handleStepClick(1)}
           >1
           </button>
           <button type="button"
                   className="position-absolute top-0 btn-home-primary
                  translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ backgroundColor: step < 2 && "#6C757D", left: "25%" }}
-            // onClick={() => handleStepClick(2)}
           >2
           </button>
           <button className="position-absolute top-0 btn-home-primary
                 translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ backgroundColor: step < 3 && "#6C757D", left: "50%" }}
-            // onClick={() => handleStepClick(3)}
           >3
           </button>
           <button type="button"
                   className="position-absolute top-0 btn-home-primary
                 translate-middle btn btn-sm btn-quote-progress rounded-pill"
                   style={{ backgroundColor: step < 4 && "#6C757D", left: "75%" }}
-            // onClick={() => handleStepClick(4)}
           >4
           </button>
 
@@ -364,7 +294,7 @@ export const FormQuote = () => {
             }
           </div>
 
-          <div show={showPreview}
+          <div
                aria-hidden="true"
                className="modal fade"
                data-bs-backdrop="static"
@@ -376,12 +306,12 @@ export const FormQuote = () => {
                 <div className="modal-header">
                   <h4 className="nav-link active mb-0 p-0"
                       style={{ color: "#ffffff" }}
-                      aria-current="page" href="#"
+                      aria-current="page"
                   >
                     <b>K&BD</b> LOGISTICS INC
                   </h4>
                   <button type="button" className="btn-close"
-                          disabled={store.sendingResult != "review"}
+                          disabled={store.sendingResult !== "review"}
                           onClick={handlePrevious}
                           data-bs-dismiss="modal" aria-label="Close" />
                 </div>
@@ -395,7 +325,7 @@ export const FormQuote = () => {
                     </div> :
                     <>
                       <button type="button" className="btn btn-secondary"
-                              disabled={store.sendingResult != "review"}
+                              disabled={store.sendingResult !== "review"}
                               onClick={() => {
                                 actions.cleanFinalQuote();
                                 handlePrevious();
@@ -404,7 +334,7 @@ export const FormQuote = () => {
                         {t("close")}
                       </button>
                       <button className="btn btn-home-primary"
-                              disabled={store.sendingResult != "review"}
+                              disabled={store.sendingResult !== "review"}
                               type="submit"
                       >
                         {t("send")}

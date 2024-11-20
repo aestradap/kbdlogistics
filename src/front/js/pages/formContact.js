@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Context } from "../store/appContext";
 import contactImage from "../../img/contact-2336591569.jpg";
@@ -6,8 +6,7 @@ import contactImage from "../../img/contact-2336591569.jpg";
 const ContactForm = () => {
 
   const { t } = useTranslation();
-  const { store, actions } = useContext(Context);
-  const [show, setShow] = useState(false);
+  const { actions } = useContext(Context);
   const [msg, setMsg] = useState("");
   const [formData, setFormData] = useState({
     name: "",
@@ -30,11 +29,9 @@ const ContactForm = () => {
     e.preventDefault();
     const response = await actions.sendContact(formData);
     if (response) {
-      console.log("Success");
       setMsg("Success");
       showModalContact();
     } else {
-      console.log("Fail");
       setMsg("Fail");
       showModalContact();
     }
@@ -71,7 +68,7 @@ const ContactForm = () => {
          style={{
            minHeight: "calc(100vh - 13rem)", marginBottom: "2rem"
          }}>
-      <div show={show} className="modal fade"
+      <div className="modal fade"
            id="exampleModal" tabIndex="-1"
            aria-labelledby="exampleModalLabel"
            aria-hidden="true"
@@ -81,7 +78,8 @@ const ContactForm = () => {
         <div className="modal-dialog modal-lg">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="nav-link active mb-0" style={{ color: "#ffffff" }} aria-current="page" href="#">
+              <h4 className="nav-link active mb-0" style={{ color: "#ffffff" }}
+                  aria-current="page">
                 <b>K&BD</b> LOGISTICS INC
               </h4>
               {msg === "Fail" &&

@@ -68,30 +68,30 @@ const getState = ({ getStore, getActions, setStore }) => {
     actions: {
 
       sendQuote: async () => {
-        const finalQuote = getStore().finalQuote;
-        console.log("Final-Quote: ", finalQuote);
+        try {
+          const { finalQuote } = getStore();
 
-        const response = await fetch(
-          process.env.BACKEND_URL + "api/send-email", {
+          const response = await fetch(`${process.env.BACKEND_URL}api/send-email`, {
             method: "POST",
-            body: JSON.stringify({ finalQuote }),
             headers: {
-              "Content-Type": "application/json"
-            }
-          }
-        );
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ finalQuote }),
+          });
 
-        if (response.status !== 200) {
-          console.log("Failed to send email.");
-          return false;
-        } else {
-          console.log("Email send successfully.");
+          if (!response.ok) {
+            console.error(`Error sending quote: ${response.statusText}`);
+            return false;
+          }
+
           return true;
+        } catch (error) {
+          console.error("Failed to send quote:", error);
+          return false;
         }
       },
 
       sendContact: async (data) => {
-
         const response = await fetch(
           process.env.BACKEND_URL + "api/send-contact-email", {
             method: "POST",
@@ -163,9 +163,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       updateFinalQuote: (key, value) => {
         const store = getStore();
         const quoteToSend = [...store.finalQuote];
-        console.log("Adding to finalQuote:", { [key]: value });
         quoteToSend.push({ [key]: value });
-        console.log("Updated finalQuote:", quoteToSend);
         setStore({ finalQuote: quoteToSend });
       },
 
@@ -343,7 +341,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       setStep: (value) => {
-        console.log("Step", value);
         setStore({ step: value });
         localStorage.setItem("step", value);
       },
