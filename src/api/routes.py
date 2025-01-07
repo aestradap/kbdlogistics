@@ -36,24 +36,29 @@ def send_email():
             'Form Data Submission',
             sender='ejimenez@kbdlogistics.com',
             recipients=['aestradap17@gmail.com', 'Op02@kbdlogistics.com']
-
         )
 
-        # Agregar la sección y el contenido del mensaje
-        for item in data.get('finalQuote', []):
-            for key, value in item.items():
-                if key in sections:
-                    output += f"<br><strong>{key}. {sections[key]}</strong><br>"
-                elif key == "manyDifDimeCargo" and isinstance(value, list):
-                    output += "<br><strong>Cargo Dimensions:</strong><br>"
-                    for idx, dim in enumerate(value, start=1):
-                        output += (f"<br>&nbsp;&nbsp;Dimension {idx}:<br>"
-                                   f"&nbsp;&nbsp;&nbsp;&nbsp;Long: {dim.get('long', '')}<br>"
-                                   f"&nbsp;&nbsp;&nbsp;&nbsp;High: {dim.get('high', '')}<br>"
-                                   f"&nbsp;&nbsp;&nbsp;&nbsp;Wide: {dim.get('wide', '')}<br>"
-                                   f"&nbsp;&nbsp;&nbsp;&nbsp;Weight: {dim.get('weight', '')}<br>")
-                else:
-                    output += f"{key}: {value}<br>"
+        for item in data:
+            print("Processed item:", item)
+            if isinstance(item, dict):
+                for key, value in item.items():
+                    if key in sections:
+                        output += f"<br><strong>{key}. {sections[key]}</strong><br>"
+                    elif key == "manyDifDimeCargo" and isinstance(value, list):
+                        output += "<br><strong>Cargo Dimensions:</strong><br>"
+                        for idx, dim in enumerate(value, start=1):
+                            if isinstance(dim, dict):
+                                output += (f"<br>&nbsp;&nbsp;Dimension {idx}:<br>"
+                                           f"&nbsp;&nbsp;&nbsp;&nbsp;Long: {dim.get('long', 'N/A')}<br>"
+                                           f"&nbsp;&nbsp;&nbsp;&nbsp;High: {dim.get('high', 'N/A')}<br>"
+                                           f"&nbsp;&nbsp;&nbsp;&nbsp;Wide: {dim.get('wide', 'N/A')}<br>"
+                                           f"&nbsp;&nbsp;&nbsp;&nbsp;Weight: {dim.get('weight', 'N/A')}<br>")
+                            else:
+                                output += f"<br>&nbsp;&nbsp;Invalid dimension format.<br>"
+                    else:
+                        output += f"{key}: {value or 'N/A'}<br>"
+            else:
+                output += "<br>Invalid item format.<br>"
 
         msg_body = f"""
         <html>

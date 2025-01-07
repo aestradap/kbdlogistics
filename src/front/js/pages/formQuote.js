@@ -128,6 +128,7 @@ export const FormQuote = () => {
       event.preventDefault();
       actions.updateStore("sending", true);
       const response = await actions.sendQuote();
+      console.log("response: ",response);
 
       if (response) {
         actions.updateStore("sendingResult", "success");
@@ -151,7 +152,6 @@ export const FormQuote = () => {
 
       }
     };
-
     return <>
 
       <svg xmlns="http://www.w3.org/2000/svg" className="d-none">
@@ -239,7 +239,7 @@ export const FormQuote = () => {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-5">
+        <form className="mt-5">
 
           {/*step1*/}
           {step === 1 && (<>
@@ -335,7 +335,7 @@ export const FormQuote = () => {
                       </button>
                       <button className="btn btn-home-primary"
                               disabled={store.sendingResult !== "review"}
-                              type="submit"
+                              onClick={handleSubmit}
                       >
                         {t("send")}
                       </button>

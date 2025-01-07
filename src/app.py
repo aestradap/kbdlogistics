@@ -24,7 +24,7 @@ app.url_map.strict_slashes = False
 # CORS(app)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
-# database condiguration
+# database configuration
 db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
     app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace(

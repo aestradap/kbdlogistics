@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           weight: ""
         }],
         groundFullTruckEquipment: "Flatbed / Stepdeck",
-        groundFullTruckTrailerSize: "20'" ,
+        groundFullTruckTrailerSize: "20'",
         groundDrayageEquipmentSize: "20 feet",
         groundDrayageEquipmentType: "Standard",
         airProductKind: "",
@@ -68,26 +68,25 @@ const getState = ({ getStore, getActions, setStore }) => {
     actions: {
 
       sendQuote: async () => {
-        try {
-          const { finalQuote } = getStore();
+        const store = getStore();
+        console.log("finalQuote: ",store.finalQuote);
 
-          const response = await fetch(`${process.env.BACKEND_URL}api/send-email`, {
+        const response = await fetch(
+          process.env.BACKEND_URL + "api/send-email", {
             method: "POST",
+            body: JSON.stringify(store.finalQuote),
             headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ finalQuote }),
+              "Content-Type": "application/json"
+            }
           });
 
-          if (!response.ok) {
-            console.error(`Error sending quote: ${response.statusText}`);
-            return false;
-          }
-
-          return true;
-        } catch (error) {
-          console.error("Failed to send quote:", error);
+        if (response.status !== 200) {
+          console.error(`Error sending quote: ${response.statusText}`);
+          console.log("Error sending quote");
           return false;
+        }else {
+          console.log("Quote send successfully.");
+          return true;
         }
       },
 

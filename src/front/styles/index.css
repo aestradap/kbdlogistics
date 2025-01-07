@@ -61,6 +61,7 @@ button:focus {
     margin-bottom: 4rem;
     margin-top: 2rem;
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     bottom: 3rem;
@@ -106,6 +107,7 @@ button:focus {
     background: rgba(0, 0, 0, 0.4);
     z-index: 2;
 }
+
 .overlay {
     position: relative;
     z-index: 1;
@@ -119,11 +121,13 @@ button:focus {
     margin-bottom: 1.5rem;
     text-align: center;
 }
+
 /* rtl:begin:ignore */
 .marketing .col-lg-4 p {
     margin-right: .75rem;
     margin-left: .75rem;
 }
+
 /* rtl:end:ignore */
 
 
@@ -163,6 +167,7 @@ button:focus {
         margin-top: 7rem;
     }
 }
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -215,20 +220,46 @@ button:focus {
     -webkit-overflow-scrolling: touch;
 }
 
+.cookies-info {
+    max-height: 25rem;
+    color: #ffffff7a;
+}
+
 .modal-custom-position {
     position: fixed;
+    height: auto;
     bottom: 0;
-    left: 2%;
-    transform: translateX(-50%);
-    max-width: 95%;
+    font-size: 14px;
+    left: 48%;
+    margin: 3px;
     width: 100%;
+    max-width: 93% !important;
+    transform: translateX(-50%) !important;
+}
+
+.modal-custom-position .modal-content {
+    background: #101214d9;
 }
 
 .hr-home {
-    background-color: #00A651 ;
+    background-color: #00A651;
     height: 3px !important;
 
 }
+
+.btn-home-cookies {
+    color: #fff;
+    border-color: #00A651;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    font-size: small;
+}
+
+.btn-home-cookies:hover {
+    background-color: #00A651;
+    color: #212529;
+    border-color: #008744;
+}
+
 
 .btn-home-primary {
     color: #fff;
@@ -247,9 +278,10 @@ button:focus {
     border-color: #008744;
 }
 
-.btn-previous:hover{
-    color:#212529;
- }
+.btn-previous:hover {
+    color: #212529;
+}
+
 .form-check-input:checked {
     background-color: #00A651;
     border-color: #00A651;
@@ -284,6 +316,7 @@ button:focus {
 .react-tel-input .form-control {
     width: 100% !important;
 }
+
 @media (min-width: 575px) {
     /* Para pantallas pequeñas (sm) y superiores */
     .react-tel-input .form-control {
@@ -323,7 +356,8 @@ button:focus {
         width: 306px !important;
     }
 }
-.btn-quote-progress{
+
+.btn-quote-progress {
     border-color: white;
     color: white;
     background-color: #00A651;
@@ -331,9 +365,11 @@ button:focus {
     height: 2rem;
     margin-top: 7px
 }
-.nav-link.active  {
+
+.nav-link.active {
     color: #00A651 !important;
 }
+
 .fw-normal {
     font-weight: 500 !important;
 }
@@ -377,7 +413,7 @@ button {
     font-size: 16px;
     color: #fff;
     border: none !important;
-    border-radius: 0px !important;
+    border-radius: 0 !important;
     cursor: pointer;
 }
 
@@ -391,7 +427,7 @@ button:focus {
 }
 
 .card-mosaic {
-    border-radius: 0px ;
+    border-radius: 0;
 }
 
 .cargo-banner {

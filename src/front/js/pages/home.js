@@ -53,14 +53,20 @@ export const Home = () => {
           <div className="modal-header">
             <h4 className="nav-link active mb-0"
                 style={{ color: "#ffffff" }}
-                aria-current="page" href="#"
+                aria-current="page"
             >
               <b>K&BD</b> LOGISTICS INC
             </h4>
+
+            <a className="btn btn-lg btn-home-cookies"
+                  onClick={hideModal}
+            >
+              {t("cookies_btn")}
+            </a>
           </div>
           <div className="modal-body">
             {cookiesInfo ?
-              <div className="scrollspy-example bg-body-tertiary rounded-2"
+              <div className="scrollspy-example bg-body-tertiary rounded-2 cookies-info"
                    style={{ textAlign: "justify" }}>
                 <h3 style={{ textAlign: "start !important" }}>
                   <b>{t("cookies_title")}</b>
@@ -127,20 +133,12 @@ export const Home = () => {
               <label className="form-label"
                      style={{ color: "#00A651", textAlign: "justify" }}>
                 {t("cookies_msg")}
-                <a style={{ color: "#00A651" }}
+                <a style={{ color: "#00A651", cursor: "pointer" }}
                    onClick={() => setCookiesInfo(true)}>
                   <b>{t("cookies_more")}</b>
                 </a>
               </label>
             }
-          </div>
-          <div className="modal-footer">
-
-            <p><a className="btn btn-lg btn-home-primary"
-                  onClick={hideModal}
-            >
-              {t("cookies_btn")}
-            </a></p>
           </div>
         </div>
       </div>
@@ -319,6 +317,5 @@ export const Home = () => {
     </div>
   </>;
 };
-;
 
 
