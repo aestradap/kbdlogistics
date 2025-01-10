@@ -121,7 +121,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         getActions().updateFinalQuote("2", "2");
         getActions().updateFinalQuote("Origin", myQuote.originAddress);
-        getActions().updateFinalQuote("Destiny", myQuote.destinyAddress);
+        getActions().updateFinalQuote("Destination", myQuote.destinyAddress);
         getActions().updateFinalQuote("Service", myQuote.service);
         getActions().updateFinalQuote("Movement", myQuote.movement);
 
